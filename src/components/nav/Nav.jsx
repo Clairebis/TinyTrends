@@ -3,6 +3,7 @@ import Home from "../../assets/icons/Home.svg";
 import Wishlist from "../../assets/icons/Wishlist.svg";
 import Profile from "../../assets/icons/Profile.svg";
 import Blog from "../../assets/icons/Blog.svg";
+import "./Nav.css";
 
 //React component for nav bar
 export default function Nav() {
@@ -32,7 +33,7 @@ export default function Nav() {
     <nav className="bottomNav">
       <NavLink to="/home" className={`navLink ${isHomeActive ? "active" : ""}`}>
         <img src={Home} alt="Home" />
-        <span>Home</span>
+        <span className="small">Home</span>
       </NavLink>
 
       <NavLink
@@ -40,12 +41,12 @@ export default function Nav() {
         className={`navLink ${isWishlistActive ? "active" : ""}`}
       >
         <img src={Wishlist} alt="Wishlist" />
-        <span>Wishlist</span>
+        <span className="small">Wishlist</span>
       </NavLink>
 
       <NavLink to="/blog" className={`navLink ${isBlogActive ? "active" : ""}`}>
         <img src={Blog} alt="Blog" />
-        <span>Blog</span>
+        <span className="small">Blog</span>
       </NavLink>
 
       <NavLink
@@ -53,7 +54,7 @@ export default function Nav() {
         className={`navLink ${isProfileActive ? "active" : ""}`}
       >
         <img src={Profile} alt="Profile" />
-        <span>Profile</span>
+        <span className="small">Profile</span>
       </NavLink>
     </nav>
   );
