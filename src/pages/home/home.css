@@ -38,4 +38,5 @@
 .closeModal {
   display: flex;
   justify-content: end;
+  color: var(--black);
 }

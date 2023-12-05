@@ -1,0 +1,22 @@
+.formButton {
+  margin: auto;
+  margin-top: -32px;
+}
+
+.imageInput {
+  display: flex;
+  flex-direction: column;
+}
+
+form .fileInput {
+  display: none;
+}
+
+.imagePreview {
+  width: calc(100% - 4px);
+  max-width: 346px;
+  height: 200px;
+  object-fit: cover;
+  margin: auto;
+  display: block;
+}

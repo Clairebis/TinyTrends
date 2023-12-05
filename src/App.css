@@ -111,3 +111,28 @@ p {
 .medium {
   font-weight: var(--fontWeightMedium);
 }
+
+/* Form styles */
+form {
+  margin: auto;
+  box-shadow: var(--boxShadow);
+  padding: 1em 1em 2em;
+  background-color: var(--white);
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: space-between;
+  font-family: var(--bodyFont);
+  font-size: var(--bodyTextSize);
+}
+
+input {
+  margin-left: 1em;
+  width: 50%;
+  max-width: 350px;
+  padding: 1em;
+  box-sizing: border-box;
+  background: var(--white);
+  border: none;
+}

@@ -5,6 +5,8 @@ import plusIcon from "../../assets/icons/plusIcon.webp";
 import HomeHeading from "../../components/homeHeading/HomeHeading";
 import "./Home.css";
 import ModalHeading from "../../components/modalHeading/ModalHeading";
+import close from "../../assets/icons/close.svg";
+import ChildForm from "../../components/childForm/ChildForm";
 
 export default function Home() {
   const modal = document.querySelector(".addChildModal");
@@ -42,6 +44,7 @@ export default function Home() {
               <img src={close} alt="" onClick={closeModal} />
             </div>
             <ModalHeading text="Add a child" />
+            <ChildForm />
           </div>
         </div>
       </section>
