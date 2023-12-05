@@ -1,7 +1,111 @@
+/* Define CSS custom properties for colors, fonts, sizes, and other values */
 :root {
-  font-family: "Roboto", sans-serif;
-  /*font-family: "Raleway", sans-serif;
-  font-family: "Merienda", cursive;*/
+  --forestGreen: #1e4e40;
+  --grassGreen: #77dd77;
+  --blue: #a6dddb;
+  --brightGreen: #bfff00;
+  --black: #253d3e;
+  --white: #fffefd;
+  --blue100: #cde1e0;
+  --black70: #647575;
+  --headingFont: "Raleway", sans-serif;
+  --bodyFont: "Roboto", sans-serif;
+  --handwritingFont: "Merienda", cursive;
+  --headingSize: 1.5rem;
+  --subHeadingSize: 1.25rem;
+  --blogHeadingSize: 1.125rem;
+  --bodyTextSize: 0.875rem;
+  --bodyTextSmallSize: 0.75rem;
+  --bodyTextTinySize: 0.625rem;
+  --boxShadow: 2px 2px 4px rgba(37, 61, 62, 0.1);
+  --fontWeightBold: 700;
+  --fontWeightMedium: 500;
+  --fontWeightRegular: 400;
+}
+
+/* Apply base styles to the entire page */
+body,
+html {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: var(--bodyFont);
+  font-weight: var(--fontWeightRegular);
   line-height: 1.5;
-  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set padding and margin for the main content container */
+.page {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 5rem;
+}
+
+/* Remove underline from hyperlinks */
+a {
+  text-decoration: none;
+}
+
+/* Heading styles */
+h1 {
+  font-family: var(--headingFont);
+  font-size: var(--headingSize);
+  font-weight: var(--fontWeightBold);
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-family: var(--headingFont);
+  font-size: var(--subHeadingSize);
+  font-weight: var(--fontWeightBold);
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  font-family: var(--bodyFont);
+  font-size: var(--blogHeadingSize);
+  font-weight: var(--fontWeightBold);
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  font-family: var(--handwritingFont);
+  font-size: var(--blogHeadingSize);
+  font-weight: var(--fontWeightBold);
+  margin: 0;
+  padding: 0;
+}
+
+/* Paragraph and text styles */
+p {
+  font-family: var(--bodyFont);
+  font-size: var(--bodyTextSize);
+  font-weight: var(--fontWeightRegular);
+  margin: 0;
+  padding: 0;
+}
+
+.small {
+  font-family: var(--bodyFont);
+  font-size: var(--bodyTextSmallSize);
+  font-weight: var(--fontWeightRegular);
+}
+
+.tiny {
+  font-family: var(--bodyFont);
+  font-size: var(--bodyTextTinySize);
+  font-weight: var(--fontWeightRegular);
+}
+
+/* Text formatting styles */
+.bold {
+  font-weight: var(--fontWeightBold);
+}
+
+.medium {
+  font-weight: var(--fontWeightMedium);
 }

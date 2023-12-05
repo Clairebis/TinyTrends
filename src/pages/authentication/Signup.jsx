@@ -6,6 +6,7 @@ import { usersRef } from "../../config/firebase";
 
 export default function Signup() {
   const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const auth = getAuth();
@@ -20,7 +21,7 @@ export default function Signup() {
         // Created and signed in
         const user = userCredential.user;
         const docRef = doc(usersRef, user.uid); // create reference to the user in firestore
-        setDoc(docRef, { name }); // set the user in firestore with the values from values from input fields
+        setDoc(docRef, { name, mail }); // set the user in firestore with the values from values from input fields
       })
       .catch((error) => {
         let code = error.code; // saving error code in variable
@@ -42,7 +43,13 @@ export default function Signup() {
           name="name"
           placeholder="Type your name"
         />
-        <input type="email" name="mail" placeholder="Type your mail" />
+        <input
+          type="email"
+          value={mail}
+          onChange={(e) => setMail(e.target.value)}
+          name="mail"
+          placeholder="Type your mail"
+        />
         <input
           type="password"
           name="password"
