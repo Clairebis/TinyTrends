@@ -4,7 +4,7 @@ import CategoryDropdown from "../../components/dropdowns/CategoryDropdown";
 export default function Home() {
   return (
     <>
-      <h1>The project</h1>
+      <h1>Home</h1>
       <AgeDropdown />
       <CategoryDropdown />
     </>
