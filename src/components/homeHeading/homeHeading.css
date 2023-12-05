@@ -1,0 +1,7 @@
+.homeHeadingContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}

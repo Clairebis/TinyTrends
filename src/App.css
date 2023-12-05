@@ -54,6 +54,7 @@ h1 {
   font-weight: var(--fontWeightBold);
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 h2 {
@@ -76,6 +77,7 @@ h4 {
   font-family: var(--handwritingFont);
   font-size: var(--blogHeadingSize);
   font-weight: var(--fontWeightBold);
+  text-align: center;
   margin: 0;
   padding: 0;
 }
