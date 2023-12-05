@@ -1,0 +1,21 @@
+.buttonForestGreen {
+  border-radius: 24px;
+  padding: 10px;
+  width: 120px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--bodyFont);
+  font-size: var(--bodyTextSize);
+  font-weight: var(--fontWeightBold);
+  color: var(--white);
+  background-color: var(--forestGreen);
+  box-shadow: var(--boxShadow);
+  text-align: center;
+}
+
+.buttonSecondary {
+  border: solid 2px var(--forestGreen);
+  color: var(--forestGreen);
+  background-color: var(--white);
+}

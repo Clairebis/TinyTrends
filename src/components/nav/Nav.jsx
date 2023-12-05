@@ -1,8 +1,8 @@
 import { NavLink, useLocation } from "react-router-dom";
-import Home from "../../assets/icons/Home.svg";
-import Wishlist from "../../assets/icons/Wishlist.svg";
-import Profile from "../../assets/icons/Profile.svg";
-import Blog from "../../assets/icons/Blog.svg";
+import Home from "../../assets/icons/nav/Home.svg";
+import Wishlist from "../../assets/icons/nav/Wishlist.svg";
+import Profile from "../../assets/icons/nav/Profile.svg";
+import Blog from "../../assets/icons/nav/Blog.svg";
 import "./Nav.css";
 
 //React component for nav bar
