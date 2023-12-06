@@ -16,11 +16,11 @@ export default function ChildForm(saveChild, child) {
 
   useEffect(() => {
     if (child) {
-      setFirstName(child.firstName);
-      setOtherNames(child.otherNames);
-      setDob(child.dob);
-      setAge(child.age);
-      setImage(child.image);
+      setFirstName(child.firstName || "");
+      setOtherNames(child.otherNames || "");
+      setDob(child.dob || "");
+      setAge(child.age || "");
+      setImage(child.image || { placeholderChild });
     }
   }, [child]);
 
@@ -66,6 +66,11 @@ export default function ChildForm(saveChild, child) {
   }
 
   async function handleUploadImage() {
+    if (!imageFile) {
+      // Handle the case where imageFile is not defined
+      return "";
+    }
+
     const storageRef = ref(storage, imageFile.name); // create a reference to the file in firebase storage
     await uploadBytes(storageRef, imageFile); // upload the image file to firebase storage
     const downloadURL = await getDownloadURL(storageRef); // Get the download URL
@@ -80,6 +85,7 @@ export default function ChildForm(saveChild, child) {
           alt="Choose an image"
           className="imagePreview"
           onError={(event) => (event.target.src = placeholderChild)}
+          name="image"
         />
 
         <input
@@ -96,6 +102,7 @@ export default function ChildForm(saveChild, child) {
           value={firstName}
           onChange={(event) => setFirstName(event.target.value)}
           placeholder="Your child's first name"
+          name="firstName"
         />
       </label>
       <label>
@@ -105,6 +112,7 @@ export default function ChildForm(saveChild, child) {
           value={otherNames}
           onChange={(event) => setOtherNames(event.target.value)}
           placeholder="Your child's middle and last names"
+          name="otherNames"
         />
       </label>
       <label>
@@ -114,6 +122,7 @@ export default function ChildForm(saveChild, child) {
           value={dob}
           onChange={(event) => setDob(event.target.value)}
           placeholder="Your child's date of birth"
+          name="dob"
         />
       </label>
       <label>
@@ -123,6 +132,7 @@ export default function ChildForm(saveChild, child) {
           value={age}
           onChange={(event) => setAge(event.target.value)}
           placeholder="Your child's age"
+          name="age"
         />
       </label>
 

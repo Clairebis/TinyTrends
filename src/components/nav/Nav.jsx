@@ -9,7 +9,6 @@ import "./Nav.css";
 export default function Nav() {
   // Get the current location using the useLocation hook from React Router
   const location = useLocation();
-  console.log(location);
 
   // Determine if the "Home" link should be marked as active based on the current URL
   const isHomeActive =
