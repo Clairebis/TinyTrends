@@ -22,17 +22,20 @@ export default function HomeWardrobe() {
         //Reference to the children subcollection
         const childrenCollectionRef = collection(userDocRef, "children");
 
-        //Query to get the specific child document based on childId
+        //Query to get the specific child document based on documentId
         const childQuery = query(
           childrenCollectionRef,
-          where("uid", "==", childId)
+          where("__name__", "==", childId)
         );
 
         //Fetch the data of the specified child
         const childSnapshot = await getDocs(childQuery);
 
         //Log the child snapshot
-        console.log("Child Snapshot:", childSnapshot);
+        console.log(
+          "Child Snapshot:",
+          childSnapshot.docs.map((doc) => doc.data())
+        );
 
         // Check if there are documents in the snapshot
         if (childSnapshot.docs.length > 0) {
