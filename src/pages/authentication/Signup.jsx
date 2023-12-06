@@ -1,8 +1,9 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { doc, setDoc } from "@firebase/firestore";
+import { doc, setDoc, collection, addDoc } from "@firebase/firestore";
 import { usersRef } from "../../config/firebase";
+import { db } from "../../config/firebase";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -11,25 +12,40 @@ export default function Signup() {
 
   const auth = getAuth();
 
-  function handleSignUp(event) {
+  async function handleSignUp(event) {
     event.preventDefault();
     const mail = event.target.mail.value; // mail value from input field in sign in form
     const password = event.target.password.value; // password value from input field in sign in form
 
-    createUserWithEmailAndPassword(auth, mail, password)
-      .then((userCredential) => {
-        // Created and signed in
-        const user = userCredential.user;
-        const docRef = doc(usersRef, user.uid); // create reference to the user in firestore
-        setDoc(docRef, { name, mail }); // set the user in firestore with the values from values from input fields
-      })
-      .catch((error) => {
-        let code = error.code; // saving error code in variable
-        console.log(code);
-        code = code.replaceAll("-", " "); //JS to display error message from console
-        code = code.replaceAll("auth/", "");
-        setErrorMessage(code);
-      });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        mail,
+        password
+      );
+      const user = userCredential.user;
+
+      // Create a reference to the user in Firestore
+      const userDocRef = doc(usersRef, user.uid);
+
+      // Set the user in Firestore with the values from input fields
+      await setDoc(userDocRef, { name, mail });
+
+      // Create an empty "children" subcollection within the user document
+      const childrenCollectionRef = collection(
+        db,
+        "users",
+        user.uid,
+        "children"
+      );
+      await addDoc(childrenCollectionRef, {}); // You can add any initial data if needed
+    } catch (error) {
+      let code = error.code;
+      console.log(code);
+      code = code.replaceAll("-", " ");
+      code = code.replaceAll("auth/", "");
+      setErrorMessage(code);
+    }
   }
 
   return (

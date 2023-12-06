@@ -7,8 +7,15 @@ import "./Home.css";
 import ModalHeading from "../../components/modalHeading/ModalHeading";
 import close from "../../assets/icons/close.svg";
 import ChildForm from "../../components/childForm/ChildForm";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const auth = getAuth();
+  const navigate = useNavigate();
+
   const modal = document.querySelector(".addChildModal");
 
   function openModal() {
@@ -17,6 +24,24 @@ export default function Home() {
 
   function closeModal() {
     modal.style.display = "none";
+  }
+
+  async function handleSubmit(newChild) {
+    newChild.createdAt = serverTimestamp(); // timestamp (now)
+    newChild.uid = auth.currentUser.uid; // uid of auth user / signed in user
+
+    // Get a reference to the user's "children" subcollection
+    const userChildrenCollectionRef = collection(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "children"
+    );
+
+    // Add the new child to the "children" subcollection
+    await addDoc(userChildrenCollectionRef, newChild);
+
+    navigate("/homeChildAdded");
   }
 
   return (
@@ -44,7 +69,7 @@ export default function Home() {
               <img src={close} alt="" onClick={closeModal} />
             </div>
             <ModalHeading text="Add a child" />
-            <ChildForm />
+            <ChildForm saveChild={handleSubmit} />
           </div>
         </div>
       </section>
