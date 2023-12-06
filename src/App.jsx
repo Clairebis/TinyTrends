@@ -11,6 +11,7 @@ import Signup from "./pages/authentication/Signup";
 import Login from "./pages/authentication/Login";
 import Nav from "./components/nav/Nav";
 import HomeChildAdded from "./pages/home/HomeChildAdded";
+import HomeWardrobe from "./pages/home/HomeWardrobe";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // default value comes from localStorage
@@ -37,7 +38,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/homeChildAdded" element={<HomeChildAdded />} />
+        <Route path="/homeChildAdded/:childId" element={<HomeChildAdded />} />
+        <Route path="/home-wardrobe/:childId" element={<HomeWardrobe />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/profile" element={<ProfilePage />} />

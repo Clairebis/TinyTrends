@@ -39,9 +39,12 @@ export default function Home() {
     );
 
     // Add the new child to the "children" subcollection
-    await addDoc(userChildrenCollectionRef, newChild);
+    const addedChildRef = await addDoc(userChildrenCollectionRef, newChild);
 
-    navigate("/homeChildAdded");
+    // Retrieve the auto-generated UID of the added child
+    const addedChildUid = addedChildRef.id;
+
+    navigate(`/homeChildAdded/${addedChildUid}`);
   }
 
   return (

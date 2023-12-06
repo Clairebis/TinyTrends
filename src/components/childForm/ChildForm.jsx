@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import "./ChildForm.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../config/firebase";
-import Button from "../button/button";
 import placeholderChild from "../../assets/placeholderChild.webp";
 
-export default function ChildForm(saveChild, child) {
+export default function ChildForm({ saveChild, child }) {
   const [firstName, setFirstName] = useState("");
   const [otherNames, setOtherNames] = useState("");
   const [dob, setDob] = useState("");
@@ -20,7 +19,7 @@ export default function ChildForm(saveChild, child) {
       setOtherNames(child.otherNames || "");
       setDob(child.dob || "");
       setAge(child.age || "");
-      setImage(child.image || { placeholderChild });
+      setImage(child.image || placeholderChild);
     }
   }, [child]);
 
@@ -57,7 +56,7 @@ export default function ChildForm(saveChild, child) {
     const validForm =
       formData.firstName && formData.otherNames && formData.dob && formData.age; // will return false if one of the properties doesn't have a value
     if (validForm) {
-      // if all fields/ properties are filled, then call savePost
+      // if all fields/ properties are filled, then call saveChild
       saveChild(formData);
     } else {
       // if not, set errorMessage state.
@@ -137,7 +136,9 @@ export default function ChildForm(saveChild, child) {
       </label>
 
       <p className="errorMessage">{errorMessage}</p>
-      <Button text="Save" type="submit" className="formButton" />
+      <button className="formButton" type="submit">
+        Save
+      </button>
     </form>
   );
 }
