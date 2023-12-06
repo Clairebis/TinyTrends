@@ -7,15 +7,26 @@ import "./Home.css";
 import ModalHeading from "../../components/modalHeading/ModalHeading";
 import close from "../../assets/icons/close.svg";
 import ChildForm from "../../components/childForm/ChildForm";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../../config/firebase";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp,
+} from "firebase/firestore";
+import { childrenRef, db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import ChildCardHome from "../../components/childCardHome/ChildCardHome";
 
 export default function Home() {
   const auth = getAuth();
   const navigate = useNavigate();
   const user = auth.currentUser;
+  console.log("User ID:", user);
+  const [children, setChildren] = useState([]); // empty array for children
 
   const modal = document.querySelector(".addChildModal");
 
@@ -60,6 +71,23 @@ export default function Home() {
     navigate(`/homeChildAdded/${addedChildUid}`);
   }
 
+  /* useEffect(() => {
+    console.log("ChildrenRef:", childrenRef());
+    const q = query(childrenRef, orderBy("createdAt", "desc")); // order by: lastest child first
+    const unsubscribe = onSnapshot(q, (data) => {
+      // map through all docs (object) from children collection
+      // changing the data structure so it's all gathered in one object
+      const childrenData = data.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setChildren(childrenData);
+    });
+    return () => {
+      unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
+    };
+  }, []); // Make sure to include userId as a dependency if it's used inside the useEffect */
+
   return (
     <>
       <section className="page">
@@ -68,6 +96,13 @@ export default function Home() {
         <h4 className="homeQuote">
           "Small clothes, big hearts, sustainable starts."
         </h4>
+
+        <section>
+          {children.map((child) => (
+            <ChildCardHome key={child.id} child={child} />
+          ))}
+        </section>
+
         <AgeDropdown />
         <CategoryDropdown />
         <Button text="Wishlist" link="/wishlist" />

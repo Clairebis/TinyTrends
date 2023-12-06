@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, doc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,6 +23,17 @@ const firebaseApp = initializeApp(firebaseConfig);
 export const db = getFirestore(firebaseApp);
 
 export const usersRef = collection(db, "users"); // reference to users collection in firestore
+
+// Reference to a specific user's "children" collection
+export const childrenRef = (user) => {
+  // Check if user is not null and has the 'uid' property
+  if (user && user.uid) {
+    return collection(usersRef, doc(db, "users", user.uid), "children");
+  } else {
+    console.error("Invalid user or user ID is missing.");
+    return null;
+  }
+};
 
 // Initialize Cloud Storage and get a reference to the service
 export const storage = getStorage(firebaseApp);
