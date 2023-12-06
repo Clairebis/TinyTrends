@@ -15,7 +15,7 @@ import {
   query,
   serverTimestamp,
 } from "firebase/firestore";
-import { childrenRef, db } from "../../config/firebase";
+import { db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -71,22 +71,32 @@ export default function Home() {
     navigate(`/homeChildAdded/${addedChildUid}`);
   }
 
-  /* useEffect(() => {
-    console.log("ChildrenRef:", childrenRef());
-    const q = query(childrenRef, orderBy("createdAt", "desc")); // order by: lastest child first
-    const unsubscribe = onSnapshot(q, (data) => {
-      // map through all docs (object) from children collection
-      // changing the data structure so it's all gathered in one object
-      const childrenData = data.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setChildren(childrenData);
-    });
-    return () => {
-      unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
-    };
-  }, []); // Make sure to include userId as a dependency if it's used inside the useEffect */
+  useEffect(() => {
+    //console.log("ChildrenRef:", childrenRef(auth.currentUser?.uid));
+    // Get a reference to the user's "children" subcollection
+    if (auth.currentUser?.uid) {
+      console.log("User ID:", auth.currentUser.uid);
+      const userChildrenCollectionRef = collection(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "children"
+      );
+      const q = query(userChildrenCollectionRef, orderBy("createdAt", "desc")); // order by: lastest child first
+      const unsubscribe = onSnapshot(q, (data) => {
+        // map through all docs (object) from children collection
+        // changing the data structure so it's all gathered in one object
+        const childrenData = data.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setChildren(childrenData);
+      });
+      return () => {
+        unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
+      };
+    }
+  }, [auth.currentUser?.uid]); // Make sure to include userId as a dependency if it's used inside the useEffect
 
   return (
     <>

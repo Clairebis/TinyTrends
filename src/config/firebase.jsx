@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, doc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,11 +25,18 @@ export const db = getFirestore(firebaseApp);
 
 export const usersRef = collection(db, "users"); // reference to users collection in firestore
 
+//Initialise Firebase Authentication and get a reference to the service
+export const auth = getAuth(firebaseApp);
+
 // Reference to a specific user's "children" collection
-export const childrenRef = (user) => {
+export const childrenRef = () => {
   // Check if user is not null and has the 'uid' property
-  if (user && user.uid) {
-    return collection(usersRef, doc(db, "users", user.uid), "children");
+  if (auth.currentUser.uid) {
+    return collection(
+      usersRef,
+      doc(db, "users", auth.currentUser.uid),
+      "children"
+    );
   } else {
     console.error("Invalid user or user ID is missing.");
     return null;

@@ -31,10 +31,8 @@ export default function HomeWardrobe() {
         //Fetch the data of the specified child
         const childSnapshot = await getDocs(childQuery);
 
-        console.log(
-          "Child Snapshot:",
-          childSnapshot.docs.map((doc) => doc.data())
-        );
+        //Log the child snapshot
+        console.log("Child Snapshot:", childSnapshot);
 
         // Check if there are documents in the snapshot
         if (childSnapshot.docs.length > 0) {
@@ -57,7 +55,7 @@ export default function HomeWardrobe() {
     <div>
       {childData ? (
         <>
-          <h1>{childData.name}'s Wardrobe</h1>
+          <h1>{childData.firstName}'s Wardrobe</h1>
           {/* Render the child's wardrobe items here */}
         </>
       ) : (
