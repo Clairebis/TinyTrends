@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   const auth = getAuth();
   const navigate = useNavigate();
+  const user = auth.currentUser;
 
   const modal = document.querySelector(".addChildModal");
 
@@ -44,6 +45,18 @@ export default function Home() {
     // Retrieve the auto-generated UID of the added child
     const addedChildUid = addedChildRef.id;
 
+    // Create an empty "items" subcollection within the child document
+    const itemsCollectionRef = collection(
+      db,
+      "users",
+      user.uid,
+      "children",
+      addedChildUid,
+      "items"
+    );
+    await addDoc(itemsCollectionRef, {}); // You can add any initial data if needed
+
+    // Navigate to the child added success page
     navigate(`/homeChildAdded/${addedChildUid}`);
   }
 
