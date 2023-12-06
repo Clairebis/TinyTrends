@@ -24,7 +24,7 @@ import ChildCardHome from "../../components/childCardHome/ChildCardHome";
 export default function Home() {
   const auth = getAuth();
   const navigate = useNavigate();
-  const user = auth.currentUser?.uid;
+  const user = auth.currentUser;
   console.log("User ID:", user);
   const [children, setChildren] = useState([]); // empty array for children
 
@@ -60,7 +60,7 @@ export default function Home() {
     const itemsCollectionRef = collection(
       db,
       "users",
-      user.uid,
+      user?.uid,
       "children",
       addedChildUid,
       "items"
