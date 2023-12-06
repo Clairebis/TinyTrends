@@ -5,6 +5,7 @@ export default function ChildCardHome({ child }) {
   const navigate = useNavigate();
 
   function handleClick() {
+    console.log("Clicked on child ID:", child.id); //for debugging
     navigate(`/home-child-overview/${child.id}`);
   }
 

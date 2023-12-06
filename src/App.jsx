@@ -42,7 +42,7 @@ function App() {
         <Route path="/homeChildAdded/:childId" element={<HomeChildAdded />} />
         <Route path="/home-wardrobe/:childId" element={<HomeWardrobe />} />
         <Route
-          path="/home-child-overview/:child.Id"
+          path="/home-child-overview/:childId"
           element={<HomeChildOverview />}
         />
         <Route path="/wishlist" element={<Wishlist />} />
