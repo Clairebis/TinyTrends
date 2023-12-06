@@ -28,7 +28,7 @@ export default function HomeWardrobe() {
           where("uid", "==", childId)
         );
 
-        //Fetch the data of the speified child
+        //Fetch the data of the specified child
         const childSnapshot = await getDocs(childQuery);
 
         console.log(
@@ -48,7 +48,7 @@ export default function HomeWardrobe() {
       }
     };
 
-    // Calle the fetchChildData function
+    // Call the fetchChildData function
     fetchChildData();
   }, [childId, userId]);
 

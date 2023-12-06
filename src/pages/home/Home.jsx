@@ -24,7 +24,7 @@ import ChildCardHome from "../../components/childCardHome/ChildCardHome";
 export default function Home() {
   const auth = getAuth();
   const navigate = useNavigate();
-  const user = auth.currentUser;
+  const user = auth.currentUser?.uid;
   console.log("User ID:", user);
   const [children, setChildren] = useState([]); // empty array for children
 
