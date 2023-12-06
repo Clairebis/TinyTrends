@@ -55,7 +55,7 @@ export default function HomeWardrobe() {
 
   // Use child data to render the wardrobe for the correct child
   return (
-    <div>
+    <section className="page">
       {childData ? (
         <>
           <h1>{childData.firstName}'s Wardrobe</h1>
@@ -64,6 +64,6 @@ export default function HomeWardrobe() {
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </section>
   );
 }
