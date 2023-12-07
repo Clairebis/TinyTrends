@@ -7,11 +7,8 @@ export default function HomeChildAdded() {
 
   return (
     <>
-      <Button
-        text="Start adding to their wardrobe"
-        link={`/home-wardrobe/${childId}`}
-      ></Button>
-      <Button className="buttonSecondary" text="Return home" link="/"></Button>
+      <Button text="Add more items" link={`/home-wardrobe/${childId}`}></Button>
+      <Button className="buttonSecondary" text="Go home" link="/"></Button>
     </>
   );
 }

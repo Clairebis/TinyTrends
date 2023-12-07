@@ -92,29 +92,31 @@ export default function HomeWardrobe() {
 
   // function to handle submit of the item form
   async function handleSubmit(newItem) {
-    newItem.createdAt = serverTimestamp(); // timestamp (now)
-    newItem.uid = auth.currentUser.uid; // uid of auth user / signed in user
+    if (auth.currentUser?.uid) {
+      newItem.createdAt = serverTimestamp(); // timestamp (now)
+      newItem.uid = auth.currentUser.uid; // uid of auth user / signed in user
 
-    // Get a reference to the user's child's "items" subcollection
-    const userChildItemsCollectionRef = collection(
-      db,
-      "users",
-      auth.currentUser.uid,
-      "children",
-      childId,
-      "items"
-    );
+      // Get a reference to the user's child's "items" subcollection
+      const userChildItemsCollectionRef = collection(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "children",
+        childId,
+        "items"
+      );
 
-    // Add the new item to the "items" subcollection
-    const addedItemRef = await addDoc(userChildItemsCollectionRef, newItem);
+      // Add the new item to the "items" subcollection
+      const addedItemRef = await addDoc(userChildItemsCollectionRef, newItem);
 
-    // Retrieve the auto-generated UID of the added item
-    const addedItemUid = addedItemRef.id;
+      // Retrieve the auto-generated UID of the added item
+      const addedItemUid = addedItemRef.id;
 
-    console.log(addedItemUid);
+      console.log(addedItemUid);
 
-    // Navigate to the child added success page
-    //navigate(`/home-item-added/${childId}`);
+      // Navigate to the child added success page
+      //navigate(`/home-item-added/${childId}`);
+    }
   }
 
   // Fetch all child's items from firestore
