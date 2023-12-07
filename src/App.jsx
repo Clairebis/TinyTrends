@@ -48,10 +48,7 @@ function App() {
           path="/home-child-overview/:childId"
           element={<HomeChildOverview />}
         />
-        <Route
-          path="home-item-added/:childId/:addedItemUid"
-          element={<HomeItemAdded />}
-        />
+        <Route path="/home-item-added/:childId" element={<HomeItemAdded />} />
         <Route path="/home-declutter/:childId" element={<HomeDeclutter />} />
         <Route path="/edit-child/:childId" element={<EditChild />} />
         <Route path="/wishlist" element={<Wishlist />} />
