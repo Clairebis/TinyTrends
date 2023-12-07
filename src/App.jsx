@@ -16,6 +16,7 @@ import HomeChildOverview from "./pages/home/HomeChildOverview";
 import HomeDeclutter from "./pages/home/HomeDeclutter";
 import EditChild from "./pages/EditChild";
 import HomeItemAdded from "./pages/home/HomeItemAdded";
+import HomeItemOverview from "./pages/home/HomeItemOverview";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // default value comes from localStorage
@@ -49,6 +50,10 @@ function App() {
           element={<HomeChildOverview />}
         />
         <Route path="/home-item-added/:childId" element={<HomeItemAdded />} />
+        <Route
+          path="/home-item-overview/:childId/:itemId"
+          element={<HomeItemOverview />}
+        />
         <Route path="/home-declutter/:childId" element={<HomeDeclutter />} />
         <Route path="/edit-child/:childId" element={<EditChild />} />
         <Route path="/wishlist" element={<Wishlist />} />

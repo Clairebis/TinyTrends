@@ -220,7 +220,7 @@ export default function HomeWardrobe() {
 
         <section>
           {items.map((item) => (
-            <ItemCard key={item.id} item={item} />
+            <ItemCard key={item.id} item={item} childId={childId} />
           ))}
         </section>
       </section>

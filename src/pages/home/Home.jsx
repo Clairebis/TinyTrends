@@ -1,6 +1,3 @@
-import Button from "../../components/button/button";
-import AgeDropdown from "../../components/dropdowns/ageDropdown";
-import CategoryDropdown from "../../components/dropdowns/CategoryDropdown";
 import plusIcon from "../../assets/icons/plusIcon.webp";
 import HomeHeading from "../../components/homeHeading/HomeHeading";
 import "./Home.css";
@@ -25,14 +22,15 @@ export default function Home() {
   const auth = getAuth();
   const navigate = useNavigate();
   const user = auth.currentUser;
+  const userId = auth.currentUser?.uid;
   console.log("User ID:", user);
   const [children, setChildren] = useState([]); // empty array for children
 
-  const userId = auth.currentUser?.uid;
+  /* const userId = auth.currentUser?.uid;
   if (!userId) {
     // Handle the case when the user is not authenticated
     return <p>User not authenticated</p>;
-  }
+  } */
 
   const modal = document.querySelector(".addChildModal");
 
@@ -106,36 +104,40 @@ export default function Home() {
 
   return (
     <>
-      <section className="page">
-        <HomeHeading />
+      {userId ? (
+        <section className="page">
+          <HomeHeading />
 
-        <h4 className="homeQuote">
-          "Small clothes, big hearts, sustainable starts."
-        </h4>
+          <h4 className="homeQuote">
+            "Small clothes, big hearts, sustainable starts."
+          </h4>
 
-        <section>
-          {children.map((child) => (
-            <ChildCardHome key={child.id} child={child} />
-          ))}
-        </section>
+          <section>
+            {children.map((child) => (
+              <ChildCardHome key={child.id} child={child} />
+            ))}
+          </section>
 
-        <img
-          className="HomePlusIcon"
-          src={plusIcon}
-          alt="plus button to add a child"
-          onClick={openModal}
-        />
-        {/*modal to add a child*/}
-        <div className="addChildModal">
-          <div className="addChildModalContent">
-            <div className="closeModal">
-              <img src={close} alt="" onClick={closeModal} />
+          <img
+            className="HomePlusIcon"
+            src={plusIcon}
+            alt="plus button to add a child"
+            onClick={openModal}
+          />
+          {/*modal to add a child*/}
+          <div className="addChildModal">
+            <div className="addChildModalContent">
+              <div className="closeModal">
+                <img src={close} alt="" onClick={closeModal} />
+              </div>
+              <ModalHeading text="Add a child" />
+              <ChildForm saveChild={handleSubmit} />
             </div>
-            <ModalHeading text="Add a child" />
-            <ChildForm saveChild={handleSubmit} />
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <p>User not authenticated</p>
+      )}
     </>
   );
 }
