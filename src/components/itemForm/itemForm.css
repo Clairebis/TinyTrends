@@ -12,10 +12,10 @@ form .fileInput {
   display: none;
 }
 
-.imagePreview {
+.formImagePreview {
   width: calc(100% - 4px);
-  max-width: 346px;
-  height: 200px;
+  max-width: 209px;
+  height: 221px;
   object-fit: cover;
   margin: auto;
   display: block;

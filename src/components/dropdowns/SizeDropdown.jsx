@@ -9,7 +9,7 @@ export default function AgeDropdown({ onSizeChange }) {
     onSizeChange(event.target.value); // call the onSizeChange prop with the selected option (notify the parent component about the selected size)
   };
   return (
-    <div>
+    <div className="dropDownWithLabel">
       <label htmlFor="age">Size:</label>
       <select
         className="ageDropdown"

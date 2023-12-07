@@ -8,7 +8,7 @@ export default function CategoryDropdown({ onCategoryChange }) {
     onCategoryChange(event.target.value); // call the onCategoryChange prop with the selected option (notify the parent component about the selected category)
   };
   return (
-    <div>
+    <div className="dropDownWithLabel">
       <label htmlFor="category">Category:</label>
       <select
         className="categoryDropdown"

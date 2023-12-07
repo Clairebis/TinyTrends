@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../../components/itemForm/itemForm.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../config/firebase";
-import placeholderChild from "../../assets/placeholderChild.webp";
+import placeholderItem from "../../assets/placeholderItem.webp";
 import SizeDropdown from "../dropdowns/SizeDropdown";
 import CategoryDropdown from "../dropdowns/CategoryDropdown";
 
@@ -21,7 +21,7 @@ export default function ItemForm({ saveItem, item }) {
       setBrand(item.brand || "");
       setSize(item.size || "");
       setCategory(item.category || "");
-      setImage(item.image || placeholderChild);
+      setImage(item.image || placeholderItem);
     }
   }, [item]);
 
@@ -97,8 +97,8 @@ export default function ItemForm({ saveItem, item }) {
         <img
           src={image}
           alt="Choose an image"
-          className="imagePreview"
-          onError={(event) => (event.target.src = placeholderChild)}
+          className="formImagePreview"
+          onError={(event) => (event.target.src = placeholderItem)}
           name="image"
         />
 

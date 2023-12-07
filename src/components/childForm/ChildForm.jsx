@@ -77,7 +77,7 @@ export default function ChildForm({ saveChild, child }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="childForm">
       <label className="imageInput">
         <img
           src={image}
@@ -110,7 +110,7 @@ export default function ChildForm({ saveChild, child }) {
           type="text"
           value={otherNames}
           onChange={(event) => setOtherNames(event.target.value)}
-          placeholder="Your child's middle and last names"
+          placeholder="Middle and last names"
           name="otherNames"
         />
       </label>
