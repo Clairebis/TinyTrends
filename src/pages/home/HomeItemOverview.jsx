@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { doc, getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
+import Button from "../../components/button/button";
 
 export default function HomeItemOverview() {
   const auth = getAuth();
@@ -65,6 +66,18 @@ export default function HomeItemOverview() {
         <>
           <div>
             <h2>{itemData.caption}</h2>
+          </div>
+          <div className="itemOverviewButtons">
+            <Button
+              className="buttonSecondary itemOverviewButton"
+              text="Delete item"
+              link="/"
+            ></Button>
+            <Button
+              text="Edit item"
+              link="/"
+              className="itemOverviewButton"
+            ></Button>
           </div>
         </>
       ) : (
