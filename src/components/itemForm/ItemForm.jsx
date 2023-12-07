@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../../components/childForm/childForm.css";
+import "../../components/itemForm/itemForm.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../config/firebase";
 import placeholderChild from "../../assets/placeholderChild.webp";
@@ -92,7 +92,7 @@ export default function ItemForm({ saveItem, item }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="itemForm">
       <label className="imageInput">
         <img
           src={image}

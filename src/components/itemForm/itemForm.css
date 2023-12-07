@@ -20,3 +20,7 @@ form .fileInput {
   margin: auto;
   display: block;
 }
+
+.itemForm {
+  margin-top: 72px;
+}

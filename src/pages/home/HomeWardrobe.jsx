@@ -221,24 +221,23 @@ export default function HomeWardrobe() {
             <ItemCard key={item.id} item={item} />
           ))}
         </section>
-
-        <img
-          className="HomePlusIcon"
-          src={plusIcon}
-          alt="plus button to add a child"
-          onClick={openModal}
-        />
-        {/*modal to add a child*/}
-        <div className="addItemModal">
-          <div className="addChildModalContent">
-            <div className="closeModal">
-              <img src={close} alt="" onClick={closeModal} />
-            </div>
-            <ModalHeading text="Add an item" />
-            <ItemForm saveItem={handleSubmit} />
-          </div>
-        </div>
       </section>
+      <img
+        className="HomePlusIcon"
+        src={plusIcon}
+        alt="plus button to add a child"
+        onClick={openModal}
+      />
+      {/*modal to add an item*/}
+      <div className="addItemModal">
+        <div className="addChildModalContent">
+          <div className="closeModal">
+            <img src={close} alt="" onClick={closeModal} />
+          </div>
+          <ModalHeading text="Add an item" />
+          <ItemForm saveItem={handleSubmit} />
+        </div>
+      </div>
     </section>
   );
 }
