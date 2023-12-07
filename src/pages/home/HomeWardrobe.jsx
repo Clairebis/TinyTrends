@@ -122,14 +122,14 @@ export default function HomeWardrobe() {
     // Get a reference to the user's child's "items" subcollection
     if (auth.currentUser?.uid) {
       console.log("User ID:", auth.currentUser.uid);
-      const userChildItemsCollectionRef = collection(
+      const userChildDocRef = doc(
         db,
         "users",
         auth.currentUser.uid,
         "children",
-        doc(db, "users", auth.currentUser.uid, "children", childId),
-        "items"
+        childId
       );
+      const userChildItemsCollectionRef = collection(userChildDocRef, "items");
       const q = query(
         userChildItemsCollectionRef,
         orderBy("createdAt", "desc")
