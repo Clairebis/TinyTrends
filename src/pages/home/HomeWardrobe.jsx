@@ -10,7 +10,7 @@ import {
   orderBy,
   serverTimestamp,
 } from "firebase/firestore";
-import { useEffect, useState, useNavigate } from "react";
+import { useEffect, useState /* , useNavigate */ } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../config/firebase";
 import HeadingWithImage from "../../components/headingWithImage/headingWithImage";
@@ -30,7 +30,7 @@ import ItemCard from "../../components/itemCard/ItemCard";
 
 export default function HomeWardrobe() {
   const auth = getAuth();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const userId = auth.currentUser?.uid;
   const { childId } = useParams();
   console.log(childId);
@@ -114,7 +114,7 @@ export default function HomeWardrobe() {
     console.log(addedItemUid);
 
     // Navigate to the child added success page
-    navigate(`/home-item-added/${childId}`);
+    //navigate(`/home-item-added/${childId}`);
   }
 
   // Fetch all child's items from firestore
