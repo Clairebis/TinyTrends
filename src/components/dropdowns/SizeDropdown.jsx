@@ -1,14 +1,16 @@
 import { useState } from "react";
 import "./dropdown.css";
 
-export default function AgeDropdown() {
+export default function AgeDropdown({ onSizeChange }) {
   const [selectedOption, setSelectedOption] = useState(""); // state to manage the selected option
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value); // update the state with the selected option
+    onSizeChange(event.target.value); // call the onSizeChange prop with the selected option (notify the parent component about the selected size)
   };
   return (
     <div>
+      <label htmlFor="age">Size:</label>
       <select
         className="ageDropdown"
         value={selectedOption}

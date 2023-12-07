@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-export default function CategoryDropdown() {
+export default function CategoryDropdown({ onCategoryChange }) {
   const [selectedCategory, setSelectedCategory] = useState(""); // state to manage the selected option
 
   const handleChange = (event) => {
     setSelectedCategory(event.target.value); // update the state with the selected option
+    onCategoryChange(event.target.value); // call the onCategoryChange prop with the selected option (notify the parent component about the selected category)
   };
   return (
     <div>

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Button from "../../components/button/button";
 import "./home.css";
 
-export default function HomeItemAdded() {
+export default function HomeChildAdded() {
   const { childId } = useParams();
 
   return (

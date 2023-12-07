@@ -54,7 +54,9 @@ h1 {
   font-weight: var(--fontWeightBold);
   margin: 0;
   padding: 0;
-  text-align: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 h2 {
