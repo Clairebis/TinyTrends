@@ -119,10 +119,6 @@ export default function Home() {
           ))}
         </section>
 
-        <AgeDropdown />
-        <CategoryDropdown />
-        <Button text="Wishlist" link="/wishlist" />
-        <Button className="buttonSecondary" text="Blog" link="/blog" />
         <img
           className="HomePlusIcon"
           src={plusIcon}
