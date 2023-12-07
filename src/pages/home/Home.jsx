@@ -36,33 +36,6 @@ export default function Home() {
 
   const modal = document.querySelector(".addChildModal");
 
-  useEffect(() => {
-    //console.log("ChildrenRef:", childrenRef(auth.currentUser?.uid));
-    // Get a reference to the user's "children" subcollection
-    if (auth.currentUser?.uid) {
-      console.log("User ID:", auth.currentUser.uid);
-      const userChildrenCollectionRef = collection(
-        db,
-        "users",
-        auth.currentUser.uid,
-        "children"
-      );
-      const q = query(userChildrenCollectionRef, orderBy("createdAt", "desc")); // order by: lastest child first
-      const unsubscribe = onSnapshot(q, (data) => {
-        // map through all docs (object) from children collection
-        // changing the data structure so it's all gathered in one object
-        const childrenData = data.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setChildren(childrenData);
-      });
-      return () => {
-        unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
-      };
-    }
-  }, [auth.currentUser?.uid]); // Make sure to include userId as a dependency if it's used inside the useEffect
-
   function openModal() {
     modal.style.display = "block";
   }
@@ -103,6 +76,33 @@ export default function Home() {
     // Navigate to the child added success page
     navigate(`/homeChildAdded/${addedChildUid}`);
   }
+
+  useEffect(() => {
+    //console.log("ChildrenRef:", childrenRef(auth.currentUser?.uid));
+    // Get a reference to the user's "children" subcollection
+    if (auth.currentUser?.uid) {
+      console.log("User ID:", auth.currentUser.uid);
+      const userChildrenCollectionRef = collection(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "children"
+      );
+      const q = query(userChildrenCollectionRef, orderBy("createdAt", "desc")); // order by: lastest child first
+      const unsubscribe = onSnapshot(q, (data) => {
+        // map through all docs (object) from children collection
+        // changing the data structure so it's all gathered in one object
+        const childrenData = data.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setChildren(childrenData);
+      });
+      return () => {
+        unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
+      };
+    }
+  }, [auth.currentUser?.uid]); // Make sure to include userId as a dependency if it's used inside the useEffect
 
   return (
     <>
