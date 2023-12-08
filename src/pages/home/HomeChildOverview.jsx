@@ -26,7 +26,7 @@ export default function HomeChildOverview() {
         <h2>Declutter</h2>
       </article>
       <article onClick={handleEditClick}>
-        <h2>Edit</h2>
+        <h2>Edit child's details</h2>
       </article>
     </section>
   );
