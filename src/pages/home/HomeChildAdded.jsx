@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Button from "../../components/button/button";
+import Button from "../../components/button/Button";
 import "./home.css";
 
 export default function HomeItemAdded() {

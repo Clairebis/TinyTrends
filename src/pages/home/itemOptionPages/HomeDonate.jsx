@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import {
   collection,
@@ -18,6 +18,7 @@ import SelectTick from "../../../assets/icons/SelectTick.svg";
 export default function HomeDonate() {
   const { childId } = useParams();
   console.log("ChildId:", childId);
+  const navigate = useNavigate();
   const auth = getAuth();
   const userId = auth.currentUser?.uid;
   const [items, setItems] = useState([]);
@@ -138,6 +139,7 @@ export default function HomeDonate() {
 
       // Wait for all deletes to complete
       await Promise.all(deletePromises);
+      navigate("/home-thanks");
     } catch (error) {
       console.error("Error deleting selected items:", error.message);
     }
