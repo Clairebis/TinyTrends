@@ -54,7 +54,11 @@ export default function ChildForm({ saveChild, child }) {
     console.log(formData);
 
     const validForm =
-      formData.firstName && formData.otherNames && formData.dob && formData.age; // will return false if one of the properties doesn't have a value
+      formData.firstName &&
+      formData.otherNames &&
+      formData.dob &&
+      formData.age &&
+      formData.image; // will return false if one of the properties doesn't have a value
     if (validForm) {
       // if all fields/ properties are filled, then call saveChild
       saveChild(formData);

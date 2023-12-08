@@ -5,3 +5,10 @@
   align-items: center;
   margin-top: 32px;
 }
+
+.smallImageChild {
+  height: 40px;
+  width: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}

@@ -88,3 +88,12 @@
 .itemOverviewButton {
   flex: 1;
 }
+
+.deleteItemButton {
+  color: var(--forestGreen);
+  background-color: var(--white);
+  border-radius: 24px;
+  font-family: var(--bodyFont);
+  font-size: var(--bodyTextSize);
+  font-weight: var(--fontWeightBold);
+}
