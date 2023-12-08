@@ -43,5 +43,23 @@ export const childrenRef = () => {
   }
 };
 
+// Reference to a specific user's child's "items" collection
+export const itemsRef = (childId) => {
+  // Check if user is not null and has the 'uid' property
+  if (auth.currentUser.uid) {
+    return collection(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "children",
+      childId,
+      "items"
+    );
+  } else {
+    console.error("Invalid user or user ID is missing.");
+    return null;
+  }
+};
+
 // Initialize Cloud Storage and get a reference to the service
 export const storage = getStorage(firebaseApp);

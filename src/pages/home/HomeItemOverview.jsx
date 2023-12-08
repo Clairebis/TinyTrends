@@ -11,6 +11,7 @@ import {
 import { db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
 import Button from "../../components/button/button";
+import HomeItemEdit from "./HomeItemEdit";
 
 export default function HomeItemOverview() {
   const auth = getAuth();
@@ -111,7 +112,9 @@ export default function HomeItemOverview() {
               text="Edit item"
               link={`/home-item-edit/${childId}/${itemId}`}
               className="itemOverviewButton"
-            ></Button>
+            >
+              <HomeItemEdit itemData={itemData} />
+            </Button>
           </div>
         </>
       ) : (
