@@ -97,3 +97,10 @@
   font-size: var(--bodyTextSize);
   font-weight: var(--fontWeightBold);
 }
+
+.itemOverviewImage {
+  width: calc(100% - 4px);
+  max-width: 209px;
+  height: 221px;
+  object-fit: cover;
+}

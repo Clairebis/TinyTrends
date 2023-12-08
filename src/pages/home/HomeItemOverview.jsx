@@ -7,6 +7,7 @@ import {
   query,
   where,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
@@ -93,6 +94,36 @@ export default function HomeItemOverview() {
     }
   }
 
+  async function handleOptionClick(option) {
+    if (auth.currentUser?.uid) {
+      try {
+        console.log("Option:", option);
+        // Get a reference to the user's child's "items" subcollection
+        const userChildItemsCollectionRef = collection(
+          db,
+          "users",
+          auth.currentUser.uid,
+          "children",
+          childId,
+          "items"
+        );
+        // Create a document reference for the specific item based on itemId
+        const docRef = doc(userChildItemsCollectionRef, itemId);
+
+        // Update the item status in the Firestore database using the docRef and status option
+        await updateDoc(docRef, { status: option });
+
+        // Update the itemData state with the new status
+        setItemData((prevItemData) => ({
+          ...prevItemData,
+          status: option,
+        }));
+      } catch (error) {
+        console.error("Error updating item status", error.message);
+      }
+    }
+  }
+
   return (
     <section className="page">
       {itemData ? (
@@ -100,6 +131,35 @@ export default function HomeItemOverview() {
           <div>
             <h2>{itemData.caption}</h2>
           </div>
+          <div className="itemOverviewImageContainer">
+            <img
+              className="itemOverviewImage"
+              src={itemData.image}
+              alt={itemData.caption}
+            />
+            <div className="itemOptionsContainer">
+              <button
+                className="itemOverviewButton"
+                onClick={() => handleOptionClick("donate")}
+              >
+                Donate
+              </button>
+
+              <button
+                className="itemOverviewButton"
+                onClick={() => handleOptionClick("sell")}
+              >
+                Sell
+              </button>
+              <button
+                className="itemOverviewButton"
+                onClick={() => handleOptionClick("recycle")}
+              >
+                Recycle
+              </button>
+            </div>
+          </div>
+
           <div className="itemOverviewButtons">
             <button
               className="buttonSecondary itemOverviewButton deleteItemButton"
