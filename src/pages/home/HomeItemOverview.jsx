@@ -139,20 +139,26 @@ export default function HomeItemOverview() {
             />
             <div className="itemOptionsContainer">
               <button
-                className="itemOverviewButton"
+                className={`itemOverviewButton ${
+                  itemData.status === "donate" ? "selected" : ""
+                }`}
                 onClick={() => handleOptionClick("donate")}
               >
                 Donate
               </button>
 
               <button
-                className="itemOverviewButton"
+                className={`itemOverviewButton ${
+                  itemData.status === "sell" ? "selected" : ""
+                }`}
                 onClick={() => handleOptionClick("sell")}
               >
                 Sell
               </button>
               <button
-                className="itemOverviewButton"
+                className={`itemOverviewButton ${
+                  itemData.status === "recycle" ? "selected" : ""
+                }`}
                 onClick={() => handleOptionClick("recycle")}
               >
                 Recycle
