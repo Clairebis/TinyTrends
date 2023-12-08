@@ -14,6 +14,7 @@ export default function ItemForm({ saveItem, item }) {
   const [image, setImage] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [status, setStatus] = useState(""); // create an empty status field for the user to later add sell / donate / recycle
+  const [selected, setSelected] = useState(""); // create an empty selected field for the user to later select the item to mark as sold / donated / recycled
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function ItemForm({ saveItem, item }) {
       setCategory(item.category || "");
       setImage(item.image || placeholderItem);
       setStatus(item.status || "");
+      setSelected(item.selected || "");
     }
   }, [item]);
 
@@ -54,6 +56,7 @@ export default function ItemForm({ saveItem, item }) {
       category: category,
       image: await handleUploadImage(), // call handleUploadImage to upload the image to firebase storage and get the download URL
       status: status,
+      selected: selected,
     };
 
     console.log(formData);

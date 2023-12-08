@@ -9,12 +9,12 @@ export default function HomeDeclutter() {
     navigate(`/home-donate/${childId}`);
   }
 
-  function handleRecycleClick() {
-    navigate(`/home-recycle/${childId}`);
-  }
-
   function handleSellClick() {
     navigate(`/home-sell/${childId}`);
+  }
+
+  function handleRecycleClick() {
+    navigate(`/home-recycle/${childId}`);
   }
 
   return (
@@ -22,11 +22,11 @@ export default function HomeDeclutter() {
       <article onClick={handleDonateClick}>
         <h2>Donate</h2>
       </article>
-      <article onClick={handleRecycleClick}>
-        <h2>Recycle</h2>
-      </article>
       <article onClick={handleSellClick}>
         <h2>Sell</h2>
+      </article>
+      <article onClick={handleRecycleClick}>
+        <h2>Recycle</h2>
       </article>
     </section>
   );

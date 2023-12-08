@@ -29,21 +29,31 @@ import close from "../../assets/icons/close.svg";
 import ItemCard from "../../components/itemCard/ItemCard";
 
 export default function HomeWardrobe() {
+  // Initialize authentication and navigation functions
   const auth = getAuth();
   const navigate = useNavigate();
+
+  // Get the current user's ID
   const userId = auth.currentUser?.uid;
+
+  // Get the childId from the URL parameters
   const { childId } = useParams();
   console.log(childId);
+
+  // Initialize state variables for child data, search value, and items
   const [childData, setChildData] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [items, setItems] = useState([]);
 
+  // Get a reference to the modal for adding an item
   const modal = document.querySelector(".addItemModal");
 
+  // Function to open the modal
   function openModal() {
     modal.style.display = "block";
   }
 
+  // Function to close the modal
   function closeModal() {
     modal.style.display = "none";
   }
@@ -93,8 +103,9 @@ export default function HomeWardrobe() {
   // function to handle submit of the item form
   async function handleSubmit(newItem) {
     if (auth.currentUser?.uid) {
-      newItem.createdAt = serverTimestamp(); // timestamp (now)
-      newItem.uid = auth.currentUser.uid; // uid of auth user / signed in user
+      // Add timestamp and user ID to the new item
+      newItem.createdAt = serverTimestamp();
+      newItem.uid = auth.currentUser.uid;
 
       // Get a reference to the user's child's "items" subcollection
       const userChildItemsCollectionRef = collection(
@@ -146,10 +157,10 @@ export default function HomeWardrobe() {
         setItems(itemsData);
       });
       return () => {
-        unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
+        unsubscribe(); // tell the component to unsubscribe from listen on changes from firestore
       };
     }
-  }, [auth.currentUser?.uid, childId]); // Make sure to include userId as a dependency if it's used inside the useEffect
+  }, [auth.currentUser?.uid, childId]); // Dependancies
 
   // Use child data to render the wardrobe for the correct child
   return (
