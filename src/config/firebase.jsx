@@ -47,14 +47,14 @@ export const childrenRef = () => {
 export const itemsRef = (childId) => {
   // Check if user is not null and has the 'uid' property
   if (auth.currentUser.uid) {
-    return collection(
+    const childRef = doc(
       db,
       "users",
       auth.currentUser.uid,
       "children",
-      childId,
-      "items"
+      childId
     );
+    return collection(childRef, "items");
   } else {
     console.error("Invalid user or user ID is missing.");
     return null;
