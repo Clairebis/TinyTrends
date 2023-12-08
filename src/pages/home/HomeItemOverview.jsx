@@ -13,6 +13,10 @@ import { db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
 import Button from "../../components/button/button";
 import HomeItemEdit from "./HomeItemEdit";
+import Info from "../../assets/icons/info.svg";
+import close from "../../assets/icons/close.svg";
+import ModalHeading from "../../components/modalHeading/modalHeading";
+import "./home.css";
 
 export default function HomeItemOverview() {
   const auth = getAuth();
@@ -20,6 +24,19 @@ export default function HomeItemOverview() {
   const [itemData, setItemData] = useState(null);
   const userId = auth.currentUser?.uid;
   const navigate = useNavigate();
+
+  // Get a reference to the modal for adding an item
+  const modal = document.querySelector(".infoModal");
+
+  // Function to open the modal
+  function openModal() {
+    modal.style.display = "block";
+  }
+
+  // Function to close the modal
+  function closeModal() {
+    modal.style.display = "none";
+  }
 
   useEffect(() => {
     const fetchItemData = async () => {
@@ -126,6 +143,9 @@ export default function HomeItemOverview() {
 
   return (
     <section className="page">
+      <div className="infoContainer" onClick={openModal}>
+        <img className="infoIcon" src={Info} alt="info icon" />
+      </div>
       {itemData ? (
         <>
           <div>
@@ -186,6 +206,16 @@ export default function HomeItemOverview() {
       ) : (
         <p>Loading...</p>
       )}
+
+      {/*info modal*/}
+      <div className="infoModal">
+        <div className="addChildModalContent">
+          <div className="closeModal">
+            <img src={close} alt="" onClick={closeModal} />
+          </div>
+          <ModalHeading text="Choose the next chapter for your child's old clothes" />
+        </div>
+      </div>
     </section>
   );
 }
