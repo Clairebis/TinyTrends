@@ -1,4 +1,4 @@
-import { /* useNavigate ,*/ useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import {
   collection,
@@ -18,12 +18,11 @@ import SelectTick from "../../../assets/icons/SelectTick.svg";
 export default function HomeDonate() {
   const { childId } = useParams();
   console.log("ChildId:", childId);
-  //const navigate = useNavigate();
   const auth = getAuth();
   const userId = auth.currentUser?.uid;
   const [items, setItems] = useState([]);
 
-  // Fetch all child's items from firestore
+  // Fetch all child's items from firestore marked as donate
   useEffect(() => {
     // Get a reference to the user's child's "items" subcollection
     if (auth.currentUser?.uid) {
