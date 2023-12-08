@@ -58,7 +58,7 @@ export default function HomeItemEdit() {
 
       // Update the item using the docRef and itemToUpdate object
       await updateDoc(docRef, itemToUpdate);
-      navigate("/");
+      navigate(`/home-item-updated/${childId}`); // navigate to success page
     }
   }
 
