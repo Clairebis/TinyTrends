@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, collection } from "firebase/firestore";
 import { itemsRef } from "../../config/firebase";
 import ItemForm from "../../components/itemForm/ItemForm";
+import { db } from "../../config/firebase";
 
 export default function HomeItemEdit() {
   const auth = getAuth();
@@ -42,9 +43,23 @@ export default function HomeItemEdit() {
    * handleSubmit is called by the ItemForm component
    */
   async function handleSubmit(itemToUpdate) {
-    const docRef = doc(itemsRef, itemId); // create item ref based on itemId
-    await updateDoc(docRef, itemToUpdate); // update item using the docRef and itemToUpdate object (coming from ItemForm)
-    navigate("/");
+    if (auth.currentUser?.uid) {
+      // Get a reference to the user's child's "items" subcollection
+      const userChildItemsCollectionRef = collection(
+        db,
+        "users",
+        auth.currentUser.uid,
+        "children",
+        childId,
+        "items"
+      );
+      // Create a document reference for the specific item based on itemId
+      const docRef = doc(userChildItemsCollectionRef, itemId);
+
+      // Update the item using the docRef and itemToUpdate object
+      await updateDoc(docRef, itemToUpdate);
+      navigate("/");
+    }
   }
 
   return (
