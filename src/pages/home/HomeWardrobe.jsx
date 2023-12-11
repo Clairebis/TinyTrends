@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../../config/firebase";
-import HeadingWithImage from "../../components/headingWithImage/headingWithImage";
+import HeadingWithImage from "../../components/headingWithImage/HeadingWithImage";
 import allClothes from "../../assets/allClothes.webp";
 import tops from "../../assets/tops.webp";
 import bottoms from "../../assets/bottoms.webp";
@@ -232,6 +232,9 @@ export default function HomeWardrobe() {
           <div
             className="wardrobeSortOption"
             onClick={() => handleCategoryClick("all")}
+            style={{
+              fontWeight: selectedCategory === "all" ? "bold" : "none",
+            }}
           >
             <img
               src={allClothes}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
 import { doc, collection, query, where, getDocs } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import HeadingWithImage from "../../components/headingWithImage/headingWithImage";
+import HeadingWithImage from "../../components/headingWithImage/HeadingWithImage";
 import Wardrobe from "../../assets/Wardrobe.webp";
 import Reuse from "../../assets/icons/Reuse.svg";
 import Edit from "../../assets/icons/Edit.svg";
