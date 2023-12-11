@@ -1,4 +1,6 @@
 .modalHeading {
   margin-top: 24px;
   margin-bottom: 24px;
+  width: calc(100% - 32px);
+  text-align: center;
 }

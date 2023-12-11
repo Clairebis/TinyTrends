@@ -21,6 +21,7 @@ import HeadingWithImage from "../../components/headingWithImage/HeadingWithImage
 import DonateSmall from "../../assets/icons/donateSmall.svg";
 import ShopSmall from "../../assets/icons/shopSmall.svg";
 import RecycleSmall from "../../assets/icons/recycleSmall.svg";
+import Bear from "../../assets/bear.webp";
 
 export default function HomeItemOverview() {
   const auth = getAuth();
@@ -270,7 +271,54 @@ export default function HomeItemOverview() {
               <div className="closeModal">
                 <img src={close} alt="" onClick={closeModal} />
               </div>
-              <ModalHeading text="Choose the next chapter for your child's old clothes" />
+              <ModalHeading
+                text="Choose the next chapter for your child's old clothes"
+                className="infoHeading"
+              />
+              <div className="infoIntro">
+                <div className="infoImageContainer">
+                  <img
+                    src={Bear}
+                    alt="illustration of a bear"
+                    className="infoImage"
+                  />
+                </div>
+                <p className="infoIntroText">
+                  If your child has outgrown this item, mark it to donate, sell,
+                  or recycle to track items and contribute to circular fashion.
+                </p>
+              </div>
+              <section className="infoOptions">
+                <p>Choose an option for this item:</p>
+                <ul>
+                  <li>
+                    Donate: Give this item a new life by donating it to those in
+                    need.
+                  </li>
+                  <br />
+                  <li>Sell: Earn some extra income by selling this item.</li>
+                  <br />
+                  <li>
+                    Recycle: Responsibly recycle this item, and contribute to a
+                    more sustainable lifestyle.
+                  </li>
+                </ul>
+                <p>
+                  Your choice makes a positive impact. Thanks for being part of
+                  the circular fashion movement!
+                </p>
+              </section>
+              <p className="infoTip">
+                Tip: Add items to your child’s{" "}
+                <span className="infoColour">“declutter”</span>
+                collection. Visit later to view marked items and learn how to
+                reuse them.
+              </p>
+              <Button
+                text="Back to the wardrobe"
+                link={`/home-wardrobe/${childId}`}
+                className="infoButton"
+              ></Button>
             </div>
           </div>
         </>

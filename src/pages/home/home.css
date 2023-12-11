@@ -285,6 +285,52 @@
   font-weight: var(--fontWeightBold);
 }
 
+/*information modal code*/
+
+.infoHeading {
+  width: calc(100% - 32px);
+}
+
+.infoIntro {
+  display: flex;
+  margin-top: 130px;
+}
+
+.infoImageContainer {
+  height: 51px;
+  width: 32px;
+  margin-right: 12px;
+}
+
+.infoImage {
+  height: 51px;
+  width: 32px;
+}
+
+.infoIntroText {
+  font-size: var(--bodyTextSmallSize);
+}
+
+.infoOptions {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.infoTip {
+  font-size: var(--bodyTextSmallSize);
+  margin-bottom: 32px;
+}
+
+.infoColour {
+  color: var(--grassGreen);
+  font-size: var(--bodyTextSize);
+  font-weight: var(--fontWeightBold);
+}
+
+.infoButton {
+  width: calc(100% - 32px) !important;
+}
+
 .selectCheckmark {
   width: 24px;
   height: 24px;
