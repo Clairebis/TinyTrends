@@ -230,7 +230,7 @@ export default function HomeWardrobe() {
           </div>
         </div>
 
-        <section>
+        <section className="wardrobeItemsContainer">
           {items.map((item) => (
             <ItemCard key={item.id} item={item} childId={childId} />
           ))}

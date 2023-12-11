@@ -183,6 +183,15 @@
   width: 53px;
 }
 
+.wardrobeItemsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+  justify-content: center;
+}
+
 .itemOverviewButtons {
   display: flex;
   flex-direction: row;

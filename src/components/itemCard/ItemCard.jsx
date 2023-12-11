@@ -1,4 +1,4 @@
-import "./ItemCard.css";
+import "./itemCard.css";
 import { useNavigate } from "react-router-dom";
 
 export default function ItemCard({ item, childId }) {
@@ -10,9 +10,9 @@ export default function ItemCard({ item, childId }) {
   }
 
   return (
-    <article>
+    <article className="itemCardContainer">
       <div onClick={handleClick}>
-        <h2>{item.caption}</h2>
+        <img src={item.image} alt={item.caption} className="itemCardImage" />
       </div>
     </article>
   );
