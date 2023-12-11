@@ -225,7 +225,7 @@ export default function HomeWardrobe() {
             />
           </div>
           <div className="wardrobeAgeDropdown">
-            <SizeDropdown onSizeChange={handleSizeClick} />
+            <SizeDropdown onSizeChange={handleSizeClick} hideLabel={true} />
           </div>
         </div>
         <div className="wardrobeSortOptions">

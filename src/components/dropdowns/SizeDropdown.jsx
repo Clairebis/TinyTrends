@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./dropdown.css";
 
-export default function SizeDropdown({ onSizeChange }) {
+export default function SizeDropdown({ onSizeChange, hideLabel = false }) {
   const [selectedOption, setSelectedOption] = useState(""); // state to manage the selected option
 
   const handleChange = (event) => {
@@ -10,7 +10,7 @@ export default function SizeDropdown({ onSizeChange }) {
   };
   return (
     <div className="dropDownWithLabel">
-      <label htmlFor="size">Size:</label>
+      {!hideLabel && <label htmlFor="size">Size:</label>}
       <select
         className="ageDropdown"
         value={selectedOption}
