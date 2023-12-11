@@ -40,24 +40,26 @@ export default function HomeWardrobe() {
   const { childId } = useParams();
   console.log(childId);
 
-  // Initialize state variables for child data, search value, and items
+  // Initialize state variables for child data and items
   const [childData, setChildData] = useState(null);
-  const [searchValue, setSearchValue] = useState("");
   const [items, setItems] = useState([]);
 
   const [selectedCategory, setSelectedCategory] = useState("all");
-
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
   const [selectedSize, setSelectedSize] = useState("");
-
   const handleSizeClick = (size) => {
     setSelectedSize(size);
   };
 
-  const filteredItemsBySizeAndCategory = items.filter((item) => {
+  const [searchValue, setSearchValue] = useState("");
+  const handleSearchChange = (value) => {
+    setSearchValue(value.toLowerCase()); // Convert the search term to lowercase for case-insensitive matching
+  };
+
+  const filteredItemsBySizeAndCategoryAndSearch = items.filter((item) => {
     console.log("Item:", item);
     console.log("Selected Size:", selectedSize);
     console.log("Selected Category:", selectedCategory);
@@ -65,11 +67,18 @@ export default function HomeWardrobe() {
     const sizeCondition = selectedSize === "" || item.size === selectedSize;
     const categoryCondition =
       selectedCategory === "all" || item.category === selectedCategory;
+    const searchCondition =
+      !searchValue ||
+      item.caption.toLowerCase().includes(searchValue) ||
+      item.brand.toLowerCase().includes(searchValue) ||
+      item.category.toLowerCase().includes(searchValue) ||
+      item.size.toLowerCase().includes(searchValue);
 
     console.log("Size Condition:", sizeCondition);
     console.log("Category Condition:", categoryCondition);
+    console.log("Search Condition:", searchCondition);
 
-    return sizeCondition && categoryCondition;
+    return sizeCondition && categoryCondition && searchCondition;
   });
 
   // Get a reference to the modal for adding an item
@@ -212,6 +221,7 @@ export default function HomeWardrobe() {
             <SearchBar
               searchValue={searchValue}
               setSearchValue={setSearchValue}
+              onSearchChange={handleSearchChange}
             />
           </div>
           <div className="wardrobeAgeDropdown">
@@ -273,12 +283,12 @@ export default function HomeWardrobe() {
         </div>
 
         <section className="wardrobeItemsContainer">
-          {filteredItemsBySizeAndCategory.length > 0 ? (
-            filteredItemsBySizeAndCategory.map((item) => (
+          {filteredItemsBySizeAndCategoryAndSearch.length > 0 ? (
+            filteredItemsBySizeAndCategoryAndSearch.map((item) => (
               <ItemCard key={item.id} item={item} childId={childId} />
             ))
           ) : (
-            <p>No items found for the selected age and category.</p>
+            <p>No items found for the selected age, category or search term.</p>
           )}
         </section>
       </section>
