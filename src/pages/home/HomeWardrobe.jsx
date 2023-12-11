@@ -170,6 +170,7 @@ export default function HomeWardrobe() {
           <HeadingWithImage
             childImage={childData.image}
             childFirstName={childData.firstName}
+            pageTitle="Wardrobe"
           />
 
           {/* Render the child's wardrobe items here */}
