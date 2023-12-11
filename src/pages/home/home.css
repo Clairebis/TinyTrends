@@ -49,7 +49,7 @@
   color: var(--black);
 }
 
-/*Home child added code*/
+/*Home child added / success pages code*/
 
 .successPage {
   display: flex;
@@ -190,6 +190,8 @@
 
   margin-top: 24px;
 }
+
+/*item overview code*/
 
 .itemOverviewButtons {
   display: flex;

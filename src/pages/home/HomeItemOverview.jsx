@@ -11,17 +11,19 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
-import Button from "../../components/button/button";
+import Button from "../../components/button/Button";
 import HomeItemEdit from "./HomeItemEdit";
 import Info from "../../assets/icons/info.svg";
 import close from "../../assets/icons/close.svg";
 import ModalHeading from "../../components/modalHeading/modalHeading";
 import "./home.css";
+import HeadingWithImage from "../../components/headingWithImage/HeadingWithImage";
 
 export default function HomeItemOverview() {
   const auth = getAuth();
   const { itemId, childId } = useParams();
   const [itemData, setItemData] = useState(null);
+  const [childData, setChildData] = useState(null);
   const userId = auth.currentUser?.uid;
   const navigate = useNavigate();
 
@@ -53,6 +55,29 @@ export default function HomeItemOverview() {
         //Reference to the child document
         const childDocRef = doc(childrenCollectionRef, childId);
 
+        //Query to get the specific child document based on documentId
+        const childQuery = query(
+          childrenCollectionRef,
+          where("__name__", "==", childId)
+        );
+
+        //Fetch the data of the specified child
+        const childSnapshot = await getDocs(childQuery);
+
+        //Log the child snapshot
+        console.log(
+          "Child Snapshot:",
+          childSnapshot.docs.map((doc) => doc.data())
+        );
+
+        // Check if there are documents in the snapshot
+        if (childSnapshot.docs.length > 0) {
+          // Get the first document and set the child data state with its data
+          setChildData(childSnapshot.docs[0].data());
+        } else {
+          console.log("Child not found");
+          return; // Exit the function early if the child is not found
+        }
         //Reference to the items subcollection
         const itemsCollectionRef = collection(childDocRef, "items");
 
@@ -143,79 +168,89 @@ export default function HomeItemOverview() {
 
   return (
     <section className="page">
-      <div className="infoContainer" onClick={openModal}>
-        <img className="infoIcon" src={Info} alt="info icon" />
-      </div>
-      {itemData ? (
+      {childData ? (
         <>
-          <div>
-            <h2>{itemData.caption}</h2>
+          <HeadingWithImage
+            childImage={childData.image}
+            childFirstName={childData.firstName}
+          />
+          <div className="infoContainer" onClick={openModal}>
+            <img className="infoIcon" src={Info} alt="info icon" />
           </div>
-          <div className="itemOverviewImageContainer">
-            <img
-              className="itemOverviewImage"
-              src={itemData.image}
-              alt={itemData.caption}
-            />
-            <div className="itemOptionsContainer">
-              <button
-                className={`itemOptionButton ${
-                  itemData.status === "donate" ? "selected" : ""
-                }`}
-                onClick={() => handleOptionClick("donate")}
-              >
-                Donate
-              </button>
+          {itemData ? (
+            <>
+              <div>
+                <h2>{itemData.caption}</h2>
+              </div>
+              <div className="itemOverviewImageContainer">
+                <img
+                  className="itemOverviewImage"
+                  src={itemData.image}
+                  alt={itemData.caption}
+                />
+                <div className="itemOptionsContainer">
+                  <button
+                    className={`itemOptionButton ${
+                      itemData.status === "donate" ? "selected" : ""
+                    }`}
+                    onClick={() => handleOptionClick("donate")}
+                  >
+                    Donate
+                  </button>
 
-              <button
-                className={`itemOptionButton ${
-                  itemData.status === "sell" ? "selected" : ""
-                }`}
-                onClick={() => handleOptionClick("sell")}
-              >
-                Sell
-              </button>
-              <button
-                className={`itemOptionButton ${
-                  itemData.status === "recycle" ? "selected" : ""
-                }`}
-                onClick={() => handleOptionClick("recycle")}
-              >
-                Recycle
-              </button>
+                  <button
+                    className={`itemOptionButton ${
+                      itemData.status === "sell" ? "selected" : ""
+                    }`}
+                    onClick={() => handleOptionClick("sell")}
+                  >
+                    Sell
+                  </button>
+                  <button
+                    className={`itemOptionButton ${
+                      itemData.status === "recycle" ? "selected" : ""
+                    }`}
+                    onClick={() => handleOptionClick("recycle")}
+                  >
+                    Recycle
+                  </button>
+                </div>
+              </div>
+
+              <div className="itemOverviewButtons">
+                <button
+                  className="buttonSecondary itemOverviewButton deleteItemButton"
+                  onClick={(event) => deleteItem(childId, itemId, event)}
+                >
+                  Delete item
+                </button>
+
+                <Button
+                  text="Edit item"
+                  link={`/home-item-edit/${childId}/${itemId}`}
+                  className="itemOverviewButton"
+                >
+                  <HomeItemEdit itemData={itemData} />
+                </Button>
+              </div>
+            </>
+          ) : (
+            <p>Loading...</p>
+          )}
+
+          {/*info modal*/}
+          <div className="infoModal">
+            <div className="addChildModalContent">
+              <div className="closeModal">
+                <img src={close} alt="" onClick={closeModal} />
+              </div>
+              <ModalHeading text="Choose the next chapter for your child's old clothes" />
             </div>
-          </div>
-
-          <div className="itemOverviewButtons">
-            <button
-              className="buttonSecondary itemOverviewButton deleteItemButton"
-              onClick={(event) => deleteItem(childId, itemId, event)}
-            >
-              Delete item
-            </button>
-
-            <Button
-              text="Edit item"
-              link={`/home-item-edit/${childId}/${itemId}`}
-              className="itemOverviewButton"
-            >
-              <HomeItemEdit itemData={itemData} />
-            </Button>
           </div>
         </>
       ) : (
         <p>Loading...</p>
       )}
-
-      {/*info modal*/}
-      <div className="infoModal">
-        <div className="addChildModalContent">
-          <div className="closeModal">
-            <img src={close} alt="" onClick={closeModal} />
-          </div>
-          <ModalHeading text="Choose the next chapter for your child's old clothes" />
-        </div>
-      </div>
     </section>
   );
 }
