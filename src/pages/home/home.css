@@ -374,6 +374,8 @@
   margin-right: 16px;
 }
 
+/* Option pages code */
+
 .selectCheckmark {
   width: 24px;
   height: 24px;
@@ -388,4 +390,39 @@
   padding: 8px;
   background-color: var(--forestGreen);
   border-radius: 8px;
+}
+
+/* Thanks page code */
+.thanksHeading {
+  margin-bottom: 40px;
+}
+.thanksContent {
+  margin-top: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.thanksPartyPopper {
+  margin-bottom: 40px;
+  margin-top: 65px;
+}
+
+.thanksPara1 {
+  margin-bottom: 16px;
+}
+
+.thanksPara2 {
+  margin-bottom: 8px;
+}
+
+.thanksPara3 {
+  font-weight: var(--fontWeightMedium);
+  font-size: 3.5rem;
+  margin-bottom: -8px;
+}
+
+.thanksPara4 {
+  margin-bottom: 48px;
 }

@@ -29,7 +29,13 @@ export default function Signup() {
       const userDocRef = doc(usersRef, user.uid);
 
       // Set the user in Firestore with the values from input fields
-      await setDoc(userDocRef, { name, mail });
+      await setDoc(userDocRef, {
+        name,
+        mail,
+        itemsDonated: 0,
+        itemsSold: 0,
+        itemsRecycled: 0,
+      });
 
       // Create an empty "children" subcollection within the user document
       const childrenCollectionRef = collection(
