@@ -21,7 +21,7 @@ import fullBody from "../../assets/fullBody.webp";
 import outdoors from "../../assets/outdoors.webp";
 import "./home.css";
 import SearchBar from "../../components/searchBar/searchBar";
-import AgeDropdown from "../../components/dropdowns/ageDropdown";
+import SizeDropdown from "../../components/dropdowns/SizeDropdown";
 import plusIcon from "../../assets/icons/plusIcon.webp";
 import ModalHeading from "../../components/modalHeading/ModalHeading";
 import ItemForm from "../../components/itemForm/ItemForm";
@@ -44,16 +44,33 @@ export default function HomeWardrobe() {
   const [childData, setChildData] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [items, setItems] = useState([]);
+
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
-  const filteredItems =
-    selectedCategory === "all"
-      ? items
-      : items.filter((item) => item.category === selectedCategory);
+  const [selectedSize, setSelectedSize] = useState("");
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
+  const filteredItemsBySizeAndCategory = items.filter((item) => {
+    console.log("Item:", item);
+    console.log("Selected Size:", selectedSize);
+    console.log("Selected Category:", selectedCategory);
+
+    const sizeCondition = selectedSize === "" || item.size === selectedSize;
+    const categoryCondition =
+      selectedCategory === "all" || item.category === selectedCategory;
+
+    console.log("Size Condition:", sizeCondition);
+    console.log("Category Condition:", categoryCondition);
+
+    return sizeCondition && categoryCondition;
+  });
 
   // Get a reference to the modal for adding an item
   const modal = document.querySelector(".addItemModal");
@@ -198,7 +215,7 @@ export default function HomeWardrobe() {
             />
           </div>
           <div className="wardrobeAgeDropdown">
-            <AgeDropdown />
+            <SizeDropdown onSizeChange={handleSizeClick} />
           </div>
         </div>
         <div className="wardrobeSortOptions">
@@ -256,9 +273,13 @@ export default function HomeWardrobe() {
         </div>
 
         <section className="wardrobeItemsContainer">
-          {filteredItems.map((item) => (
-            <ItemCard key={item.id} item={item} childId={childId} />
-          ))}
+          {filteredItemsBySizeAndCategory.length > 0 ? (
+            filteredItemsBySizeAndCategory.map((item) => (
+              <ItemCard key={item.id} item={item} childId={childId} />
+            ))
+          ) : (
+            <p>No items found for the selected age and category.</p>
+          )}
         </section>
       </section>
       <img
