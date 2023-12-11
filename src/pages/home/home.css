@@ -240,6 +240,11 @@
   font-size: var(--bodyTextSmallSize);
 }
 
+.itemOptionButton.selected {
+  background-color: var(--forestGreen);
+  color: var(--white);
+}
+
 .infoContainer {
   position: absolute;
   top: 181px;
