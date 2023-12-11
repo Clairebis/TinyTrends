@@ -18,6 +18,9 @@ import close from "../../assets/icons/close.svg";
 import ModalHeading from "../../components/modalHeading/modalHeading";
 import "./home.css";
 import HeadingWithImage from "../../components/headingWithImage/HeadingWithImage";
+import DonateSmall from "../../assets/icons/donateSmall.svg";
+import ShopSmall from "../../assets/icons/shopSmall.svg";
+import RecycleSmall from "../../assets/icons/recycleSmall.svg";
 
 export default function HomeItemOverview() {
   const auth = getAuth();
@@ -174,48 +177,71 @@ export default function HomeItemOverview() {
             childImage={childData.image}
             childFirstName={childData.firstName}
           />
-          <div className="infoContainer" onClick={openModal}>
-            <img className="infoIcon" src={Info} alt="info icon" />
-          </div>
+
           {itemData ? (
             <>
-              <div>
-                <h2>{itemData.caption}</h2>
-              </div>
-              <div className="itemOverviewImageContainer">
-                <img
-                  className="itemOverviewImage"
-                  src={itemData.image}
-                  alt={itemData.caption}
-                />
-                <div className="itemOptionsContainer">
-                  <button
-                    className={`itemOptionButton ${
-                      itemData.status === "donate" ? "selected" : ""
-                    }`}
-                    onClick={() => handleOptionClick("donate")}
-                  >
-                    Donate
-                  </button>
-
-                  <button
-                    className={`itemOptionButton ${
-                      itemData.status === "sell" ? "selected" : ""
-                    }`}
-                    onClick={() => handleOptionClick("sell")}
-                  >
-                    Sell
-                  </button>
-                  <button
-                    className={`itemOptionButton ${
-                      itemData.status === "recycle" ? "selected" : ""
-                    }`}
-                    onClick={() => handleOptionClick("recycle")}
-                  >
-                    Recycle
-                  </button>
+              <section className="itemOverviewContent">
+                <div>
+                  <h2 className="itemOverviewHeading">{itemData.caption}</h2>
                 </div>
-              </div>
+                <div className="itemOverviewImageContainer">
+                  <div className="infoContainer" onClick={openModal}>
+                    <img className="infoIcon" src={Info} alt="info icon" />
+                  </div>
+                  <img
+                    className="itemOverviewImage"
+                    src={itemData.image}
+                    alt={itemData.caption}
+                  />
+                  <div className="itemOptionsContainer">
+                    <button
+                      className={`itemOptionButton ${
+                        itemData.status === "donate" ? "selected" : ""
+                      }`}
+                      onClick={() => handleOptionClick("donate")}
+                    >
+                      <img src={DonateSmall} alt="donate icon" />
+                      Donate
+                    </button>
+
+                    <button
+                      className={`itemOptionButton ${
+                        itemData.status === "sell" ? "selected" : ""
+                      }`}
+                      onClick={() => handleOptionClick("sell")}
+                    >
+                      <img src={ShopSmall} alt="sell icon" />
+                      Sell
+                    </button>
+                    <button
+                      className={`itemOptionButton ${
+                        itemData.status === "recycle" ? "selected" : ""
+                      }`}
+                      onClick={() => handleOptionClick("recycle")}
+                    >
+                      <img src={RecycleSmall} alt="recycle icon" />
+                      Recycle
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <section className="itemOverviewDetails">
+                <div className="itemOverviewInfoContainer">
+                  <p className="itemOverviewInfoHeading">Brand:</p>
+                  <p>{itemData.brand}</p>
+                </div>
+
+                <div className="itemOverviewInfoContainer">
+                  <p className="itemOverviewInfoHeading">Size:</p>
+                  <p>{itemData.size}</p>
+                </div>
+
+                <div className="itemOverviewInfoContainer">
+                  <p className="itemOverviewInfoHeading">Category:</p>
+                  <p>{itemData.category}</p>
+                </div>
+              </section>
 
               <div className="itemOverviewButtons">
                 <button
