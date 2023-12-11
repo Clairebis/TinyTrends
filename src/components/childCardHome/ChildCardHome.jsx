@@ -10,8 +10,15 @@ export default function ChildCardHome({ child }) {
   }
 
   return (
-    <article>
-      <div onClick={handleClick}>
+    <article className="childCardContainer" onClick={handleClick}>
+      <div className="childCardContent">
+        <div className="childCardImageContainer">
+          <img
+            src={child.image}
+            alt={child.firstName}
+            className="childCardImage"
+          />
+        </div>
         <h2>{child.firstName}</h2>
       </div>
     </article>

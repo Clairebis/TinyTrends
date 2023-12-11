@@ -112,7 +112,7 @@ export default function Home() {
             "Small clothes, big hearts, sustainable starts."
           </h4>
 
-          <section>
+          <section className="childCardsContainer">
             {children.map((child) => (
               <ChildCardHome key={child.id} child={child} />
             ))}
