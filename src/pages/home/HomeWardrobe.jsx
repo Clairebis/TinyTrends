@@ -44,6 +44,16 @@ export default function HomeWardrobe() {
   const [childData, setChildData] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [items, setItems] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredItems =
+    selectedCategory === "all"
+      ? items
+      : items.filter((item) => item.category === selectedCategory);
 
   // Get a reference to the modal for adding an item
   const modal = document.querySelector(".addItemModal");
@@ -192,7 +202,10 @@ export default function HomeWardrobe() {
           </div>
         </div>
         <div className="wardrobeSortOptions">
-          <div className="wardrobeSortOption">
+          <div
+            className="wardrobeSortOption"
+            onClick={() => handleCategoryClick("all")}
+          >
             <img
               src={allClothes}
               alt="show all items"
@@ -200,11 +213,17 @@ export default function HomeWardrobe() {
             />
             <p className="small">All</p>
           </div>
-          <div className="wardrobeSortOption">
+          <div
+            className="wardrobeSortOption"
+            onClick={() => handleCategoryClick("Tops")}
+          >
             <img src={tops} alt="show tops" className="wardrobeSortImage" />
             <p className="small">Tops</p>
           </div>
-          <div className="wardrobeSortOption">
+          <div
+            className="wardrobeSortOption"
+            onClick={() => handleCategoryClick("Bottoms")}
+          >
             <img
               src={bottoms}
               alt="show bottoms"
@@ -212,7 +231,10 @@ export default function HomeWardrobe() {
             />
             <p className="small">Bottoms</p>
           </div>
-          <div className="wardrobeSortOption">
+          <div
+            className="wardrobeSortOption"
+            onClick={() => handleCategoryClick("Full body")}
+          >
             <img
               src={fullBody}
               alt="show full body items"
@@ -220,7 +242,10 @@ export default function HomeWardrobe() {
             />
             <p className="small">Full Body</p>
           </div>
-          <div className="wardrobeSortOption">
+          <div
+            className="wardrobeSortOption"
+            onClick={() => handleCategoryClick("Outdoors")}
+          >
             <img
               src={outdoors}
               alt="show outdoor items"
@@ -231,7 +256,7 @@ export default function HomeWardrobe() {
         </div>
 
         <section className="wardrobeItemsContainer">
-          {items.map((item) => (
+          {filteredItems.map((item) => (
             <ItemCard key={item.id} item={item} childId={childId} />
           ))}
         </section>
