@@ -5,6 +5,7 @@ import { doc, getDoc, updateDoc, collection } from "firebase/firestore";
 import { itemsRef } from "../../config/firebase";
 import ItemForm from "../../components/itemForm/ItemForm";
 import { db } from "../../config/firebase";
+import "./home.css";
 
 export default function HomeItemEdit() {
   const auth = getAuth();
