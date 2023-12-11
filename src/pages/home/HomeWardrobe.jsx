@@ -298,7 +298,7 @@ export default function HomeWardrobe() {
       <img
         className="HomePlusIcon"
         src={plusIcon}
-        alt="plus button to add a child"
+        alt="plus button to add an item of clothing"
         onClick={openModal}
       />
       {/*modal to add an item*/}

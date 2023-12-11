@@ -6,6 +6,7 @@ import {
   onSnapshot,
   query,
   where,
+  getDocs,
   orderBy,
   updateDoc,
   deleteDoc,
@@ -14,6 +15,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../../config/firebase";
 import ItemCard from "../../../components/itemCard/ItemCard";
 import SelectTick from "../../../assets/icons/SelectTick.svg";
+import HeadingWithImage from "../../../components/headingWithImage/HeadingWithImage";
 
 export default function HomeDonate() {
   const { childId } = useParams();
@@ -21,7 +23,50 @@ export default function HomeDonate() {
   const navigate = useNavigate();
   const auth = getAuth();
   const userId = auth.currentUser?.uid;
+  const [childData, setChildData] = useState(null);
   const [items, setItems] = useState([]);
+
+  //Fetch child data using childId from Firebase
+  useEffect(() => {
+    const fetchChildData = async () => {
+      try {
+        console.log("Child ID from URL:", childId);
+        //Reference to the user document
+        const userDocRef = doc(db, "users", userId);
+
+        //Reference to the children subcollection
+        const childrenCollectionRef = collection(userDocRef, "children");
+
+        //Query to get the specific child document based on documentId
+        const childQuery = query(
+          childrenCollectionRef,
+          where("__name__", "==", childId)
+        );
+
+        //Fetch the data of the specified child
+        const childSnapshot = await getDocs(childQuery);
+
+        //Log the child snapshot
+        console.log(
+          "Child Snapshot:",
+          childSnapshot.docs.map((doc) => doc.data())
+        );
+
+        // Check if there are documents in the snapshot
+        if (childSnapshot.docs.length > 0) {
+          // Get the first document and set the child data state with its data
+          setChildData(childSnapshot.docs[0].data());
+        } else {
+          console.log("Child not found");
+        }
+      } catch (error) {
+        console.error("Error fetching child data", error.message);
+      }
+    };
+
+    // Call the fetchChildData function
+    fetchChildData();
+  }, [childId, userId]);
 
   // Fetch all child's items from firestore marked as donate
   useEffect(() => {
@@ -147,27 +192,38 @@ export default function HomeDonate() {
 
   return (
     <section className="page">
-      <section>
-        <div>
-          <button onClick={handleSelectAll}>Select all</button>
-          <button onClick={handleDeleteSelected}>Donated</button>
-        </div>
-        {items.map((item) => (
-          <div key={item.id} className="itemContainer">
-            <ItemCard item={item} childId={childId} />
-            <div className="selectItemCheckmark">
-              <img
-                src={SelectTick}
-                alt="Select Checkmark"
-                className={`selectCheckmark ${
-                  item.selected === "selected" ? "selected" : ""
-                }`}
-                onClick={() => handleToggleStatus(item.id, item.selected)}
-              />
+      {childData ? (
+        <>
+          <HeadingWithImage
+            childImage={childData.image}
+            childFirstName={childData.firstName}
+            pageTitle="Donate"
+          />
+          <section>
+            <div>
+              <button onClick={handleSelectAll}>Select all</button>
+              <button onClick={handleDeleteSelected}>Donated</button>
             </div>
-          </div>
-        ))}
-      </section>
+            {items.map((item) => (
+              <div key={item.id} className="itemContainer">
+                <ItemCard item={item} childId={childId} />
+                <div className="selectItemCheckmark">
+                  <img
+                    src={SelectTick}
+                    alt="Select Checkmark"
+                    className={`selectCheckmark ${
+                      item.selected === "selected" ? "selected" : ""
+                    }`}
+                    onClick={() => handleToggleStatus(item.id, item.selected)}
+                  />
+                </div>
+              </div>
+            ))}
+          </section>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </section>
   );
 }
