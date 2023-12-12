@@ -28,6 +28,8 @@ export default function HomeRecycle() {
   const userId = auth.currentUser?.uid;
   const [childData, setChildData] = useState(null);
   const [items, setItems] = useState([]);
+  const [userData, setUserData] = useState("");
+  const [actionType, setActionType] = useState("recycle"); // Default to "recycle"
 
   //Fetch child data using childId from Firebase
   useEffect(() => {
@@ -67,11 +69,22 @@ export default function HomeRecycle() {
       }
     };
 
+    const userDocRef = doc(db, "users", userId);
+
+    const unsubscribeUser = onSnapshot(userDocRef, (userDoc) => {
+      const userData = userDoc.exists()
+        ? { id: userDoc.id, ...userDoc.data() }
+        : null;
+      setUserData(userData);
+    });
+
     // Call the fetchChildData function
     fetchChildData();
+
+    return unsubscribeUser;
   }, [childId, userId]);
 
-  // Fetch all child's items from firestore
+  // Fetch all child's items from firestore marked as recycle
   useEffect(() => {
     // Get a reference to the user's child's "items" subcollection
     if (auth.currentUser?.uid) {
@@ -169,6 +182,19 @@ export default function HomeRecycle() {
         (item) => item.selected === "selected"
       );
 
+      // Update the itemsRecycled count
+      const newItemsRecycledCount =
+        userData.itemsRecycled + selectedItems.length; // Increment the count
+      setActionType("recycle"); // Set the action type to "recycle"
+
+      // Reference to the user document
+      const userDocRef = doc(db, "users", auth.currentUser.uid);
+
+      // Update the itemsDonated field in the user document
+      await updateDoc(userDocRef, {
+        itemsRecycled: newItemsRecycledCount,
+      });
+
       // Iterate through the selected items and delete them
       const deletePromises = selectedItems.map(async (item) => {
         const itemDocRef = doc(
@@ -187,7 +213,7 @@ export default function HomeRecycle() {
 
       // Wait for all deletes to complete
       await Promise.all(deletePromises);
-      navigate("/home-thanks");
+      navigate(`/home-thanks/${actionType}`);
     } catch (error) {
       console.error("Error deleting selected items:", error.message);
     }

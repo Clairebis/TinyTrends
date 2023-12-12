@@ -73,7 +73,7 @@ function App() {
         <Route path="/home-donate/:childId" element={<HomeDonate />} />
         <Route path="/home-recycle/:childId" element={<HomeRecycle />} />
         <Route path="/home-sell/:childId" element={<HomeSell />} />
-        <Route path="home-thanks" element={<HomeThanks />} />
+        <Route path="home-thanks/:actionType" element={<HomeThanks />} />
         <Route path="/edit-child/:childId" element={<EditChild />} />
         <Route path="/home-child-updated/:childId" element={<ChildUpdated />} />
         <Route path="/wishlist" element={<Wishlist />} />

@@ -4,10 +4,11 @@ import { getAuth } from "firebase/auth";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../../config/firebase";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function HomeThanks() {
   const auth = getAuth();
-
+  const { actionType } = useParams();
   const [userData, setUserData] = useState("");
 
   useEffect(() => {
@@ -31,6 +32,21 @@ export default function HomeThanks() {
     }
   }, [auth.currentUser?.uid]);
 
+  // Define the field name based on the actionType
+  const actionField =
+    actionType === "donate"
+      ? "itemsDonated"
+      : actionType === "recycle"
+      ? "itemsRecycled"
+      : actionType === "sell"
+      ? "itemsSold"
+      : null;
+
+  if (!actionField) {
+    console.error("Invalid actionType provided.");
+    return null;
+  }
+
   return (
     <section className="page">
       <section className="thanksContent">
@@ -45,8 +61,18 @@ export default function HomeThanks() {
           Your efforts have contributed to making fashion more sustainable!{" "}
         </p>
         <p className="thanksPara2">You’ve reached a total of </p>
-        <p className="thanksPara3">{userData.itemsDonated}</p>
-        <p className="thanksPara4">donated items</p>
+        <p className="thanksPara3">{userData[actionField]}</p>
+        <p className="thanksPara4">
+          {" "}
+          {actionType === "donate"
+            ? "donated"
+            : actionType === "recycle"
+            ? "recycled"
+            : actionType === "sell"
+            ? "sold"
+            : ""}
+          {" items"}
+        </p>
         <Button text="Home" link={"/"} />
       </section>
     </section>

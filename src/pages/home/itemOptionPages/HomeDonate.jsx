@@ -29,6 +29,7 @@ export default function HomeDonate() {
   const [childData, setChildData] = useState(null);
   const [items, setItems] = useState([]);
   const [userData, setUserData] = useState("");
+  const [actionType, setActionType] = useState("donate"); // Default to "donate"
 
   //Fetch user data, and child data using childId from Firebase
   useEffect(() => {
@@ -186,6 +187,7 @@ export default function HomeDonate() {
 
       // Update the itemsDonated count
       const newItemsDonatedCount = userData.itemsDonated + selectedItems.length; // Increment the count
+      setActionType("donate"); // Set the action type to "donate"
 
       // Reference to the user document
       const userDocRef = doc(db, "users", auth.currentUser.uid);
@@ -213,7 +215,7 @@ export default function HomeDonate() {
 
       // Wait for all deletes to complete
       await Promise.all(deletePromises);
-      navigate("/home-thanks");
+      navigate(`/home-thanks/${actionType}`);
     } catch (error) {
       console.error("Error deleting selected items:", error.message);
     }

@@ -28,8 +28,10 @@ export default function HomeSell() {
   const userId = auth.currentUser?.uid;
   const [childData, setChildData] = useState(null);
   const [items, setItems] = useState([]);
+  const [userData, setUserData] = useState("");
+  const [actionType, setActionType] = useState("sell"); // Default to "sell"
 
-  //Fetch child data using childId from Firebase
+  //Fetch user & child data using childId from Firebase
   useEffect(() => {
     const fetchChildData = async () => {
       try {
@@ -67,8 +69,19 @@ export default function HomeSell() {
       }
     };
 
+    const userDocRef = doc(db, "users", userId);
+
+    const unsubscribeUser = onSnapshot(userDocRef, (userDoc) => {
+      const userData = userDoc.exists()
+        ? { id: userDoc.id, ...userDoc.data() }
+        : null;
+      setUserData(userData);
+    });
+
     // Call the fetchChildData function
     fetchChildData();
+
+    return unsubscribeUser;
   }, [childId, userId]);
 
   // Fetch all child's items from firestore marked as sell
@@ -169,6 +182,18 @@ export default function HomeSell() {
         (item) => item.selected === "selected"
       );
 
+      // Update the itemsSold count
+      const newItemsSoldCount = userData.itemsSold + selectedItems.length; // Increment the count
+      setActionType("sell"); // Set the action type to "sold"
+
+      // Reference to the user document
+      const userDocRef = doc(db, "users", auth.currentUser.uid);
+
+      // Update the itemsDonated field in the user document
+      await updateDoc(userDocRef, {
+        itemsSold: newItemsSoldCount,
+      });
+
       // Iterate through the selected items and delete them
       const deletePromises = selectedItems.map(async (item) => {
         const itemDocRef = doc(
@@ -187,7 +212,7 @@ export default function HomeSell() {
 
       // Wait for all deletes to complete
       await Promise.all(deletePromises);
-      navigate("/home-thanks");
+      navigate(`/home-thanks/${actionType}`);
     } catch (error) {
       console.error("Error deleting selected items:", error.message);
     }
