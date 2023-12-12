@@ -16,6 +16,9 @@ import { db } from "../../../config/firebase";
 import ItemCard from "../../../components/itemCard/ItemCard";
 import SelectTick from "../../../assets/icons/SelectTick.svg";
 import HeadingWithImage from "../../../components/headingWithImage/HeadingWithImage";
+import "./itemOptionsPages.css";
+import "../../../components/button/button.css";
+import ShopTiny from "../../../assets/icons/ShopTiny.svg";
 
 export default function HomeSell() {
   const { childId } = useParams();
@@ -200,25 +203,47 @@ export default function HomeSell() {
             pageTitle="Sell"
           />
           <section>
-            <div>
-              <button onClick={handleSelectAll}>Select all</button>
-              <button onClick={handleDeleteSelected}>Donated</button>
+            <p className="itemOptionsPara">
+              Confirm which items you’ve sold and watch your
+              <span className="itemOptionsSpan"> profile</span> count rise.
+            </p>
+
+            <div className="optionsPagesButtons">
+              <button className="buttonForestGreen buttonSecondary optionsPageButton1">
+                See reseller platforms
+              </button>
+              <button
+                onClick={handleSelectAll}
+                className="buttonForestGreen buttonSecondary optionsPageButton2"
+              >
+                Select all
+              </button>
+              <button
+                onClick={handleDeleteSelected}
+                className="buttonForestGreen itemOptionsActionButton optionsPageButton"
+              >
+                <img src={ShopTiny} alt="Sold" />
+                Sold
+              </button>
             </div>
-            {items.map((item) => (
-              <div key={item.id} className="itemContainer">
-                <ItemCard item={item} childId={childId} />
-                <div className="selectItemCheckmark">
-                  <img
-                    src={SelectTick}
-                    alt="Select Checkmark"
-                    className={`selectCheckmark ${
-                      item.selected === "selected" ? "selected" : ""
-                    }`}
-                    onClick={() => handleToggleStatus(item.id, item.selected)}
-                  />
+
+            <section className="gridContainer">
+              {items.map((item) => (
+                <div key={item.id} className="itemContainer">
+                  <ItemCard item={item} childId={childId} />
+                  <div className="selectItemCheckmark">
+                    <img
+                      src={SelectTick}
+                      alt="Select Checkmark"
+                      className={`selectCheckmark ${
+                        item.selected === "selected" ? "selected" : ""
+                      }`}
+                      onClick={() => handleToggleStatus(item.id, item.selected)}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </section>
           </section>
         </>
       ) : (

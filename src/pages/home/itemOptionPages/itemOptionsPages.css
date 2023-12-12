@@ -28,12 +28,14 @@
 .itemOptionsActionButton {
   display: flex;
   flex-direction: column;
+  gap: 3px;
   border: none;
   font-size: var(--bodyTextTinySize);
+  font-weight: var(--fontWeightRegular);
   width: 54px;
   border-radius: 8px;
   align-items: center;
-  padding-top: 4.5px;
+  padding-top: 5px;
   padding-bottom: 4.5px;
 }
 

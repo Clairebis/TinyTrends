@@ -204,8 +204,8 @@ export default function HomeDonate() {
           />
           <section>
             <p className="itemOptionsPara">
-              Confirm which items you’ve donated and watch your{" "}
-              <span className="itemOptionsSpan">profile</span> count rise.
+              Confirm which items you’ve donated and watch your
+              <span className="itemOptionsSpan"> profile</span> count rise.
             </p>
             <div className="optionsPagesButtons">
               <button className="buttonForestGreen buttonSecondary optionsPageButton1">
@@ -225,6 +225,7 @@ export default function HomeDonate() {
                 Donated
               </button>
             </div>
+
             <section className="gridContainer">
               {items.map((item) => (
                 <div key={item.id} className="itemContainer">
