@@ -1,0 +1,28 @@
+.wishlistContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.listBearImageContainer {
+  height: 166px;
+  width: 132px;
+  margin-top: 180px;
+  margin-bottom: 32px;
+}
+
+.listBearImage {
+  height: 100%;
+}
+
+.wishlistPara {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.wishlistAddButton {
+  position: absolute;
+  right: 16px;
+  bottom: 88px;
+}
