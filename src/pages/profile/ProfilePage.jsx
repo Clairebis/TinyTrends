@@ -109,7 +109,7 @@ export default function ProfilePage() {
               <section className="userProfileChildren">
                 <div className="userProfileChildrenHeader">
                   <h2>My Children</h2>
-                  <img src={plusIcon} alt="Add Child" />
+                  <img src={plusIcon} alt="Add Child" className="profilePlus" />
                 </div>
                 <section className="childCardsContainer">
                   {children.map((child) => (

@@ -64,10 +64,15 @@
 
 .userProfileChildren {
   width: calc(100% - 32px);
+  margin-top: 210px;
 }
 
 .userProfileChildrenHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.profilePlus {
+  height: 30px;
 }
