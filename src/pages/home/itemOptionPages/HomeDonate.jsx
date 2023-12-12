@@ -28,8 +28,9 @@ export default function HomeDonate() {
   const userId = auth.currentUser?.uid;
   const [childData, setChildData] = useState(null);
   const [items, setItems] = useState([]);
+  const [userData, setUserData] = useState("");
 
-  //Fetch child data using childId from Firebase
+  //Fetch user data, and child data using childId from Firebase
   useEffect(() => {
     const fetchChildData = async () => {
       try {
@@ -67,8 +68,19 @@ export default function HomeDonate() {
       }
     };
 
+    const userDocRef = doc(db, "users", userId);
+
+    const unsubscribeUser = onSnapshot(userDocRef, (userDoc) => {
+      const userData = userDoc.exists()
+        ? { id: userDoc.id, ...userDoc.data() }
+        : null;
+      setUserData(userData);
+    });
+
     // Call the fetchChildData function
     fetchChildData();
+
+    return unsubscribeUser;
   }, [childId, userId]);
 
   // Fetch all child's items from firestore marked as donate
@@ -76,6 +88,9 @@ export default function HomeDonate() {
     // Get a reference to the user's child's "items" subcollection
     if (auth.currentUser?.uid) {
       console.log("User ID:", auth.currentUser.uid);
+
+      // Reference to the user's child's items subcollection
+
       const userChildDocRef = doc(
         db,
         "users",
@@ -91,7 +106,7 @@ export default function HomeDonate() {
         where("status", "==", "donate"), // only retrieve items with status "donate"
         orderBy("createdAt", "desc")
       ); // order by: latest item first
-      const unsubscribe = onSnapshot(q, (data) => {
+      const itemUnsubscribe = onSnapshot(q, (data) => {
         // map through all docs (object) from items collection
         // changing the data structure so it's all gathered in one object
         const itemsData = data.docs.map((doc) => ({
@@ -101,7 +116,7 @@ export default function HomeDonate() {
         setItems(itemsData);
       });
       return () => {
-        unsubscribe(); // tell the component to unsubscribe from listen on changes from firestore
+        itemUnsubscribe(); // tell the component to unsubscribe from listen on changes from firestore
       };
     }
   }, [userId, childId, auth.currentUser?.uid]); // Dependancies
@@ -168,6 +183,17 @@ export default function HomeDonate() {
       const selectedItems = items.filter(
         (item) => item.selected === "selected"
       );
+
+      // Update the itemsDonated count
+      const newItemsDonatedCount = userData.itemsDonated + selectedItems.length; // Increment the count
+
+      // Reference to the user document
+      const userDocRef = doc(db, "users", auth.currentUser.uid);
+
+      // Update the itemsDonated field in the user document
+      await updateDoc(userDocRef, {
+        itemsDonated: newItemsDonatedCount,
+      });
 
       // Iterate through the selected items and delete them
       const deletePromises = selectedItems.map(async (item) => {
