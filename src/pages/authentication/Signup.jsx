@@ -35,6 +35,7 @@ export default function Signup() {
         itemsDonated: 0,
         itemsSold: 0,
         itemsRecycled: 0,
+        image: "",
       });
 
       // Create an empty "children" subcollection within the user document
