@@ -1,6 +1,6 @@
 import plusIcon from "../../assets/icons/plusIcon.webp";
 import HomeHeading from "../../components/homeHeading/HomeHeading";
-import "./Home.css";
+import "./home.css";
 import ModalHeading from "../../components/modalHeading/ModalHeading";
 import close from "../../assets/icons/close.svg";
 import ChildForm from "../../components/childForm/ChildForm";
