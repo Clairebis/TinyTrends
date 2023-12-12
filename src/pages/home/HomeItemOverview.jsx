@@ -13,15 +13,15 @@ import { db } from "../../config/firebase";
 import { getAuth } from "firebase/auth";
 import Button from "../../components/button/Button";
 import HomeItemEdit from "./HomeItemEdit";
-import Info from "../../assets/icons/info.svg";
+import Info from "../../assets/icons/Info.svg";
 import close from "../../assets/icons/close.svg";
-import ModalHeading from "../../components/modalHeading/modalHeading";
+import ModalHeading from "../../components/modalHeading/ModalHeading";
 import "./home.css";
 import HeadingWithImage from "../../components/headingWithImage/HeadingWithImage";
-import DonateSmall from "../../assets/icons/donateSmall.svg";
-import ShopSmall from "../../assets/icons/shopSmall.svg";
-import RecycleSmall from "../../assets/icons/recycleSmall.svg";
-import Bear from "../../assets/bear.webp";
+import DonateSmall from "../../assets/icons/DonateSmall.svg";
+import ShopSmall from "../../assets/icons/ShopSmall.svg";
+import RecycleSmall from "../../assets/icons/RecycleSmall.svg";
+import Bear from "../../assets/Bear.webp";
 
 export default function HomeItemOverview() {
   const auth = getAuth();
