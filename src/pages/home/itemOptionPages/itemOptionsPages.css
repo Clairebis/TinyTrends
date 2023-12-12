@@ -1,0 +1,76 @@
+.itemOptionsPara {
+  margin-top: 24px;
+  text-align: center;
+  font-weight: var(--fontWeightMedium);
+}
+
+.itemOptionsSpan {
+  font-weight: var(--fontWeightBold);
+  color: var(--grassGreen);
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.optionsPagesButtons {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  margin-top: 16px;
+  height: 32px;
+  align-items: center;
+}
+
+.itemOptionsActionButton {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  font-size: var(--bodyTextTinySize);
+  width: 54px;
+  border-radius: 8px;
+  align-items: center;
+  padding-top: 4.5px;
+  padding-bottom: 4.5px;
+}
+
+.optionsPageButton1 {
+  font-size: var(--bodyTextSmallSize);
+  font-weight: var(--fontWeightBold);
+  width: 188px;
+}
+
+.optionsPageButton2 {
+  font-size: var(--bodyTextSmallSize);
+  font-weight: var(--fontWeightBold);
+  width: 118px;
+}
+
+.selectCheckmark {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  background-color: var(--blue100);
+  border-radius: 8px;
+}
+
+.selectCheckmark.selected {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  background-color: var(--forestGreen);
+  border-radius: 8px;
+}
+
+.selectCheckmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.itemContainer {
+  position: relative;
+}

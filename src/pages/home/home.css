@@ -376,22 +376,6 @@
 
 /* Option pages code */
 
-.selectCheckmark {
-  width: 24px;
-  height: 24px;
-  padding: 8px;
-  background-color: var(--blue100);
-  border-radius: 8px;
-}
-
-.selectCheckmark.selected {
-  width: 24px;
-  height: 24px;
-  padding: 8px;
-  background-color: var(--forestGreen);
-  border-radius: 8px;
-}
-
 /* Thanks page code */
 .thanksHeading {
   margin-bottom: 40px;
