@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Button from "../../components/button/Button";
 import "./home.css";
-import Checkmark from "../../assets/icons/checkmark.svg";
+import Checkmark from "../../assets/icons/Checkmark.svg";
 
 export default function HomeItemUpdated() {
   const { childId } = useParams();

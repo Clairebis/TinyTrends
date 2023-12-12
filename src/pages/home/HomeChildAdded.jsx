@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Button from "../../components/button/Button";
-import Checkmark from "../../assets/icons/checkmark.svg";
+import Checkmark from "../../assets/icons/Checkmark.svg";
 import "./home.css";
 
 export default function HomeItemAdded() {

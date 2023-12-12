@@ -20,7 +20,7 @@ import bottoms from "../../assets/bottoms.webp";
 import fullBody from "../../assets/fullBody.webp";
 import outdoors from "../../assets/outdoors.webp";
 import "./home.css";
-import SearchBar from "../../components/searchBar/searchBar";
+import SearchBar from "../../components/searchBar/SearchBar";
 import SizeDropdown from "../../components/dropdowns/SizeDropdown";
 import plusIcon from "../../assets/icons/plusIcon.webp";
 import ModalHeading from "../../components/modalHeading/ModalHeading";
