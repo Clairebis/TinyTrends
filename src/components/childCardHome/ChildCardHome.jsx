@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./ChildCardHome.css";
+import "./childCardHome.css";
 
 export default function ChildCardHome({ child }) {
   const navigate = useNavigate();

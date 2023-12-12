@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./ChildForm.css";
+import "./childForm.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../config/firebase";
 import placeholderChild from "../../assets/placeholderChild.webp";

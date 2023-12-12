@@ -1,5 +1,5 @@
 import Logo from "../../assets/Logo.webp";
-import "./HomeHeading.css";
+import "./homeHeading.css";
 
 export default function HomeHeading() {
   return (
