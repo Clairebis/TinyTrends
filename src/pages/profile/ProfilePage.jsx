@@ -75,47 +75,49 @@ export default function ProfilePage() {
             />
           </div>
           <section className="page">
-            <section className="userProfileDetails">
-              <div className="userProfileImageContainer">
-                <img
-                  src={userData.image || userImagePlaceholder}
-                  alt="User Profile image"
-                  className="userProfileImage"
-                />
-                <img src={Edit} alt="Edit" className="profileEditIcon" />
-              </div>
-              <h2 className="userProfileName">{userData.name}</h2>
+            <div className="profileOrder">
+              <section className="userProfileDetails">
+                <div className="userProfileImageContainer">
+                  <img
+                    src={userData.image || userImagePlaceholder}
+                    alt="User Profile image"
+                    className="userProfileImage"
+                  />
+                  <img src={Edit} alt="Edit" className="profileEditIcon" />
+                </div>
+                <h2 className="userProfileName">{userData.name}</h2>
 
-              <p className="userProfilePara">
-                Your contribution to sustainable fashion
-              </p>
-              <div className="userProfileStatsContainer">
-                <div className="userProfileStat">
-                  <h2>{userData.itemsDonated}</h2>
-                  <p className="small">DONATED</p>
+                <p className="userProfilePara">
+                  Your contribution to sustainable fashion
+                </p>
+                <div className="userProfileStatsContainer">
+                  <div className="userProfileStat">
+                    <h2>{userData.itemsDonated}</h2>
+                    <p className="small">DONATED</p>
+                  </div>
+                  <div className="userProfileStat">
+                    <h2>{userData.itemsSold}</h2>
+                    <p className="small">SOLD</p>
+                  </div>
+                  <div className="userProfileStat">
+                    <h2>{userData.itemsRecycled}</h2>
+                    <p className="small">RECYCLED</p>
+                  </div>
                 </div>
-                <div className="userProfileStat">
-                  <h2>{userData.itemsSold}</h2>
-                  <p className="small">SOLD</p>
-                </div>
-                <div className="userProfileStat">
-                  <h2>{userData.itemsRecycled}</h2>
-                  <p className="small">RECYCLED</p>
-                </div>
-              </div>
-            </section>
-
-            <section className="userProfileChildren">
-              <div className="userProfileChildrenHeader">
-                <h2>My Children</h2>
-                <img src={plusIcon} alt="Add Child" />
-              </div>
-              <section className="childCardsContainer">
-                {children.map((child) => (
-                  <ChildCardHome key={child.id} child={child} />
-                ))}
               </section>
-            </section>
+
+              <section className="userProfileChildren">
+                <div className="userProfileChildrenHeader">
+                  <h2>My Children</h2>
+                  <img src={plusIcon} alt="Add Child" />
+                </div>
+                <section className="childCardsContainer">
+                  {children.map((child) => (
+                    <ChildCardHome key={child.id} child={child} />
+                  ))}
+                </section>
+              </section>
+            </div>
           </section>
         </>
       ) : (
