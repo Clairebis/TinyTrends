@@ -13,6 +13,8 @@ import ChildCardHome from "../../components/childCardHome/ChildCardHome";
 import ProfileBackground from "../../assets/ProfileBackground.webp";
 import userImagePlaceholder from "../../assets/userImagePlaceholder.webp";
 import Edit from "../../assets/icons/Edit.svg";
+import "./profile.css";
+import plusIcon from "../../assets/icons/plusIcon.webp";
 
 export default function ProfilePage() {
   const auth = getAuth();
@@ -82,10 +84,11 @@ export default function ProfilePage() {
                 />
                 <img src={Edit} alt="Edit" className="profileEditIcon" />
               </div>
-              <h2>{userData.name}</h2>
-            </section>
-            <section className="userProfileStats">
-              <p>Your contribution to sustainable fashion</p>
+              <h2 className="userProfileName">{userData.name}</h2>
+
+              <p className="userProfilePara">
+                Your contribution to sustainable fashion
+              </p>
               <div className="userProfileStatsContainer">
                 <div className="userProfileStat">
                   <h2>{userData.itemsDonated}</h2>
@@ -101,11 +104,17 @@ export default function ProfilePage() {
                 </div>
               </div>
             </section>
-            <h2>My Children</h2>
-            <section className="childCardsContainer">
-              {children.map((child) => (
-                <ChildCardHome key={child.id} child={child} />
-              ))}
+
+            <section className="userProfileChildren">
+              <div className="userProfileChildrenHeader">
+                <h2>My Children</h2>
+                <img src={plusIcon} alt="Add Child" />
+              </div>
+              <section className="childCardsContainer">
+                {children.map((child) => (
+                  <ChildCardHome key={child.id} child={child} />
+                ))}
+              </section>
             </section>
           </section>
         </>
