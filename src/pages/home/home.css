@@ -192,6 +192,10 @@
   margin-top: 24px;
 }
 
+.wardrobeNoItems {
+  width: 200%;
+}
+
 /*item overview code*/
 .itemOverviewHeading {
   margin-bottom: 40px;

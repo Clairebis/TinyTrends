@@ -295,7 +295,11 @@ export default function HomeWardrobe() {
               <ItemCard key={item.id} item={item} childId={childId} />
             ))
           ) : (
-            <p>No items found for the selected age, category or search term.</p>
+            <p className="wardrobeNoItems">
+              No items found for the selected age, category, or search term.
+              <br /> If you haven't added any items yet, click the plus icon
+              below to get started!
+            </p>
           )}
         </section>
       </section>
