@@ -1,0 +1,19 @@
+.blogCard {
+  box-shadow: var(--boxShadow);
+  height: 358px;
+  width: 100%;
+}
+
+.blogCardImageContainer {
+  height: 264px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.blogCardText {
+  margin: 16px 8px;
+}
+.blogCardHeading {
+  height: 32px;
+  margin-bottom: 16px;
+}

@@ -14,8 +14,8 @@ export default function BlogCard({ blogArticle }) {
         <img src={blogArticle.image} alt={blogArticle.title} />
       </div>
       <div className="blogCardText">
-        <h2 className="blogCardHeading">{blogArticle.title}</h2>
-        <p className="blogCardPara">{blogArticle.publishedDate}</p>
+        <h3 className="blogCardHeading">{blogArticle.title}</h3>
+        <p className="blogCardPara small">{blogArticle.publishedDate}</p>
       </div>
     </article>
   );
