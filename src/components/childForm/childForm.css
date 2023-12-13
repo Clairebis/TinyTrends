@@ -23,4 +23,10 @@ form .fileInput {
 
 .childForm {
   margin-top: 72px;
+  width: calc(100% - 32px);
+}
+
+.formFlex {
+  display: flex;
+  flex-direction: row;
 }

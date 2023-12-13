@@ -108,8 +108,8 @@ export default function ChildForm({ saveChild, child }) {
           name="firstName"
         />
       </label>
-      <label>
-        Other Names:
+      <label className="formFlex">
+        <p>Other Names:</p>
         <input
           type="text"
           value={otherNames}
@@ -118,8 +118,8 @@ export default function ChildForm({ saveChild, child }) {
           name="otherNames"
         />
       </label>
-      <label>
-        Date of Birth:
+      <label className="formFlex">
+        <p>Date of Birth:</p>
         <input
           type="text"
           value={dob}

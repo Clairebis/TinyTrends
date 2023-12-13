@@ -3,8 +3,15 @@ import ChildForm from "../../components/childForm/ChildForm";
 import { getAuth } from "firebase/auth";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { doc, getDoc, updateDoc, collection } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  collection,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../../config/firebase";
+import "./editChild.css";
 
 export default function EditChild() {
   const auth = getAuth();
@@ -74,11 +81,34 @@ export default function EditChild() {
     }
   }
 
+  async function deleteChild(childId, event) {
+    event.preventDefault(); // Prevent the default buttonLink behaviour
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete ${child.firstName}’s profile and all the information connected with it?`
+    ); // Ask the user to confirm the deletion
+    if (confirmDelete && userId && childId) {
+      try {
+        const docRef = doc(db, "users", userId, "children", childId); // Reference to the child document
+        await deleteDoc(docRef); // Delete the item document
+        navigate(`/`); // Navigate to the home page
+      } catch (error) {
+        console.error("Error deleting child", error.message);
+      }
+    }
+  }
   return (
-    <section className="page">
-      <h1>Edit Child</h1>
+    <section className="page editChildPage">
+      <h1 className="editChildHeader">Edit Child</h1>
       {child !== null ? (
-        <ChildForm saveChild={handleSubmit} child={child} />
+        <>
+          <ChildForm saveChild={handleSubmit} child={child} />
+          <button
+            className="buttonSecondary  deleteChildButton"
+            onClick={(event) => deleteChild(childId, event)}
+          >
+            <p className="deleteChildButtonText"> Delete child</p>
+          </button>
+        </>
       ) : (
         <p>Loading...</p>
       )}
