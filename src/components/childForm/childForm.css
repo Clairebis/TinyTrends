@@ -19,6 +19,7 @@ form .fileInput {
   object-fit: cover;
   margin: auto;
   display: block;
+  border-radius: 8px 24px 8px 24px;
 }
 
 .childForm {
