@@ -164,9 +164,46 @@ export default function HomeItemOverview() {
           ...prevItemData,
           status: option,
         }));
+
+        // Toggle the color of the SVG icon based on the selected option
+        toggleSVGColor(option);
       } catch (error) {
         console.error("Error updating item status", error.message);
       }
+    }
+  }
+
+  // Function to toggle the color of the SVG path based on the selected option
+  function toggleSVGColor(option) {
+    const svgPathId = getSvgIconId(option);
+    const svgPath = document.getElementById(svgPathId);
+
+    // Define the colors for selected and not selected states
+    const selectedColor = "var(--white) !important";
+    const notSelectedColor = "var(--forestGreen)";
+
+    // Toggle the color based on the current color
+    if (svgPath) {
+      const currentColor = svgPath.getAttribute("fill") || notSelectedColor;
+      svgPath.setAttribute(
+        "fill",
+        currentColor === notSelectedColor ? selectedColor : notSelectedColor
+      );
+    }
+  }
+
+  // Helper function to get the SVG icon ID based on the selected option
+  function getSvgIconId(option) {
+    switch (option) {
+      case "donate":
+        return "donateIcon";
+      case "sell":
+        return "sellIcon";
+      case "recycle":
+        return "recycleIcon";
+      default:
+        console.error("Unexpected option:", option);
+        return null;
     }
   }
 
@@ -201,7 +238,11 @@ export default function HomeItemOverview() {
                       }`}
                       onClick={() => handleOptionClick("donate")}
                     >
-                      <img src={DonateSmall} alt="donate icon" />
+                      <img
+                        src={DonateSmall}
+                        alt="donate icon"
+                        id="donateIcon"
+                      />
                       Donate
                     </button>
 
@@ -211,7 +252,7 @@ export default function HomeItemOverview() {
                       }`}
                       onClick={() => handleOptionClick("sell")}
                     >
-                      <img src={ShopSmall} alt="sell icon" />
+                      <img src={ShopSmall} alt="sell icon" id="sellIcon" />
                       Sell
                     </button>
                     <button
@@ -220,7 +261,11 @@ export default function HomeItemOverview() {
                       }`}
                       onClick={() => handleOptionClick("recycle")}
                     >
-                      <img src={RecycleSmall} alt="recycle icon" />
+                      <img
+                        src={RecycleSmall}
+                        alt="recycle icon"
+                        id="recycleIcon"
+                      />
                       Recycle
                     </button>
                   </div>

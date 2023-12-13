@@ -234,7 +234,10 @@ export default function HomeWardrobe() {
             className="wardrobeSortOption"
             onClick={() => handleCategoryClick("all")}
             style={{
-              fontWeight: selectedCategory === "all" ? "bold" : "none",
+              fontWeight:
+                selectedCategory === "all"
+                  ? "var(--fontWeightBold)"
+                  : "var(--fontWeightRegular))",
             }}
           >
             <img

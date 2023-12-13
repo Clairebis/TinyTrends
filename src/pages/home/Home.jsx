@@ -17,6 +17,7 @@ import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ChildCardHome from "../../components/childCardHome/ChildCardHome";
+import NoKidsCard from "../../components/noKidsCard/NoKidsCard";
 
 export default function Home() {
   const auth = getAuth();
@@ -113,9 +114,13 @@ export default function Home() {
           </h4>
 
           <section className="childCardsContainer">
-            {children.map((child) => (
-              <ChildCardHome key={child.id} child={child} />
-            ))}
+            {children.length > 0 ? (
+              children.map((child) => (
+                <ChildCardHome key={child.id} child={child} />
+              ))
+            ) : (
+              <NoKidsCard onClick={openModal} />
+            )}
           </section>
 
           <img

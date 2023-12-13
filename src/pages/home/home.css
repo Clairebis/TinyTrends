@@ -241,6 +241,14 @@
   font-size: var(--bodyTextSmallSize);
 }
 
+.selected {
+  fill: var(--white);
+}
+
+.notSelected {
+  fill: var(--forestGreen);
+}
+
 .itemOptionButton.selected {
   background-color: var(--forestGreen);
   color: var(--white);
