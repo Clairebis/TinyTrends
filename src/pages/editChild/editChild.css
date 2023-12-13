@@ -38,3 +38,16 @@
 .deletedChildButton {
   margin-top: 32px;
 }
+
+.childUpdatedButton {
+  width: 204px;
+  margin-bottom: 16px;
+}
+
+.childUpdatedPara1 {
+  margin-bottom: 16px;
+}
+
+.childUpdatedPara2 {
+  margin-bottom: 32px;
+}
