@@ -39,6 +39,16 @@
   margin-top: 32px;
 }
 
+.deletedItemButton1 {
+  margin-top: 32px;
+  width: 204px;
+}
+
+.deletedItemButton2 {
+  margin-top: 16px;
+  width: 204px;
+}
+
 .childUpdatedButton {
   width: 204px;
   margin-bottom: 16px;

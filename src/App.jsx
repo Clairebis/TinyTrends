@@ -19,6 +19,7 @@ import HomeItemAdded from "./pages/home/HomeItemAdded";
 import HomeItemOverview from "./pages/home/HomeItemOverview";
 import HomeItemEdit from "./pages/home/HomeItemEdit";
 import HomeItemUpdated from "./pages/home/HomeItemUpdated";
+import HomeItemDeleted from "./pages/home/HomeItemDeleted";
 import HomeDonate from "./pages/home/itemOptionPages/HomeDonate";
 import HomeRecycle from "./pages/home/itemOptionPages/HomeRecycle";
 import HomeSell from "./pages/home/itemOptionPages/HomeSell";
@@ -69,6 +70,10 @@ function App() {
         <Route
           path="/home-item-updated/:childId"
           element={<HomeItemUpdated />}
+        />
+        <Route
+          path="/home-item-deleted/:childId"
+          element={<HomeItemDeleted />}
         />
         <Route path="/home-declutter/:childId" element={<HomeDeclutter />} />
         <Route path="/home-donate/:childId" element={<HomeDonate />} />

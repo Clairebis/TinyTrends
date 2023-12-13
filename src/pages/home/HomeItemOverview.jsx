@@ -135,7 +135,7 @@ export default function HomeItemOverview() {
           itemId
         ); // Reference to the item document
         await deleteDoc(docRef); // Delete the item document
-        navigate(`/home-wardrobe/${childId}`); // Navigate to the home page
+        navigate(`/home-item-deleted/${childId}`); // Navigate to the home page
       } catch (error) {
         console.error("Error deleting item", error.message);
       }
