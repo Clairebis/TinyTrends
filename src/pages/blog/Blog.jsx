@@ -66,21 +66,29 @@ export default function Blog() {
 
   return (
     <section className="page">
-      <h1 className="blogHeading">Blog</h1>
-      <p className="blogPara">
-        Explore eco-conscious parenting tips for a sustainable and stylish
-        children's wardrobe.
-      </p>
-      <SearchBar
-        className="blogSearchBar"
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        placeholder={"Search our blog"}
-      />
+      <section className="blogTop">
+        <h1 className="blogHeading">Blog</h1>
+        <p className="blogPara">
+          Explore eco-conscious parenting tips for a sustainable and stylish
+          children's wardrobe.
+        </p>
+        <SearchBar
+          className="blogSearchBar"
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          placeholder={"Search our blog"}
+        />
+      </section>
 
       <section className="blogArticleCardsContainer">
-        {blogArticles.map((blogArticle) => (
-          <BlogCard key={blogArticle.id} blogArticle={blogArticle} />
+        {blogArticles.map((blogArticle, index) => (
+          <BlogCard
+            key={blogArticle.id}
+            blogArticle={blogArticle}
+            style={{
+              marginBottom: index === blogArticles.length - 1 ? 0 : "50px",
+            }}
+          />
         ))}
       </section>
     </section>

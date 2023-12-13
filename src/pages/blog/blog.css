@@ -1,3 +1,10 @@
+.blogTop {
+  position: fixed;
+  top: 0;
+  background-color: var(--white);
+  width: 100%;
+}
+
 .blogHeading {
   margin-bottom: 8px;
   top: 16px;
@@ -10,7 +17,12 @@
 }
 
 .blogSearchBar {
-  width: 100%;
+  width: 100% !important;
+  margin-bottom: 16px;
+}
+
+.searchBarInput {
+  width: 100% !important;
 }
 
 .blogArticleCardsContainer {
@@ -18,5 +30,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 180px;
+
+  z-index: -1;
 }
