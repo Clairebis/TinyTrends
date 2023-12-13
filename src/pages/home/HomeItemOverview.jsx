@@ -28,6 +28,7 @@ export default function HomeItemOverview() {
   const { itemId, childId } = useParams();
   const [itemData, setItemData] = useState(null);
   const [childData, setChildData] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null); // ["donate", "sell", "recycle"]
   const userId = auth.currentUser?.uid;
   const navigate = useNavigate();
 
@@ -144,6 +145,7 @@ export default function HomeItemOverview() {
     if (auth.currentUser?.uid) {
       try {
         console.log("Option:", option);
+
         // Get a reference to the user's child's "items" subcollection
         const userChildItemsCollectionRef = collection(
           db,
@@ -156,17 +158,29 @@ export default function HomeItemOverview() {
         // Create a document reference for the specific item based on itemId
         const docRef = doc(userChildItemsCollectionRef, itemId);
 
+        let newOption;
+
+        // If the selected option is the same as the clicked option, set the new option to an empty string (deselect)
+        if (itemData && itemData.status === option) {
+          newOption = ""; // Deselect the option
+        } else {
+          newOption = option; // Select the option
+        }
+
         // Update the item status in the Firestore database using the docRef and status option
-        await updateDoc(docRef, { status: option });
+        await updateDoc(docRef, { status: newOption });
 
         // Update the itemData state with the new status
         setItemData((prevItemData) => ({
           ...prevItemData,
-          status: option,
+          status: newOption,
         }));
 
+        // Update the selected option in the state
+        setSelectedOption(option);
+
         // Toggle the color of the SVG icon based on the selected option
-        toggleSVGColor(option);
+        toggleSVGColor(newOption);
       } catch (error) {
         console.error("Error updating item status", error.message);
       }
