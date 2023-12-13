@@ -5,7 +5,8 @@ export default function BlogCard({ blogArticle }) {
   const navigate = useNavigate();
   const handleBlogCardClick = () => {
     console.log("Clicked on blog card:", blogArticle.id); //for debugging
-    navigate(`/blog-post-full/${blogArticle.id}`);
+    //navigate(`/blog-post-full/${blogArticle.id}`);
+    navigate(`/error-404`);
   };
 
   return (

@@ -26,6 +26,7 @@ import HomeSell from "./pages/home/itemOptionPages/HomeSell";
 import HomeThanks from "./pages/home/itemOptionPages/HomeThanks";
 import ChildUpdated from "./pages/editChild/ChildUpdated";
 import ChildDeleted from "./pages/editChild/ChildDeleted";
+import Error404 from "./pages/Error404/Error404";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // default value comes from localStorage
@@ -86,6 +87,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/error-404" element={<Error404 />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
