@@ -303,6 +303,10 @@
   font-weight: var(--fontWeightBold);
 }
 
+.editItemArrowBack {
+  margin-top: 24px;
+}
+
 /*information modal code*/
 
 .infoHeading {

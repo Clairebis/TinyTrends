@@ -6,6 +6,7 @@ import { itemsRef } from "../../config/firebase";
 import ItemForm from "../../components/itemForm/ItemForm";
 import { db } from "../../config/firebase";
 import "./home.css";
+import ArrowBack from "../../assets/icons/ArrowBack.svg";
 
 export default function HomeItemEdit() {
   const auth = getAuth();
@@ -65,7 +66,12 @@ export default function HomeItemEdit() {
 
   return (
     <section className="page">
-      <h1>Edit Item</h1>
+      <img
+        src={ArrowBack}
+        alt="Back"
+        onClick={() => navigate(-1)}
+        className="editItemArrowBack"
+      />
       {item !== null ? (
         <ItemForm item={item} saveItem={handleSubmit} />
       ) : (
