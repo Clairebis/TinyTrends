@@ -1,4 +1,4 @@
-import "./NoKidsCard.css";
+import "./noKidsCard.css";
 import noKidsPlaceholder from "../../assets/noKidsPlaceholder.webp";
 
 export default function NoKidsCard({ onClick }) {
