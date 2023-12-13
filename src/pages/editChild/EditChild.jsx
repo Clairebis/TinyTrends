@@ -90,7 +90,7 @@ export default function EditChild() {
       try {
         const docRef = doc(db, "users", userId, "children", childId); // Reference to the child document
         await deleteDoc(docRef); // Delete the item document
-        navigate(`/`); // Navigate to the home page
+        navigate(`/child-deleted`); // Navigate to the home page
       } catch (error) {
         console.error("Error deleting child", error.message);
       }

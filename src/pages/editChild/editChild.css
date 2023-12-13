@@ -17,3 +17,24 @@
   font-weight: var(--fontWeightBold);
   color: var(--forestGreen);
 }
+
+.childDeletedPage {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px !important;
+  align-items: center;
+}
+
+.deletedChildHeading {
+  margin-top: 220px;
+}
+
+.childDeletedCheckmark {
+  height: 80px;
+  margin-bottom: 32px;
+  margin-top: 290px;
+}
+
+.deletedChildButton {
+  margin-top: 32px;
+}

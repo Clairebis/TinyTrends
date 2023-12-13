@@ -24,6 +24,7 @@ import HomeRecycle from "./pages/home/itemOptionPages/HomeRecycle";
 import HomeSell from "./pages/home/itemOptionPages/HomeSell";
 import HomeThanks from "./pages/home/itemOptionPages/HomeThanks";
 import ChildUpdated from "./pages/editChild/ChildUpdated";
+import ChildDeleted from "./pages/editChild/ChildDeleted";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // default value comes from localStorage
@@ -76,6 +77,7 @@ function App() {
         <Route path="home-thanks/:actionType" element={<HomeThanks />} />
         <Route path="/edit-child/:childId" element={<EditChild />} />
         <Route path="/home-child-updated/:childId" element={<ChildUpdated />} />
+        <Route path="/child-deleted" element={<ChildDeleted />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/profile" element={<ProfilePage />} />
