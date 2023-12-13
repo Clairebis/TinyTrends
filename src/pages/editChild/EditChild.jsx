@@ -1,10 +1,10 @@
-import "../pages/home/home.css";
-import ChildForm from "../components/childForm/ChildForm";
+import "../../pages/home/home.css";
+import ChildForm from "../../components/childForm/ChildForm";
 import { getAuth } from "firebase/auth";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc, collection } from "firebase/firestore";
-import { db } from "../config/firebase";
+import { db } from "../../config/firebase";
 
 export default function EditChild() {
   const auth = getAuth();

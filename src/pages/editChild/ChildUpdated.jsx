@@ -1,4 +1,4 @@
-import Button from "../components/button/Button";
+import Button from "../../components/button/Button";
 import { useParams } from "react-router-dom";
 
 export default function ChildUpdated() {

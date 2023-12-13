@@ -29,6 +29,7 @@ export default function HomeItemOverview() {
   const [itemData, setItemData] = useState(null);
   const [childData, setChildData] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null); // ["donate", "sell", "recycle"]
+  console.log("Selected option:", selectedOption || "none");
   const userId = auth.currentUser?.uid;
   const navigate = useNavigate();
 

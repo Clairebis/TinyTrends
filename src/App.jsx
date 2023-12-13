@@ -14,7 +14,7 @@ import HomeChildAdded from "./pages/home/HomeChildAdded";
 import HomeWardrobe from "./pages/home/HomeWardrobe";
 import HomeChildOverview from "./pages/home/HomeChildOverview";
 import HomeDeclutter from "./pages/home/HomeDeclutter";
-import EditChild from "./pages/EditChild";
+import EditChild from "./pages/editChild/EditChild";
 import HomeItemAdded from "./pages/home/HomeItemAdded";
 import HomeItemOverview from "./pages/home/HomeItemOverview";
 import HomeItemEdit from "./pages/home/HomeItemEdit";
@@ -23,7 +23,7 @@ import HomeDonate from "./pages/home/itemOptionPages/HomeDonate";
 import HomeRecycle from "./pages/home/itemOptionPages/HomeRecycle";
 import HomeSell from "./pages/home/itemOptionPages/HomeSell";
 import HomeThanks from "./pages/home/itemOptionPages/HomeThanks";
-import ChildUpdated from "./pages/ChildUpdated";
+import ChildUpdated from "./pages/editChild/ChildUpdated";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // default value comes from localStorage
