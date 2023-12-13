@@ -5,7 +5,7 @@ import { db } from "../../config/firebase";
 import { collection, query, onSnapshot, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import BlogCard from "../../components/blogCard/blogCard";
+import BlogCard from "../../components/blogCard/BlogCard";
 
 export default function Blog() {
   const auth = getAuth();
