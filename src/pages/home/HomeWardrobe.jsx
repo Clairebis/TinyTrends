@@ -222,6 +222,7 @@ export default function HomeWardrobe() {
               searchValue={searchValue}
               setSearchValue={setSearchValue}
               onSearchChange={handleSearchChange}
+              placeholder={"Search wardrobe"}
             />
           </div>
           <div className="wardrobeAgeDropdown">

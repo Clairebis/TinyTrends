@@ -1,12 +1,16 @@
 import "./SearchBar.css";
 
-export default function SearchBar({ searchValue, setSearchValue }) {
+export default function SearchBar({
+  searchValue,
+  setSearchValue,
+  placeholder,
+}) {
   return (
     <div className="searchBar">
       <input
         className="searchBarInput"
         type="text"
-        placeholder="Search wardrobe"
+        placeholder={placeholder}
         value={searchValue}
         onChange={(event) => setSearchValue(event.target.value.toLowerCase())}
       />

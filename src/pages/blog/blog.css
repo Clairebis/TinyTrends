@@ -1,0 +1,14 @@
+.blogHeading {
+  margin-bottom: 8px;
+  top: 16px;
+  position: fixed;
+}
+
+.blogPara {
+  margin-bottom: 16px;
+  margin-top: 64px;
+}
+
+.blogSearchBar {
+  width: 100%;
+}
