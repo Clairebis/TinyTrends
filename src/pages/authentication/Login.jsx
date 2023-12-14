@@ -64,7 +64,7 @@ export default function Login() {
         </form>
         <div className="loginSignupLink">
           <p>
-            Don't have an account?
+            Don't have an account?{" "}
             <Link to="/signup" className="signUpLink">
               Sign Up
             </Link>
