@@ -54,7 +54,7 @@ export default function ItemForm({ saveItem, item }) {
       brand: brand,
       size: size,
       category: category,
-      image: await handleUploadImage(), // call handleUploadImage to upload the image to firebase storage and get the download URL
+      image: image, // keep the existing image URL if the user doesn't upload a new image
       status: status,
       selected: selected,
     };
