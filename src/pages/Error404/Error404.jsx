@@ -9,8 +9,9 @@ export default function Error404() {
       <div className="errorImageContainer">
         <img src={wool} alt="wool" />
       </div>
-      <p>
-        Uh-oh! Lost in the threads. Let's stitch you back to the right page!
+      <p className="errorPara">
+        Uh-oh! It looks like you're lost in the threads. Let's stitch you back
+        to the right page!
       </p>
       <Button text="Home" link="/" className="errorButton" />
     </section>
