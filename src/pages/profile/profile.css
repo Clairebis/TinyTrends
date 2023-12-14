@@ -1,5 +1,7 @@
 .profileBackgroundImageContainer {
   z-index: 1;
+  width: 100%;
+  position: fixed;
 }
 
 .userProfileDetails {
@@ -7,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -65px;
+  margin-top: 130px;
   gap: 8px;
   margin-bottom: 32px;
   box-shadow: var(--boxShadow);
@@ -71,7 +73,9 @@
 
 .userProfileChildren {
   width: 100%;
-  margin-top: 220px;
+  margin-top: 390px;
+  z-index: 0;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .userProfileChildrenHeader {

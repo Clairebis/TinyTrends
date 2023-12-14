@@ -155,6 +155,7 @@ export default function ProfilePage() {
               className="profileBackgroundImage"
             />
           </div>
+
           <section className="page">
             <div className="profileOrder">
               <section className="userProfileDetails">
