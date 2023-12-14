@@ -1,0 +1,39 @@
+.listCardContainer {
+  height: 80px;
+  width: calc(100% - 32px);
+  background-color: var(--blue100);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.listCardHeadingContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.listCardMenuContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.listCardMenuButton {
+  border-radius: 50%;
+  height: 4px;
+  width: 4px;
+  background-color: var(--white);
+}
+
+.progressBar {
+  width: 290px;
+  height: 12px;
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.listCardProgressContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  align-items: center;
+}

@@ -6,7 +6,12 @@ import { useState } from "react";
 import { TextField } from "@mui/material";
 import Button from "../../components/button/Button";
 import { getAuth } from "firebase/auth";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../config/firebase";
 
 export default function WishlistAddList() {
@@ -44,8 +49,11 @@ export default function WishlistAddList() {
     // Add the new list to the "lists" subcollection
     const addedListRef = await addDoc(userListCollectionRef, newList);
 
-    // Retrieve the auto-generated UID of the added child
+    // Retrieve the auto-generated UID of the added list
     const addedListUid = addedListRef.id;
+
+    // Update the list to include the addedListUid
+    await updateDoc(addedListRef, { addedListUid });
 
     // Create an empty "items" subcollection within the list document
     const itemsCollectionRef = collection(

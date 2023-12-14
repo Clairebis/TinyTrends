@@ -70,3 +70,10 @@
 .createlistButton {
   width: calc(100% - 16px);
 }
+
+.listCardsContainer {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
