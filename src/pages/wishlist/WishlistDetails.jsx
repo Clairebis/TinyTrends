@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../components/button/Button";
-import Hanger from "../../assets/hanger.webp";
+import Hanger from "../../assets/Hanger.webp";
 import ArrowBack from "../../assets/icons/ArrowBack.svg";
 
 export default function WishlistDetails() {
