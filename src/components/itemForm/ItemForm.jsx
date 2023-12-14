@@ -59,6 +59,10 @@ export default function ItemForm({ saveItem, item }) {
       selected: selected,
     };
 
+    if (imageFile) {
+      formData.image = await handleUploadImage(); // call handleUploadImage to upload the image to firebase storage and get the download URL
+    }
+
     console.log(formData);
 
     const validForm =
