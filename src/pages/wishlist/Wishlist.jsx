@@ -20,7 +20,11 @@ export default function Wishlist() {
           friends and family.
         </p>
       </div>
-      <Button text="+ NEW LIST" className="wishlistAddButton" />
+      <Button
+        text="+ NEW LIST"
+        className="wishlistAddButton"
+        link="/wishlist-add-list"
+      />
     </section>
   );
 }

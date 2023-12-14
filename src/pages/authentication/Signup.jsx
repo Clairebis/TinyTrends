@@ -49,7 +49,13 @@ export default function Signup() {
         user.uid,
         "children"
       );
+
       await addDoc(childrenCollectionRef, {}); // You can add any initial data if needed
+
+      // Create an empty "lists" subcollection within the user document
+      const listsCollectionRef = collection(db, "users", user.uid, "lists");
+
+      await addDoc(listsCollectionRef, {}); // You can add any initial data if needed
     } catch (error) {
       let code = error.code;
       console.log(code);

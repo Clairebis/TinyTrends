@@ -7,7 +7,7 @@ export default function Button(props) {
       to={props.link}
       className={`buttonForestGreen ${props.className || "buttonForestGreen"}`}
       type={props.type}
-      onClick={props.function}
+      onClick={props.onClick}
     >
       {props.text || "Button"}
     </Link>

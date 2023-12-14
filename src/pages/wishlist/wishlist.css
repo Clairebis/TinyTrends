@@ -26,3 +26,47 @@
   right: 16px;
   bottom: 88px;
 }
+
+/* add list page */
+
+.addListHeadingContainer {
+  margin-top: 16px;
+  display: flex;
+}
+
+.addListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 64px;
+}
+
+.wishlistHanger {
+  height: 57px;
+  margin-bottom: 32px;
+}
+
+.addListTitle {
+  width: 100%;
+}
+
+.wishlistSuggestionHeading {
+  margin-top: 32px;
+}
+
+.wishlistSuggestionContainer {
+  margin-top: 16px;
+  margin-bottom: 72px;
+  display: flex;
+  gap: 8px;
+}
+
+.wishlistSuggestionItem {
+  background-color: var(--blue100);
+  border-radius: 24px;
+  padding: 8px 16px;
+}
+
+.createlistButton {
+  width: calc(100% - 16px);
+}
