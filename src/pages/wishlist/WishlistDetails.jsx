@@ -24,7 +24,7 @@ export default function WishlistDetails() {
       <Button
         text="+ ADD ITEMS"
         className="wishlistAddButton"
-        link="/wishlist-add-list"
+        link="/error-404"
       />
     </>
   );

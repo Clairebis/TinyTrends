@@ -7,7 +7,7 @@ export default function Error404() {
     <section className="page error404Page">
       <h1 className="errorHeading">TinyTrends</h1>
       <div className="errorImageContainer">
-        <img src={wool} alt="wool" />
+        <img src={wool} alt="wool" className="errorImage" />
       </div>
       <p className="errorPara">
         Uh-oh! It looks like you're lost in the threads. Let's stitch you back

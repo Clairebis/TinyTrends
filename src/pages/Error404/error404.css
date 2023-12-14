@@ -6,8 +6,13 @@
 }
 
 .errorImageContainer {
-  margin-top: 200px;
-  margin-bottom: 48px;
+  margin-top: 220px;
+  margin-bottom: 64px;
+  height: 200px;
+}
+
+.errorImage {
+  height: 100%;
 }
 
 .errorButton {
@@ -15,7 +20,7 @@
 }
 
 .errorHeading {
-  margin-top: -360px;
+  margin-top: -300px;
   font-size: 2.1rem;
 }
 
