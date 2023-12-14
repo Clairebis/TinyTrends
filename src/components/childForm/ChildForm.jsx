@@ -48,8 +48,12 @@ export default function ChildForm({ saveChild, child }) {
       otherNames: otherNames,
       dob: dob,
       age: age,
-      image: await handleUploadImage(), // call handleUploadImage to upload the image to firebase storage and get the download URL
+      image: image, // keep the existing image URL if the user doesn't upload a new image
     };
+
+    if (imageFile) {
+      formData.image = await handleUploadImage(); // call handleUploadImage to upload the image to firebase storage and get the download URL
+    }
 
     console.log(formData);
 
