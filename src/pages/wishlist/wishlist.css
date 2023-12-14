@@ -77,3 +77,21 @@
   flex-direction: column;
   gap: 8px;
 }
+
+/* wishlist details page */
+.wishlistDetailsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wishlistHangerImage {
+  height: 94px;
+}
+
+.hangerImageContainer {
+  height: 94px;
+
+  margin-top: 180px;
+  margin-bottom: 64px;
+}
