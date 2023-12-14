@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import {
   doc,
@@ -23,6 +23,7 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import ArrowForward from "../../assets/icons/ArrowForward.svg";
 
 export default function ProfilePage() {
   const auth = getAuth();
@@ -131,6 +132,18 @@ export default function ProfilePage() {
     }
   };
 
+  // Function to handle user logout
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+        console.log("Signed out successfully");
+      })
+      .catch((error) => {
+        console.error("Error signing out", error);
+      });
+  };
+
   return (
     <>
       {userId ? (
@@ -188,6 +201,13 @@ export default function ProfilePage() {
                   ))}
                 </section>
               </section>
+
+              <div className="settingsContainer" onClick={handleLogout}>
+                <h3 className="settingsHeader">
+                  Settings <span className="settingsLogout">(Log out)</span>
+                </h3>
+                <img src={ArrowForward} alt="forward arrow" />
+              </div>
             </div>
           </section>
         </>

@@ -70,7 +70,7 @@
 }
 
 .userProfileChildren {
-  width: calc(100% - 32px);
+  width: 100%;
   margin-top: 220px;
 }
 
@@ -86,4 +86,17 @@
 
 .childCardsContainer {
   margin-top: 16px;
+}
+
+.settingsContainer {
+  box-shadow: var(--boxShadow);
+  width: calc(100% - 32px);
+  display: flex;
+  margin-top: 24px;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.settingsLogout {
+  font-size: var(--bodyTextSmallSize);
 }
