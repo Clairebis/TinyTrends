@@ -42,9 +42,8 @@
 
 .loginButton {
   margin: auto;
-  margin-bottom: 1.5rem;
-
   border: none;
+  width: 176px;
 }
 
 .logInForm {
