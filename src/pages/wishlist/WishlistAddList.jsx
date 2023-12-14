@@ -67,7 +67,7 @@ export default function WishlistAddList() {
     await addDoc(itemsCollectionRef, {}); // You can add any initial data if needed
 
     // Navigate to the list overview page
-    navigate(`/wishListDetails/${addedListUid}`);
+    navigate(`/wishList-details/${addedListUid}`);
   }
 
   return (

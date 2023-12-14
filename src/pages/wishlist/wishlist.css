@@ -85,6 +85,12 @@
   align-items: center;
 }
 
+.wishlistDetailsContentContainer {
+  display: flex;
+  margin-top: 32px;
+  align-items: center;
+}
+
 .wishlistHangerImage {
   height: 94px;
 }
@@ -94,4 +100,9 @@
 
   margin-top: 180px;
   margin-bottom: 64px;
+}
+
+.wishlistBackArrow {
+  position: fixed;
+  left: 16px;
 }

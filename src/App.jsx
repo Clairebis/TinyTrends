@@ -89,7 +89,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/wishlist-add-list" element={<WishlistAddList />} />
         <Route
-          path="/wishListDetails/:addedListUid"
+          path="/wishList-details/:addedListUid"
           element={<WishlistDetails />}
         />
         <Route path="/blog" element={<Blog />} />

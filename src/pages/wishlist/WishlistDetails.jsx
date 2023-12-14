@@ -1,17 +1,30 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../components/button/Button";
 import Hanger from "../../assets/hanger.webp";
+import ArrowBack from "../../assets/icons/ArrowBack.svg";
 
 export default function WishlistDetails() {
   const listId = useParams();
   console.log("listId:", listId);
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <>
       <section className="page wishlistDetailsPage">
-        <div className="wishlistContentContainer">
+        <div className="wishlistDetailsContentContainer">
+          <img
+            src={ArrowBack}
+            alt="Back arrow"
+            className="wishlistBackArrow"
+            onClick={goBack}
+          />
           <h1>My Lists</h1>
         </div>
+
         <div className="hangerImageContainer">
           <img src={Hanger} alt="Hanger logo" className="wishlistHangerImage" />
         </div>

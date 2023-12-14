@@ -5,7 +5,7 @@ export default function ListCard(props) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/wishListDetails/${props.addedListUid}`);
+    navigate(`/wishList-details/${props.addedListUid}`);
   };
   return (
     <section className="listCardContainer" onClick={handleClick}>
