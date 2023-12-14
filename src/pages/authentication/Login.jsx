@@ -1,21 +1,24 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Hanger from "../../assets/Hanger.webp";
+import "./authentication.css";
+import TextField from "@mui/material/TextField";
 
 export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
-  const auth = getAuth(); // getAuth() is a function from firebase/auth package
+  const auth = getAuth(); //  from firebase/auth package
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function signIn(event) {
     event.preventDefault();
-    const mail = event.target.mail.value; // mail value from input field in sign in form
-    const password = event.target.password.value; // password value from input field in sign in form
 
-    signInWithEmailAndPassword(auth, mail, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user); // tes: logging the authenticated user
+        console.log(user); // test: logging the authenticated user
       })
       .catch((error) => {
         let code = error.code; // saving error code in variable
@@ -26,21 +29,48 @@ export default function Login() {
       });
   }
   return (
-    <section className="page">
-      <h1>Log In</h1>
-      <form onSubmit={signIn}>
-        <input type="email" name="mail" placeholder="Type your mail" />
-        <input
-          type="password"
-          name="password"
-          placeholder="Type your password"
-        />
-        <p className="text-error">{errorMessage}</p>
-        <button>Log in</button>
-      </form>
-      <p className="text-center">
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
-    </section>
+    <>
+      <section className="page loginPage">
+        <img src={Hanger} alt="Hanger" className="loginHanger" />
+        <h1 className="landingTitle">TinyTrends</h1>
+
+        <form onSubmit={signIn} className="logInForm">
+          <div className="loginInputContainer">
+            <TextField
+              id="email-address"
+              className="loginInput"
+              type="email"
+              name="mail"
+              placeholder="Type your mail"
+              required
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+
+          <div className="loginInputContainer">
+            <TextField
+              className="loginInput"
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Type your password"
+              required
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+
+          <p className="text-error">{errorMessage}</p>
+          <button className="buttonForestGreen loginButton">Log in</button>
+        </form>
+        <div className="loginSignupLink">
+          <p>
+            Don't have an account?
+            <Link to="/signup" className="signUpLink">
+              Sign Up
+            </Link>
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

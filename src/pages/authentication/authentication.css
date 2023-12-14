@@ -1,4 +1,5 @@
-.landingPage {
+.landingPage,
+.loginPage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,4 +38,44 @@
   text-align: center;
   margin: auto;
   width: 85vw;
+}
+
+.loginButton {
+  margin: auto;
+  margin-bottom: 1.5rem;
+
+  border: none;
+}
+
+.logInForm {
+  box-shadow: none;
+  width: calc(100% - 32px);
+}
+
+.loginInputContainer {
+  margin-top: 0.5rem;
+}
+
+.loginInput {
+  width: 100%;
+}
+
+.loginSignupLink {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  font-family: var(--body-font);
+  font-size: var(--body-text-size);
+}
+
+.signUpLink {
+  color: var(--forestGreen);
+  font-size: var(--bodyTextSize);
+  font-weight: var(--fontWeightBold);
+}
+
+.loginHanger {
+  margin-top: 7rem;
+  height: 181px;
+  margin-bottom: 5rem;
 }
