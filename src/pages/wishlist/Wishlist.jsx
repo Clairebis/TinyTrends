@@ -61,7 +61,7 @@ export default function Wishlist() {
                 className="listBearImage"
               />
             </div>
-            <h2>Let’s plan your wishlists!</h2>
+            <h2 className="wishlistSubheading">Let’s plan your wishlists!</h2>
             <p className="wishlistPara">
               Tap the button below to create a list. You can then share it with
               friends and family.

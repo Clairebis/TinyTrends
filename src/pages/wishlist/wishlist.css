@@ -8,12 +8,18 @@
 .listBearImageContainer {
   height: 166px;
   width: 132px;
-  margin-top: 180px;
+
+  margin: auto;
+  margin-top: 90px;
   margin-bottom: 32px;
 }
 
 .listBearImage {
   height: 100%;
+}
+
+.wishlistSubheading {
+  margin: auto;
 }
 
 .wishlistPara {
