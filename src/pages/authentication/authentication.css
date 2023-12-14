@@ -1,5 +1,6 @@
 .landingPage,
-.loginPage {
+.loginPage,
+.signupPage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,13 +41,15 @@
   width: 85vw;
 }
 
-.loginButton {
+.loginButton,
+.signupButton {
   margin: auto;
   border: none;
   width: 176px;
 }
 
-.logInForm {
+.logInForm,
+.signupForm {
   box-shadow: none;
   width: calc(100% - 32px);
 }
