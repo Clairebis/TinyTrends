@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import "./editChild.css";
+import ArrowBack from "../../assets/icons/ArrowBack.svg";
 
 export default function EditChild() {
   const auth = getAuth();
@@ -96,9 +97,17 @@ export default function EditChild() {
       }
     }
   }
+
+  const goBack = () => {
+    navigate(-1); // This will navigate one page back
+  };
+
   return (
     <section className="page editChildPage">
-      <h1 className="editChildHeader">Edit Child</h1>
+      <div className="editChildHeader">
+        <img src={ArrowBack} alt="back arrow" onClick={goBack} />
+        <h1>Edit Child</h1>
+      </div>
       {child !== null ? (
         <>
           <ChildForm saveChild={handleSubmit} child={child} />

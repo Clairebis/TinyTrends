@@ -3,6 +3,13 @@
   flex-direction: column;
   margin-top: 16px;
 }
+
+.editChildHeader {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+
 .deleteChildButton {
   width: 120px;
   padding: 10px;

@@ -23,5 +23,6 @@ form .fileInput {
 }
 
 .itemForm {
-  margin-top: 72px;
+  margin-top: 48px;
+  box-shadow: none;
 }

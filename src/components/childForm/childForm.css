@@ -23,8 +23,9 @@ form .fileInput {
 }
 
 .childForm {
-  margin-top: 72px;
+  margin-top: 48px;
   width: calc(100% - 32px);
+  box-shadow: none;
 }
 
 .formFlex {
