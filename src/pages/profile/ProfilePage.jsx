@@ -7,6 +7,8 @@ import {
   collection,
   query,
   orderBy,
+  getDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import ChildCardHome from "../../components/childCardHome/ChildCardHome";
@@ -15,17 +17,22 @@ import userImagePlaceholder from "../../assets/userImagePlaceholder.webp";
 import Edit from "../../assets/icons/Edit.svg";
 import "./profile.css";
 import plusIcon from "../../assets/icons/plusIcon.webp";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 export default function ProfilePage() {
   const auth = getAuth();
   const navigate = useNavigate();
   const userId = auth.currentUser?.uid;
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState({});
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
-    //console.log("ChildrenRef:", childrenRef(auth.currentUser?.uid));
-    // Get a reference to the user's "children" subcollection
+    // Get a reference to the user and their "children" subcollection
     if (auth.currentUser?.uid) {
       console.log("User ID:", auth.currentUser.uid);
 
@@ -63,6 +70,67 @@ export default function ProfilePage() {
     }
   }, [auth.currentUser?.uid]); // Make sure to include userId as a dependency if it's used inside the useEffect
 
+  // Function to handle editing the user profile
+  const handleEditProfile = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        uploadImage(file);
+      }
+    };
+    input.click();
+  };
+
+  // Function to upload the selected image
+  const uploadImage = async (imageFile) => {
+    if (imageFile) {
+      const storage = getStorage();
+      const storageRef = ref(storage, `users/${auth.currentUser.uid}`);
+      const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+      uploadTask.on(
+        "state_changed",
+        () => {},
+        (error) => {
+          console.error("Error uploading image", error);
+        },
+        async () => {
+          try {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            updateProfileImage(downloadURL);
+          } catch (error) {
+            console.error("Error getting download URL", error);
+          }
+        }
+      );
+    }
+  };
+
+  const updateProfileImage = async (downloadURL) => {
+    const userDocRef = doc(db, "users", auth.currentUser.uid);
+    try {
+      // Log the userDocRef to check its structure
+      console.log("userDocRef:", userDocRef);
+
+      // Check if the document exists before attempting to update
+      const userDocSnapshot = await getDoc(userDocRef);
+      if (userDocSnapshot.exists()) {
+        // Update the user's image in Firestore
+        await updateDoc(userDocRef, {
+          image: downloadURL,
+        });
+        console.log("User image updated successfully");
+      } else {
+        console.error("User document does not exist");
+      }
+    } catch (error) {
+      console.error("Error updating user image", error);
+    }
+  };
+
   return (
     <>
       {userId ? (
@@ -77,7 +145,10 @@ export default function ProfilePage() {
           <section className="page">
             <div className="profileOrder">
               <section className="userProfileDetails">
-                <div className="userProfileImageContainer">
+                <div
+                  className="userProfileImageContainer"
+                  onClick={handleEditProfile}
+                >
                   <img
                     src={userData.image || userImagePlaceholder}
                     alt="User Profile image"

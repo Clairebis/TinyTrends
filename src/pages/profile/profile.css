@@ -24,6 +24,11 @@
   margin-top: -65px;
 }
 
+.userProfileImage {
+  width: 100%;
+  border-radius: 50%;
+}
+
 .profileEditIcon {
   position: absolute;
   bottom: 0;
@@ -64,7 +69,7 @@
 
 .userProfileChildren {
   width: calc(100% - 32px);
-  margin-top: 210px;
+  margin-top: 220px;
 }
 
 .userProfileChildrenHeader {
@@ -75,4 +80,8 @@
 
 .profilePlus {
   height: 30px;
+}
+
+.childCardsContainer {
+  margin-top: 16px;
 }
