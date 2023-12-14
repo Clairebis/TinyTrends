@@ -31,3 +31,7 @@ form .fileInput {
   display: flex;
   flex-direction: row;
 }
+
+.errorMessage {
+  margin-bottom: 24px;
+}
