@@ -1,0 +1,40 @@
+.landingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landingTitle {
+  margin-top: 300px;
+  font-family: var(--bodyFont);
+  font-weight: 900;
+  font-size: 2.1rem;
+}
+
+.landingHanger {
+  margin-top: 7rem;
+  height: 181px;
+  margin-bottom: 1rem;
+}
+
+.landingText {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.landingPara {
+  margin-bottom: 1rem;
+}
+
+.landingButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.landingButton {
+  text-align: center;
+  margin: auto;
+  width: 85vw;
+}
