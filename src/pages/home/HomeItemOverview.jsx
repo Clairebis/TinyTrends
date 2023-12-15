@@ -388,8 +388,8 @@ export default function HomeItemOverview() {
                 <span className="infoColour">
                   <Link to="/home-declutter/${childId}`">“declutter”</Link>
                 </span>
-                collection. Visit later to view marked items and learn how to
-                reuse them and track your progress.
+                collection. Visit later to view marked items, learn how to reuse
+                them, and track your progress.
               </p>
               <Button
                 text="Back to the wardrobe"
