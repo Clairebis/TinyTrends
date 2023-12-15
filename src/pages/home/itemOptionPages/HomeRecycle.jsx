@@ -249,7 +249,7 @@ export default function HomeRecycle() {
                 onKeyDown={handleDeleteSelected}
                 className="buttonForestGreen itemOptionsActionButton optionsPageButton"
               >
-                <img src={RecycleTiny} alt="Recycle" />
+                <img src={RecycleTiny} alt="Recycle" className="recycleTiny" />
                 Recycled
               </button>
             </div>

@@ -12,3 +12,8 @@
   border-radius: 8px;
   object-fit: cover;
 }
+
+.backArrow {
+  height: 20px;
+  width: 11.5px;
+}

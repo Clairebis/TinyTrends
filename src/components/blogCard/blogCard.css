@@ -17,3 +17,9 @@
   height: 32px;
   margin-bottom: 16px;
 }
+
+.blogCardImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

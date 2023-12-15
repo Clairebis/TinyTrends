@@ -84,7 +84,10 @@ export default function HomeChildOverview() {
               onKeyDown={handleWardrobeClick}
               className="childOverviewArticleContainer childOverviewArticleContainerWardrobe"
             >
-              <div className="childOverviewArticleImageContainer">
+              <div
+                className="childOverviewArticleImageContainer"
+                aria-hidden="true"
+              >
                 <img
                   src={Wardrobe}
                   alt="Wardrobe"
@@ -100,8 +103,11 @@ export default function HomeChildOverview() {
               onKeyDown={handleDeclutterClick}
               className="childOverviewArticleContainer childOverviewArticleContainerDeclutter"
             >
-              <div className="childOverviewArticleImageContainer">
-                <img src={Reuse} alt="Reuse" />
+              <div
+                className="childOverviewArticleImageContainer"
+                aria-hidden="true"
+              >
+                <img src={Reuse} alt="Reuse" className="reuseImage" />
               </div>
               <h2 className="childOverviewArticleHeading">Declutter</h2>
             </article>
@@ -110,7 +116,10 @@ export default function HomeChildOverview() {
               onKeyDown={handleEditClick}
               className="childOverviewArticleContainer childOverviewArticleContainerEdit"
             >
-              <div className="childOverviewArticleImageContainer">
+              <div
+                className="childOverviewArticleImageContainer"
+                aria-hidden="true"
+              >
                 <img
                   src={childData.image}
                   alt="Edit"
@@ -118,7 +127,7 @@ export default function HomeChildOverview() {
                 />
                 <img
                   src={Edit}
-                  alt="Edit"
+                  alt="Edit icon"
                   className="childOverviewArticleImageEditIcon"
                 />
               </div>

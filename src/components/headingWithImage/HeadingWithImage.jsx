@@ -16,6 +16,7 @@ export default function HeadingWithImage(props) {
         alt="Back Arrow"
         onClick={goBack}
         onKeyDown={goBack}
+        className="backArrow"
       />
       <h1>{props.pageTitle}</h1>
       <img

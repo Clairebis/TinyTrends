@@ -249,7 +249,7 @@ export default function HomeSell() {
                 onKeyDown={handleDeleteSelected}
                 className="buttonForestGreen itemOptionsActionButton optionsPageButton"
               >
-                <img src={ShopTiny} alt="Sold" />
+                <img src={ShopTiny} alt="Sold" className="sellTiny" />
                 Sold
               </button>
             </div>

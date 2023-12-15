@@ -16,7 +16,11 @@ export default function BlogCard({ blogArticle }) {
       onKeyDown={handleBlogCardClick}
     >
       <div className="blogCardImageContainer" aria-hidden="true">
-        <img src={blogArticle.image} alt={blogArticle.title} />
+        <img
+          src={blogArticle.image}
+          alt={blogArticle.title}
+          className="blogCardImage"
+        />
       </div>
       <div className="blogCardText">
         <h3 className="blogCardHeading">{blogArticle.title}</h3>

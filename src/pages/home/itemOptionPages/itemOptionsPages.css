@@ -76,3 +76,14 @@
 .itemContainer {
   position: relative;
 }
+
+.donateTiny,
+.recycleTiny {
+  width: 12px;
+  height: 12px;
+}
+
+.sellTiny {
+  width: 12px;
+  height: 10.5px;
+}

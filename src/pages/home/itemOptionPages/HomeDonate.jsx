@@ -251,7 +251,7 @@ export default function HomeDonate() {
                 onKeyDown={handleDeleteSelected}
                 className="buttonForestGreen itemOptionsActionButton optionsPageButton"
               >
-                <img src={DonateTiny} alt="Donate" />
+                <img src={DonateTiny} alt="Donate" className="donateTiny" />
                 Donated
               </button>
             </div>
