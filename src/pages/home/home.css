@@ -255,8 +255,8 @@
 }
 
 .itemOptionButton.selected {
-  background-color: var(--forestGreen);
-  color: var(--white);
+  background-color: var(--grassGreen);
+  color: var(--forestGreen);
 }
 
 .infoContainer {
