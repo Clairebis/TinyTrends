@@ -11,7 +11,12 @@ export default function HeadingWithImage(props) {
 
   return (
     <div className="headingWithImageHeading">
-      <img src={ArrowBack} alt="Back Arrow" onClick={goBack} />
+      <img
+        src={ArrowBack}
+        alt="Back Arrow"
+        onClick={goBack}
+        onKeyDown={goBack}
+      />
       <h1>{props.pageTitle}</h1>
       <img
         src={props.childImage}

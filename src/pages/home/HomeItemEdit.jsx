@@ -70,6 +70,7 @@ export default function HomeItemEdit() {
         src={ArrowBack}
         alt="Back"
         onClick={() => navigate(-1)}
+        onKeyDown={() => navigate(-1)}
         className="editItemArrowBack"
       />
       {item !== null ? (

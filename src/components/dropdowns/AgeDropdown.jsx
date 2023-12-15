@@ -13,6 +13,7 @@ export default function AgeDropdown() {
         className="ageDropdown"
         value={selectedOption}
         onChange={handleChange}
+        aria-label="Select age"
       >
         <option value="">Select age</option>
         <option value="0 - 3 months">0 - 3 months</option>

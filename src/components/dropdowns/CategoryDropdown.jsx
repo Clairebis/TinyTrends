@@ -14,6 +14,7 @@ export default function CategoryDropdown({ onCategoryChange }) {
         className="categoryDropdown"
         value={selectedCategory}
         onChange={handleChange}
+        aria-label="Select category"
       >
         <option value="">Select category</option>
         <option value="Tops">Tops</option>

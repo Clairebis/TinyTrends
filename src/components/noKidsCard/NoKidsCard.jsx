@@ -1,9 +1,13 @@
 import "./noKidsCard.css";
 import noKidsPlaceholder from "../../assets/noKidsPlaceholder.webp";
 
-export default function NoKidsCard({ onClick }) {
+export default function NoKidsCard({ onClick, onKeyDown }) {
   return (
-    <article className="childCardContainer" onClick={onClick}>
+    <article
+      className="childCardContainer"
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+    >
       <div className="childCardContent">
         <div className="childCardImageContainer">
           <img

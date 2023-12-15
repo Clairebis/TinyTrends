@@ -6,7 +6,12 @@ export default function Landing() {
   return (
     <>
       <section className="page landingPage">
-        <img src={Hanger} alt="Hanger" className="landingHanger" />
+        <img
+          src={Hanger}
+          alt="Hanger"
+          className="landingHanger"
+          aria-hidden="true"
+        />
         <h1 className="landingTitle">TinyTrends</h1>
         <section className="landingText">
           <p className="landingPara">Revamp your child's closet sustainably!</p>

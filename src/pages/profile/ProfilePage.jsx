@@ -162,6 +162,7 @@ export default function ProfilePage() {
                 <div
                   className="userProfileImageContainer"
                   onClick={handleEditProfile}
+                  onKeyDown={handleEditProfile}
                 >
                   <img
                     src={userData.image || userImagePlaceholder}
@@ -203,7 +204,11 @@ export default function ProfilePage() {
                 </section>
               </section>
 
-              <div className="settingsContainer" onClick={handleLogout}>
+              <div
+                className="settingsContainer"
+                onClick={handleLogout}
+                onKeyDown={handleLogout}
+              >
                 <h3 className="settingsHeader">
                   Settings <span className="settingsLogout">(Log out)</span>
                 </h3>

@@ -105,7 +105,12 @@ export default function EditChild() {
   return (
     <section className="page editChildPage">
       <div className="editChildHeader">
-        <img src={ArrowBack} alt="back arrow" onClick={goBack} />
+        <img
+          src={ArrowBack}
+          alt="back arrow"
+          onClick={goBack}
+          onKeyDown={goBack}
+        />
         <h1>Edit Child</h1>
       </div>
       {child !== null ? (

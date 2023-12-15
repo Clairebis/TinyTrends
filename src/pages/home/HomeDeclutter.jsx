@@ -94,7 +94,11 @@ export default function HomeDeclutter() {
         Thanks for contributing to sustainable fashion!
       </p>
 
-      <article onClick={handleDonateClick} className="declutterArticle">
+      <article
+        onClick={handleDonateClick}
+        onKeyDown={handleDonateClick}
+        className="declutterArticle"
+      >
         <div className="declutterArticleLeft">
           <div className="declutterArticleImageContainer">
             <img src={Donate} alt="Donate" />
@@ -107,7 +111,11 @@ export default function HomeDeclutter() {
           </p>
         </div>
       </article>
-      <article onClick={handleSellClick} className="declutterArticle">
+      <article
+        onClick={handleSellClick}
+        onKeyDown={handleSellClick}
+        className="declutterArticle"
+      >
         <div className="declutterArticleLeft">
           <div className="declutterArticleImageContainer">
             <img src={Sell} alt="Sell" />
@@ -120,7 +128,11 @@ export default function HomeDeclutter() {
           </p>
         </div>
       </article>
-      <article onClick={handleRecycleClick} className="declutterArticle">
+      <article
+        onClick={handleRecycleClick}
+        onKeyDown={handleRecycleClick}
+        className="declutterArticle"
+      >
         <div className="declutterArticleLeft">
           <div className="declutterArticleImageContainer">
             <img src={Recycle} alt="Recycle" />

@@ -21,6 +21,7 @@ export default function WishlistDetails() {
             alt="Back arrow"
             className="wishlistBackArrow"
             onClick={goBack}
+            onKeyDown={goBack}
           />
           <h1>My Lists</h1>
         </div>

@@ -10,7 +10,11 @@ export default function ChildCardHome({ child }) {
   }
 
   return (
-    <article className="childCardContainer" onClick={handleClick}>
+    <article
+      className="childCardContainer"
+      onClick={handleClick}
+      onKeyDown={handleClick}
+    >
       <div className="childCardContent">
         <div className="childCardImageContainer">
           <img

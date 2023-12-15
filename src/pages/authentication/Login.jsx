@@ -31,7 +31,12 @@ export default function Login() {
   return (
     <>
       <section className="page loginPage">
-        <img src={Hanger} alt="Hanger" className="loginHanger" />
+        <img
+          src={Hanger}
+          alt="Hanger"
+          className="loginHanger"
+          aria-hidden="true"
+        />
         <h1 className="landingTitle">TinyTrends</h1>
 
         <form onSubmit={signIn} className="logInForm">

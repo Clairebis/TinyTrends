@@ -10,7 +10,7 @@ export default function HomeChildAdded() {
     <section className="page successPage">
       <h1>Congratulations!</h1>
       <div className="successPageContent">
-        <img src={Checkmark} alt="checkmark" />
+        <img src={Checkmark} alt="checkmark" aria-hidden="true" />
         <p>This item has been added to the wardrobe.</p>
         <p>What would you like to do now?</p>
         <div className="successPageButtons">

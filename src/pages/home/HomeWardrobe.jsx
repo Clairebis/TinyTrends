@@ -308,12 +308,20 @@ export default function HomeWardrobe() {
         src={plusIcon}
         alt="plus button to add an item of clothing"
         onClick={openModal}
+        onKeyDown={openModal}
+        aria-label="Add an item of clothing"
       />
       {/*modal to add an item*/}
       <div className="addItemModal">
         <div className="addChildModalContent">
           <div className="closeModal">
-            <img src={close} alt="" onClick={closeModal} />
+            <img
+              src={close}
+              alt="Close icon"
+              onClick={closeModal}
+              onKeyDown={closeModal}
+              aria-label="Close pop-up"
+            />
           </div>
           <ModalHeading text="Add an item" />
           <ItemForm saveItem={handleSubmit} />

@@ -67,7 +67,12 @@ export default function Signup() {
 
   return (
     <section className="page signupPage">
-      <img src={Hanger} alt="Hanger" className="loginHanger" />
+      <img
+        src={Hanger}
+        alt="Hanger"
+        className="loginHanger"
+        aria-hidden="true"
+      />
       <h1 className="landingTitle">TinyTrends</h1>
       <form onSubmit={handleSignUp} className="signupForm">
         <div className="loginInputContainer">

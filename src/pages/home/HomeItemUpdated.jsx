@@ -10,7 +10,7 @@ export default function HomeItemUpdated() {
     <section className="page successPage">
       <h1>Great!</h1>
       <div className="successPageContent">
-        <img src={Checkmark} alt="checkmark" />
+        <img src={Checkmark} alt="checkmark" aria-hidden="true" />
         <p>This item has been updated.</p>
         <p>What would you like to do now?</p>
         <div className="successPageButtons">

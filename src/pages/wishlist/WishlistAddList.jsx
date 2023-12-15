@@ -72,7 +72,11 @@ export default function WishlistAddList() {
 
   return (
     <section className="page">
-      <div className="addListHeadingContainer" onClick={goBack}>
+      <div
+        className="addListHeadingContainer"
+        onClick={goBack}
+        onKeyDown={goBack}
+      >
         <img src={ArrowBack} alt="back arrow" className="backArrow" />
       </div>
 
@@ -104,6 +108,7 @@ export default function WishlistAddList() {
         text="Create list"
         className="createlistButton"
         onClick={createList}
+        onKeyDown={createList}
       />
     </section>
   );

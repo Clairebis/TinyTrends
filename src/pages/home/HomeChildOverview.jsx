@@ -81,6 +81,7 @@ export default function HomeChildOverview() {
           <section className="childOverviewSection">
             <article
               onClick={handleWardrobeClick}
+              onKeyDown={handleWardrobeClick}
               className="childOverviewArticleContainer childOverviewArticleContainerWardrobe"
             >
               <div className="childOverviewArticleImageContainer">
@@ -96,6 +97,7 @@ export default function HomeChildOverview() {
             </article>
             <article
               onClick={handleDeclutterClick}
+              onKeyDown={handleDeclutterClick}
               className="childOverviewArticleContainer childOverviewArticleContainerDeclutter"
             >
               <div className="childOverviewArticleImageContainer">
@@ -105,6 +107,7 @@ export default function HomeChildOverview() {
             </article>
             <article
               onClick={handleEditClick}
+              onKeyDown={handleEditClick}
               className="childOverviewArticleContainer childOverviewArticleContainerEdit"
             >
               <div className="childOverviewArticleImageContainer">

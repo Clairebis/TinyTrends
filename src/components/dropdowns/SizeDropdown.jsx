@@ -15,6 +15,7 @@ export default function SizeDropdown({ onSizeChange, hideLabel = false }) {
         className="ageDropdown"
         value={selectedOption}
         onChange={handleChange}
+        aria-label="Select size"
       >
         <option value="">Select age</option>
         <option value="0 - 3 months">0 - 3 months</option>

@@ -6,7 +6,12 @@ export default function ChildDeleted() {
   return (
     <section className="page childDeletedPage">
       <h1 className="deletedChildHeading">Confirmation</h1>
-      <img src={Checkmark} alt="Checkmark" className="childDeletedCheckmark" />
+      <img
+        src={Checkmark}
+        alt="Checkmark"
+        className="childDeletedCheckmark"
+        aria-hidden="true"
+      />
       <p>This child's profile has now been deleted.</p>
       <Button text="Go home" link="/" className="deletedChildButton"></Button>;
     </section>

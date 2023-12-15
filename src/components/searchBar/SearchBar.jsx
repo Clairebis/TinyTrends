@@ -6,7 +6,7 @@ export default function SearchBar({
   placeholder,
 }) {
   return (
-    <div className="searchBar">
+    <div className="searchBar" aria-label="search bar">
       <input
         className="searchBarInput"
         type="text"

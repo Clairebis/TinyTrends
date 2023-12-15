@@ -241,12 +241,14 @@ export default function HomeDonate() {
               </button>
               <button
                 onClick={handleSelectAll}
+                onKeyDown={handleSelectAll}
                 className="buttonForestGreen buttonSecondary optionsPageButton2"
               >
                 Select all
               </button>
               <button
                 onClick={handleDeleteSelected}
+                onKeyDown={handleDeleteSelected}
                 className="buttonForestGreen itemOptionsActionButton optionsPageButton"
               >
                 <img src={DonateTiny} alt="Donate" />
@@ -266,6 +268,9 @@ export default function HomeDonate() {
                         item.selected === "selected" ? "selected" : ""
                       }`}
                       onClick={() => handleToggleStatus(item.id, item.selected)}
+                      onKeyDown={() =>
+                        handleToggleStatus(item.id, item.selected)
+                      }
                     />
                   </div>
                 </div>

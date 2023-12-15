@@ -238,7 +238,11 @@ export default function HomeItemOverview() {
                   <h2 className="itemOverviewHeading">{itemData.caption}</h2>
                 </div>
                 <div className="itemOverviewImageContainer">
-                  <div className="infoContainer" onClick={openModal}>
+                  <div
+                    className="infoContainer"
+                    onClick={openModal}
+                    onKeyDown={openModal}
+                  >
                     <img className="infoIcon" src={Info} alt="info icon" />
                   </div>
                   <img
@@ -252,6 +256,7 @@ export default function HomeItemOverview() {
                         itemData.status === "donate" ? "selected" : ""
                       }`}
                       onClick={() => handleOptionClick("donate")}
+                      onKeyDown={() => handleOptionClick("donate")}
                     >
                       <img
                         src={DonateSmall}
@@ -266,6 +271,7 @@ export default function HomeItemOverview() {
                         itemData.status === "sell" ? "selected" : ""
                       }`}
                       onClick={() => handleOptionClick("sell")}
+                      onKeyDown={() => handleOptionClick("sell")}
                     >
                       <img src={ShopSmall} alt="sell icon" id="sellIcon" />
                       Sell
@@ -275,6 +281,7 @@ export default function HomeItemOverview() {
                         itemData.status === "recycle" ? "selected" : ""
                       }`}
                       onClick={() => handleOptionClick("recycle")}
+                      onKeyDown={() => handleOptionClick("recycle")}
                     >
                       <img
                         src={RecycleSmall}
@@ -308,6 +315,7 @@ export default function HomeItemOverview() {
                 <button
                   className="buttonSecondary itemOverviewButton deleteItemButton"
                   onClick={(event) => deleteItem(childId, itemId, event)}
+                  onKeyDown={(event) => deleteItem(childId, itemId, event)}
                 >
                   Delete item
                 </button>
@@ -329,14 +337,20 @@ export default function HomeItemOverview() {
           <div className="infoModal">
             <div className="addChildModalContent">
               <div className="closeModal">
-                <img src={close} alt="" onClick={closeModal} />
+                <img
+                  src={close}
+                  alt="close icon"
+                  onClick={closeModal}
+                  onKeyDown={closeModal}
+                  aria-label="close information pop-up"
+                />
               </div>
               <ModalHeading
                 text="Choose the next chapter for your child's old clothes"
                 className="infoHeading"
               />
               <div className="infoIntro">
-                <div className="infoImageContainer">
+                <div className="infoImageContainer" aria-hidden="true">
                   <img
                     src={Bear}
                     alt="illustration of a bear"

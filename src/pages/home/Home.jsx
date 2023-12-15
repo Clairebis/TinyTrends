@@ -119,7 +119,7 @@ export default function Home() {
                 <ChildCardHome key={child.id} child={child} />
               ))
             ) : (
-              <NoKidsCard onClick={openModal} />
+              <NoKidsCard onClick={openModal} onKeyDown={openModal} />
             )}
           </section>
 
@@ -128,12 +128,20 @@ export default function Home() {
             src={plusIcon}
             alt="plus button to add a child"
             onClick={openModal}
+            onKeyDown={openModal}
+            aria-label="Add a child"
           />
           {/*modal to add a child*/}
           <div className="addChildModal">
             <div className="addChildModalContent">
               <div className="closeModal">
-                <img src={close} alt="" onClick={closeModal} />
+                <img
+                  src={close}
+                  alt="Close icon"
+                  onClick={closeModal}
+                  onKeyDown={closeModal}
+                  aria-label="Close pop-up"
+                />
               </div>
               <ModalHeading text="Add a child" />
               <ChildForm saveChild={handleSubmit} />

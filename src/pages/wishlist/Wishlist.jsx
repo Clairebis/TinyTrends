@@ -54,7 +54,7 @@ export default function Wishlist() {
           ))
         ) : (
           <>
-            <div className="listBearImageContainer">
+            <div className="listBearImageContainer" aria-hidden="true">
               <img
                 src={ListBear}
                 alt="Bear writing a list"

@@ -10,8 +10,12 @@ export default function BlogCard({ blogArticle }) {
   };
 
   return (
-    <article className="blogCard" onClick={handleBlogCardClick}>
-      <div className="blogCardImageContainer">
+    <article
+      className="blogCard"
+      onClick={handleBlogCardClick}
+      onKeyDown={handleBlogCardClick}
+    >
+      <div className="blogCardImageContainer" aria-hidden="true">
         <img src={blogArticle.image} alt={blogArticle.title} />
       </div>
       <div className="blogCardText">

@@ -239,12 +239,14 @@ export default function HomeRecycle() {
               </button>
               <button
                 onClick={handleSelectAll}
+                onKeyDown={handleSelectAll}
                 className="buttonForestGreen buttonSecondary optionsPageButton2"
               >
                 Select all
               </button>
               <button
                 onClick={handleDeleteSelected}
+                onKeyDown={handleDeleteSelected}
                 className="buttonForestGreen itemOptionsActionButton optionsPageButton"
               >
                 <img src={RecycleTiny} alt="Recycle" />
@@ -264,6 +266,9 @@ export default function HomeRecycle() {
                         item.selected === "selected" ? "selected" : ""
                       }`}
                       onClick={() => handleToggleStatus(item.id, item.selected)}
+                      onKeyDown={() =>
+                        handleToggleStatus(item.id, item.selected)
+                      }
                     />
                   </div>
                 </div>

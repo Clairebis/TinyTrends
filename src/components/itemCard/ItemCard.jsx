@@ -10,7 +10,11 @@ export default function ItemCard({ item, childId }) {
   }
 
   return (
-    <article className="itemCardContainer" onClick={handleClick}>
+    <article
+      className="itemCardContainer"
+      onClick={handleClick}
+      onKeyDown={handleClick}
+    >
       <div>
         <img src={item.image} alt={item.caption} className="itemCardImage" />
       </div>

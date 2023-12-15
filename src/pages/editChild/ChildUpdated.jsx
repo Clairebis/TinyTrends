@@ -9,7 +9,12 @@ export default function ChildUpdated() {
   return (
     <section className="page childDeletedPage">
       <h1 className="deletedChildHeading">Great!</h1>
-      <img src={Checkmark} alt="Checkmark" className="childDeletedCheckmark" />
+      <img
+        src={Checkmark}
+        alt="Checkmark"
+        className="childDeletedCheckmark"
+        aria-hidden="true"
+      />
       <p className="childUpdatedPara1">
         This child's information has been updated.
       </p>
