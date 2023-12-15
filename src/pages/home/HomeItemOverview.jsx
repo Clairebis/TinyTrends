@@ -386,7 +386,10 @@ export default function HomeItemOverview() {
               <p className="infoTip">
                 Tip: When an item is selected, it's added to your child’s{" "}
                 <span className="infoColour">
-                  <Link to="/home-declutter/${childId}`" className="infoColour">
+                  <Link
+                    to={`/home-declutter/${childId}`}
+                    className="infoColour"
+                  >
                     “declutter”
                   </Link>
                 </span>
