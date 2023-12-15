@@ -352,9 +352,10 @@
 }
 
 .infoColour {
-  color: var(--grassGreen);
+  color: var(--grassGreen) !important;
   font-size: var(--bodyTextSize);
   font-weight: var(--fontWeightBold);
+  text-decoration: none;
 }
 
 .infoButton {
