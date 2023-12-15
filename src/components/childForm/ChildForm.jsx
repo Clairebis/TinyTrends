@@ -25,7 +25,7 @@ export default function ChildForm({ saveChild, child }) {
 
   function handleImageChange(event) {
     const file = event.target.files[0];
-    if (file.size < 500000) {
+    if (file.size < 1500000) {
       // image file size must be below 0,5MB
       setImageFile(file); // set the imageFile state with the file object
       const reader = new FileReader();
