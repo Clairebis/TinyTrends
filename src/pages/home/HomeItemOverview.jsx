@@ -383,10 +383,10 @@ export default function HomeItemOverview() {
                 </p>
               </section>
               <p className="infoTip">
-                Tip: Add items to your child’s{" "}
+                Tip: When an item is selected, it's added to your child’s{" "}
                 <span className="infoColour">“declutter”</span>
                 collection. Visit later to view marked items and learn how to
-                reuse them.
+                reuse them and track your progress.
               </p>
               <Button
                 text="Back to the wardrobe"
