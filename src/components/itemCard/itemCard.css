@@ -6,7 +6,7 @@
 }
 
 .itemCardImage {
-  max-width: 177px;
+  width: 177px;
   height: 187px;
   object-fit: cover;
   border-radius: 8px;
