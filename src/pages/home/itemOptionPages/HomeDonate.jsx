@@ -19,6 +19,7 @@ import HeadingWithImage from "../../../components/headingWithImage/HeadingWithIm
 import "./itemOptionsPages.css";
 import "../../../components/button/button.css";
 import DonateTiny from "../../../assets/icons/DonateTiny.svg";
+import { Link } from "react-router-dom";
 
 export default function HomeDonate() {
   const { childId } = useParams();
@@ -236,9 +237,11 @@ export default function HomeDonate() {
               <span className="itemOptionsSpan"> profile</span> count rise.
             </p>
             <div className="optionsPagesButtons">
-              <button className="buttonForestGreen buttonSecondary optionsPageButton1">
-                See donation partners
-              </button>
+              <Link to="/error-404">
+                <button className="buttonForestGreen buttonSecondary optionsPageButton1">
+                  See donation partners
+                </button>
+              </Link>
               <button
                 onClick={handleSelectAll}
                 onKeyDown={handleSelectAll}

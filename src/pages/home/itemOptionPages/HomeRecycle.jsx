@@ -19,6 +19,7 @@ import HeadingWithImage from "../../../components/headingWithImage/HeadingWithIm
 import "./itemOptionsPages.css";
 import "../../../components/button/button.css";
 import RecycleTiny from "../../../assets/icons/RecycleTiny.svg";
+import { Link } from "react-router-dom";
 
 export default function HomeRecycle() {
   const { childId } = useParams();
@@ -234,9 +235,11 @@ export default function HomeRecycle() {
               <span className="itemOptionsSpan"> profile</span> count rise.
             </p>
             <div className="optionsPagesButtons">
-              <button className="buttonForestGreen buttonSecondary optionsPageButton1">
-                See recycling points
-              </button>
+              <Link to="/error-404">
+                <button className="buttonForestGreen buttonSecondary optionsPageButton1">
+                  See recycling points
+                </button>
+              </Link>
               <button
                 onClick={handleSelectAll}
                 onKeyDown={handleSelectAll}

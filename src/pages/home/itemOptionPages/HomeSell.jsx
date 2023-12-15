@@ -19,6 +19,7 @@ import HeadingWithImage from "../../../components/headingWithImage/HeadingWithIm
 import "./itemOptionsPages.css";
 import "../../../components/button/button.css";
 import ShopTiny from "../../../assets/icons/ShopTiny.svg";
+import { Link } from "react-router-dom";
 
 export default function HomeSell() {
   const { childId } = useParams();
@@ -234,9 +235,11 @@ export default function HomeSell() {
             </p>
 
             <div className="optionsPagesButtons">
-              <button className="buttonForestGreen buttonSecondary optionsPageButton1">
-                See reseller platforms
-              </button>
+              <Link to="/error-404">
+                <button className="buttonForestGreen buttonSecondary optionsPageButton1">
+                  See reseller platforms
+                </button>
+              </Link>
               <button
                 onClick={handleSelectAll}
                 onKeyDown={handleSelectAll}
