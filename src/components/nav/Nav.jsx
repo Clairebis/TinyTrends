@@ -31,7 +31,7 @@ export default function Nav() {
     // Navigation bar JSX structure
     <nav className="bottomNav" aria-label="navigation">
       <NavLink to="/home" className={`navLink ${isHomeActive ? "active" : ""}`}>
-        <img src={Home} alt="Home" aria-hidden="true" />
+        <img src={Home} alt="Home" aria-hidden="true" className="homeIcon" />
         <span className="small">Home</span>
       </NavLink>
 
@@ -39,12 +39,17 @@ export default function Nav() {
         to="/wishlist"
         className={`navLink ${isWishlistActive ? "active" : ""}`}
       >
-        <img src={Wishlist} alt="Wishlist" aria-hidden="true" />
+        <img
+          src={Wishlist}
+          alt="Wishlist"
+          aria-hidden="true"
+          className="wishlistIcon"
+        />
         <span className="small">Wishlist</span>
       </NavLink>
 
       <NavLink to="/blog" className={`navLink ${isBlogActive ? "active" : ""}`}>
-        <img src={Blog} alt="Blog" aria-hidden="true" />
+        <img src={Blog} alt="Blog" aria-hidden="true" className="blogIcon" />
         <span className="small">Blog</span>
       </NavLink>
 
@@ -52,7 +57,12 @@ export default function Nav() {
         to="/profile"
         className={`navLink ${isProfileActive ? "active" : ""}`}
       >
-        <img src={Profile} alt="Profile" aria-hidden="true" />
+        <img
+          src={Profile}
+          alt="Profile"
+          aria-hidden="true"
+          className="profileIcon"
+        />
         <span className="small">Profile</span>
       </NavLink>
     </nav>

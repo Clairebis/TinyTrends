@@ -34,3 +34,23 @@
   color: var(--black);
   opacity: 1;
 }
+
+.homeIcon {
+  height: 20px;
+  width: 22.5px;
+}
+
+.wishlistIcon {
+  height: 20px;
+  width: 21px;
+}
+
+.blogIcon {
+  height: 19px;
+  width: 19px;
+}
+
+.profileIcon {
+  height: 19px;
+  width: 18.5px;
+}
