@@ -31,7 +31,7 @@ export default function ItemForm({ saveItem, item }) {
 
   function handleImageChange(event) {
     const file = event.target.files[0];
-    if (file.size < 500000) {
+    if (file.size < 3000000) {
       // image file size must be below 0,5MB
       setImageFile(file); // set the imageFile state with the file object
       const reader = new FileReader();
