@@ -20,7 +20,7 @@ export default function CategoryDropdown({ onCategoryChange }) {
         <option value="Tops">Tops</option>
         <option value="Bottoms">Bottoms</option>
         <option value="Full body">Full body</option>
-        <option value="Outdoor">Outdoor</option>
+        <option value="Outdoors">Outdoors</option>
       </select>
     </div>
   );
