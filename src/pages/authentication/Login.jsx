@@ -6,24 +6,27 @@ import "./authentication.css";
 import TextField from "@mui/material/TextField";
 
 export default function Login() {
+  // State variables for error message, authentication instance, email, and password
   const [errorMessage, setErrorMessage] = useState("");
   const auth = getAuth(); //  from firebase/auth package
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Function to handle user login
   function signIn(event) {
     event.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        // Successful login
         const user = userCredential.user;
         console.log(user); // test: logging the authenticated user
       })
       .catch((error) => {
+        // Handling login errors
         let code = error.code; // saving error code in variable
         console.log(code);
-        code = code.replaceAll("-", " "); // some JS to display the error message from the console
+        code = code.replaceAll("-", " "); // Formatting the error code for display
         code = code.replaceAll("auth/", "");
         setErrorMessage(code);
       });

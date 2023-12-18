@@ -6,7 +6,9 @@ import placeholderItem from "../../assets/placeholderItem.webp";
 import SizeDropdown from "../dropdowns/SizeDropdown";
 import CategoryDropdown from "../dropdowns/CategoryDropdown";
 
+// Defining the ItemForm functional component, which takes 'saveItem' and 'item' as props
 export default function ItemForm({ saveItem, item }) {
+  // State variables for form input values, image, and error message
   const [caption, setCaption] = useState("");
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
@@ -17,6 +19,7 @@ export default function ItemForm({ saveItem, item }) {
   const [selected, setSelected] = useState(""); // create an empty selected field for the user to later select the item to mark as sold / donated / recycled
   const [errorMessage, setErrorMessage] = useState("");
 
+  // useEffect to update form input values when 'item' prop changes
   useEffect(() => {
     if (item) {
       setCaption(item.caption || "");
@@ -29,6 +32,7 @@ export default function ItemForm({ saveItem, item }) {
     }
   }, [item]);
 
+  // Function to handle changes in the selected image file
   function handleImageChange(event) {
     const file = event.target.files[0];
     if (file.size < 3000000) {
@@ -46,6 +50,7 @@ export default function ItemForm({ saveItem, item }) {
     }
   }
 
+  // Function to handle form submission
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = {
@@ -59,12 +64,14 @@ export default function ItemForm({ saveItem, item }) {
       selected: selected,
     };
 
+    // If a new image file is selected, upload it to Firebase Storage and get the download URL
     if (imageFile) {
       formData.image = await handleUploadImage(); // call handleUploadImage to upload the image to firebase storage and get the download URL
     }
 
     console.log(formData);
 
+    // Check if all required fields are filled before calling saveItem function
     const validForm =
       formData.caption &&
       formData.brand &&
@@ -80,12 +87,14 @@ export default function ItemForm({ saveItem, item }) {
     }
   }
 
+  // Function to handle the upload of the selected image file to Firebase Storage
   async function handleUploadImage() {
     if (!imageFile) {
       // Handle the case where imageFile is not defined
       return "";
     }
 
+    // Create a reference to the file in Firebase Storage
     const storageRef = ref(storage, imageFile.name); // create a reference to the file in firebase storage
     await uploadBytes(storageRef, imageFile); // upload the image file to firebase storage
     const downloadURL = await getDownloadURL(storageRef); // Get the download URL

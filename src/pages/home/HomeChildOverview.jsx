@@ -58,14 +58,17 @@ export default function HomeChildOverview() {
     fetchChildData();
   }, [childId, userId]);
 
+  // Handler for navigating to the wardrobe page
   function handleWardrobeClick() {
     navigate(`/home-wardrobe/${childId}`);
   }
 
+  // Handler for navigating to the declutter page
   function handleDeclutterClick() {
     navigate(`/home-declutter/${childId}`);
   }
 
+  // Handler for navigating to the edit child page
   function handleEditClick() {
     navigate(`/edit-child/${childId}`);
   }

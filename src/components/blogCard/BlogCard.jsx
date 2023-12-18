@@ -1,8 +1,11 @@
 import "./blogCard.css";
 import { useNavigate } from "react-router-dom";
 
+// Defining the BlogCard functional component, which takes a prop 'blogArticle'
 export default function BlogCard({ blogArticle }) {
   const navigate = useNavigate();
+
+  // Handling the click event on the BlogCard
   const handleBlogCardClick = () => {
     console.log("Clicked on blog card:", blogArticle.id); //for debugging
     //navigate(`/blog-post-full/${blogArticle.id}`);

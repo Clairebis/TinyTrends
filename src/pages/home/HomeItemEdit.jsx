@@ -19,11 +19,16 @@ export default function HomeItemEdit() {
   useEffect(() => {
     async function getItem() {
       try {
+        // Reference to the specific item document
         const docRef = doc(itemsRef(childId), itemId);
+
+        // Retrieve the item document
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
           const docData = docSnap.data();
+
+          // Check if the document data is an object
           if (docData && typeof docData === "object") {
             setItem(docData); // set item state with the data from the document
           } else {
@@ -37,6 +42,7 @@ export default function HomeItemEdit() {
       }
     }
 
+    // Call the getItem function
     getItem();
   }, [itemId, childId]); // called every time itemId changes
 

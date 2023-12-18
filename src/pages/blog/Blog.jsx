@@ -12,17 +12,23 @@ export default function Blog() {
   const [searchValue, setSearchValue] = useState("");
   const [blogArticles, setBlogArticles] = useState([]);
 
+  // useEffect hook to fetch blog articles from firestore
   useEffect(() => {
-    // Get a reference to the blog collection
     if (auth.currentUser?.uid) {
       console.log("User ID:", auth.currentUser.uid);
+
+      // Reference to the blog collection
       const blogArticlesCollectionRef = collection(db, "blogArticles");
       console.log("Blog Articles Collection Ref:", blogArticlesCollectionRef);
+
+      // Query to get blog articles
       const q = query(blogArticlesCollectionRef); // order by: lastest child first
 
+      // Function to fetch data from Firestore
       const fetchData = async () => {
         try {
           const data = await getDocs(q);
+          // Map through the documents and structure the data
           const blogArticlesData = data.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
@@ -36,6 +42,7 @@ export default function Blog() {
 
       fetchData();
 
+      // Subscribe to changes in the blog collection using onSnapshot
       const unsubscribe = onSnapshot(
         q,
         (data) => {
@@ -49,6 +56,7 @@ export default function Blog() {
           }));
           console.log("Blog Articles Data:", blogArticlesData);
 
+          // Update state with the latest blog articles data
           if (blogArticlesData.length > 0) {
             setBlogArticles(blogArticlesData);
           }
@@ -58,8 +66,9 @@ export default function Blog() {
         }
       );
 
+      // Cleanup function to unsubscribe from Firestore changes when the component unmounts
       return () => {
-        unsubscribe(); // tell the  component to unsubscribe from listen on changes from firestore
+        unsubscribe();
       };
     }
   }, [auth.currentUser?.uid]);

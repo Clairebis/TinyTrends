@@ -9,19 +9,24 @@ import TextField from "@mui/material/TextField";
 import Hanger from "../../assets/Hanger.webp";
 
 export default function Signup() {
+  // State variables for name, email, password, and error message
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); // password state
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Authentication instance from firebase/auth package
   const auth = getAuth();
 
+  // Function to handle user signup
   async function handleSignUp(event) {
     event.preventDefault();
-    const email = event.target.email.value; // mail value from input field in sign in form
-    const password = event.target.password.value; // password value from input field in sign in form
+    // Extracting values from the input fields in the signup form
+    const email = event.target.email.value; // mail value
+    const password = event.target.password.value; // password value
 
     try {
+      // Creating a user with email and password using Firebase authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -32,7 +37,7 @@ export default function Signup() {
       // Create a reference to the user in Firestore
       const userDocRef = doc(usersRef, user.uid);
 
-      // Set the user in Firestore with the values from input fields
+      // Set the user in Firestore with the values from input fields & setting initial values for other fields
       await setDoc(userDocRef, {
         name,
         email,
@@ -50,13 +55,14 @@ export default function Signup() {
         "children"
       );
 
-      await addDoc(childrenCollectionRef, {}); // You can add any initial data if needed
+      await addDoc(childrenCollectionRef, {}); // (Can add any initial data if needed)
 
       // Create an empty "lists" subcollection within the user document
       const listsCollectionRef = collection(db, "users", user.uid, "lists");
 
       await addDoc(listsCollectionRef, {}); // You can add any initial data if needed
     } catch (error) {
+      // Handling signup errors
       let code = error.code;
       console.log(code);
       code = code.replaceAll("-", " ");

@@ -36,7 +36,7 @@ export default function Wishlist() {
         unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
       };
     }
-  }, [auth.currentUser?.uid]); // Make sure to include userId as a dependency if it's used inside the useEffect
+  }, [auth.currentUser?.uid]); // run useEffect when user id changes
   return (
     <section className="page">
       <div className="wishlistContentContainer">

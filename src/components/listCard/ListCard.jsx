@@ -1,9 +1,11 @@
 import "./listCard.css";
 import { useNavigate } from "react-router-dom";
 
+// Defining the ListCard functional component, which takes 'props' as its parameter
 export default function ListCard(props) {
   const navigate = useNavigate();
 
+  // Handling the click event on the ListCard to navigate to the wishList-details page
   const handleClick = () => {
     navigate(`/wishList-details/${props.addedListUid}`);
   };

@@ -16,25 +16,29 @@ import ArrowBack from "../../assets/icons/ArrowBack.svg";
 
 export default function EditChild() {
   const auth = getAuth();
+
+  // Getting childId from the URL parameters and initializing state variables
   const { childId } = useParams();
   const [child, setChild] = useState(null);
   const userId = auth.currentUser?.uid;
   const navigate = useNavigate();
   console.log("UserId:", userId);
 
+  // useEffect hook to fetch the child data based on childId
   useEffect(() => {
     async function getChild() {
       if (auth.currentUser?.uid) {
         try {
           if (auth.currentUser?.uid) {
             console.log("User ID:", auth.currentUser.uid);
+            // Reference to the user's children subcollection
             const userChildrenCollectionRef = collection(
               db,
               "users",
               auth.currentUser.uid,
               "children"
             );
-            // Get a reference to the specific child based on childId
+            // Document reference for the specific child based on childId
             const childDocRef = doc(userChildrenCollectionRef, childId);
 
             // Retrieve the child document
@@ -82,6 +86,7 @@ export default function EditChild() {
     }
   }
 
+  // Function to delete a child based on childId
   async function deleteChild(childId, event) {
     event.preventDefault(); // Prevent the default buttonLink behaviour
     const confirmDelete = window.confirm(
@@ -89,6 +94,7 @@ export default function EditChild() {
     ); // Ask the user to confirm the deletion
     if (confirmDelete && userId && childId) {
       try {
+        // Document reference to the child document
         const docRef = doc(db, "users", userId, "children", childId); // Reference to the child document
         await deleteDoc(docRef); // Delete the item document
         navigate(`/child-deleted`); // Navigate to the home page
@@ -98,6 +104,7 @@ export default function EditChild() {
     }
   }
 
+  // Function to navigate back one page
   const goBack = () => {
     navigate(-1); // This will navigate one page back
   };

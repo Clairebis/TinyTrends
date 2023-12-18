@@ -35,14 +35,17 @@ export default function Home() {
 
   const modal = document.querySelector(".addChildModal");
 
+  // Function to open the modal for adding a child
   function openModal() {
     modal.style.display = "block";
   }
 
+  // Function to close the modal for adding a child
   function closeModal() {
     modal.style.display = "none";
   }
 
+  // Function to handle the form submission for adding a new child
   async function handleSubmit(newChild) {
     newChild.createdAt = serverTimestamp(); // timestamp (now)
     newChild.uid = auth.currentUser.uid; // uid of auth user / signed in user
@@ -101,7 +104,7 @@ export default function Home() {
         unsubscribe(); // tell the post component to unsubscribe from listen on changes from firestore
       };
     }
-  }, [auth.currentUser?.uid]); // Make sure to include userId as a dependency if it's used inside the useEffect
+  }, [auth.currentUser?.uid]);
 
   return (
     <>

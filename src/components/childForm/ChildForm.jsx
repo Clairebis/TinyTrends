@@ -4,7 +4,9 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../config/firebase";
 import placeholderChild from "../../assets/placeholderChild.webp";
 
+// Defining the ChildForm functional component, which takes 'saveChild' and 'child' as props
 export default function ChildForm({ saveChild, child }) {
+  // State variables for form input values and error message
   const [firstName, setFirstName] = useState("");
   const [otherNames, setOtherNames] = useState("");
   const [dob, setDob] = useState("");
@@ -13,6 +15,7 @@ export default function ChildForm({ saveChild, child }) {
   const [imageFile, setImageFile] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // useEffect to update form input values when 'child' prop changes
   useEffect(() => {
     if (child) {
       setFirstName(child.firstName || "");
@@ -23,6 +26,7 @@ export default function ChildForm({ saveChild, child }) {
     }
   }, [child]);
 
+  // Function to handle changes in the selected image file
   function handleImageChange(event) {
     const file = event.target.files[0];
     if (file.size < 3000000) {
@@ -40,6 +44,7 @@ export default function ChildForm({ saveChild, child }) {
     }
   }
 
+  // Function to handle form submission
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = {
@@ -51,18 +56,20 @@ export default function ChildForm({ saveChild, child }) {
       image: image, // keep the existing image URL if the user doesn't upload a new image
     };
 
+    // If a new image file is selected, upload it to Firebase Storage and get the download URL
     if (imageFile) {
       formData.image = await handleUploadImage(); // call handleUploadImage to upload the image to firebase storage and get the download URL
     }
 
     console.log(formData);
 
+    // Check if all required fields are filled before calling saveChild
     const validForm =
       formData.firstName &&
       formData.otherNames &&
       formData.dob &&
       formData.age &&
-      formData.image; // will return false if one of the properties doesn't have a value
+      formData.image;
     if (validForm) {
       // if all fields/ properties are filled, then call saveChild
       saveChild(formData);
@@ -72,6 +79,7 @@ export default function ChildForm({ saveChild, child }) {
     }
   }
 
+  // Function to handle the upload of the selected image file to Firebase Storage
   async function handleUploadImage() {
     if (!imageFile) {
       // Handle the case where imageFile is not defined

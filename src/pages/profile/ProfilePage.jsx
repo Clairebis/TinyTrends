@@ -110,6 +110,7 @@ export default function ProfilePage() {
     }
   };
 
+  // Function to update the user's profile image in Firestore
   const updateProfileImage = async (downloadURL) => {
     const userDocRef = doc(db, "users", auth.currentUser.uid);
     try {
