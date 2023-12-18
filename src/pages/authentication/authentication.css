@@ -7,6 +7,13 @@
 }
 
 .landingTitle {
+  margin-top: 250px;
+  font-family: var(--bodyFont);
+  font-weight: 900;
+  font-size: 2.1rem;
+}
+
+.landingPageTitle {
   margin-top: 300px;
   font-family: var(--bodyFont);
   font-weight: 900;

@@ -12,7 +12,7 @@ export default function Landing() {
           className="landingHanger"
           aria-hidden="true"
         />
-        <h1 className="landingTitle">TinyTrends</h1>
+        <h1 className="landingPageTitle">TinyTrends</h1>
         <section className="landingText">
           <p className="landingPara">Revamp your child's closet sustainably!</p>
           <p className="landingPara">
